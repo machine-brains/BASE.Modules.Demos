@@ -15,7 +15,6 @@
     <Company>MachineBrains, Inc.</Company>
     <Product>BASE</Product>
     <RootNamespace>App.Modules.Demos</RootNamespace>
-    
     <!-- CA1716: Namespace conflicts with reserved keyword 'Shared' -->
     <!-- Intentional - 'Shared' namespace is an architectural choice -->
     <NoWarn>$(NoWarn);CA1716;IDE0290;IDE0060;IDE0046;IDE0066;IDE0063;IDE0057;IDE0028;IDE0071;IDE0075;IDE0029;IDE0008;IDE0130</NoWarn>
@@ -40,12 +39,6 @@
       <PackagePath>\</PackagePath>
       <Pack>true</Pack>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Domain\Domains\X\" />
-    <Folder Include="Infrastructure\Domains\X\" />
-    <Folder Include="Constants\" />
   </ItemGroup>
 
 </Project>

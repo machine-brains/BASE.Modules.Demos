@@ -3,7 +3,6 @@
   <PropertyGroup>
     <Title>$(AssemblyName)</Title>
     <PackageReadmeFile>_Packaging/readme.nuget.md</PackageReadmeFile>
-    <!-- CA1716: Namespace conflicts with reserved keywords like 'Shared', 'Interface' -->
     <NoWarn>$(NoWarn);CA1716;IDE0290;IDE0060;IDE0046;IDE0066;IDE0063;IDE0057;IDE0028;IDE0071;IDE0075;IDE0029;IDE0008</NoWarn>
   </PropertyGroup>
 
@@ -21,8 +20,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BASE.Modules.Sys\SOURCE\App.Modules.Sys.Application\App.Modules.Sys.Application.csproj" />
+    <ProjectReference Include="..\..\..\BASE.Modules.Sys\SOURCE\App.Modules.Sys.Infrastructure.Web\App.Modules.Sys.Infrastructure.Web.csproj" />
     <ProjectReference Include="..\..\..\BASE.Modules.Sys\SOURCE\App.Modules.Sys.Shared\App.Modules.Sys.Shared.csproj" />
-    <ProjectReference Include="..\..\..\BASE.Modules.Sys\SOURCE\App.Modules.Sys.Substrate\App.Modules.Sys.Substrate.csproj" />    <ProjectReference Include="..\App.Modules.Demos.Application\App.Modules.Demos.Application.csproj" />
+    <ProjectReference Include="..\..\..\BASE.Modules.Sys\SOURCE\App.Modules.Sys.Substrate\App.Modules.Sys.Substrate.csproj" />
+    <ProjectReference Include="..\App.Modules.Demos.Application\App.Modules.Demos.Application.csproj" />
     <ProjectReference Include="..\App.Modules.Demos.Shared\App.Modules.Demos.Shared.csproj" />
   </ItemGroup>
 

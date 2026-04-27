@@ -45,10 +45,7 @@
     <ProjectReference Include="..\App.Modules.Demos.Infrastructure\App.Modules.Demos.Infrastructure.csproj" />
     <ProjectReference Include="..\App.Modules.Demos.Infrastructure.Data.EF\App.Modules.Demos.Infrastructure.Data.EF.csproj" />
     <ProjectReference Include="..\App.Modules.Demos.Application\App.Modules.Demos.Application.csproj" />
-    <ProjectReference Include="..\App.Modules.Demos.Interfaces.Models\App.Modules.Demos.Interfaces.Models.csproj" />
     <ProjectReference Include="..\App.Modules.Demos.Interfaces.API.REST\App.Modules.Demos.Interfaces.API.REST.csproj" />
-    <ProjectReference Include="..\App.Modules.Demos.Interfaces.API.OData\App.Modules.Demos.Interfaces.API.OData.csproj" />
-    <ProjectReference Include="..\App.Modules.Demos.Interfaces.API.GraphQL\App.Modules.Demos.Interfaces.API.GraphQL.csproj" />
     <!-- Add UI.Web reference when that project is created -->
     <!-- <ProjectReference Include="..\App.Modules.Demos.Interfaces.UI.Web\App.Modules.Demos.Interfaces.UI.Web.csproj" /> -->
   </ItemGroup>

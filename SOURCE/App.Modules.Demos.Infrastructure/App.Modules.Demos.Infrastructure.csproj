@@ -3,11 +3,8 @@
   <PropertyGroup>
     <Title>$(AssemblyName)</Title>
     <PackageReadmeFile>_Packaging/readme.nuget.md</PackageReadmeFile>
-      <PackageReadmeFile>_Packaging/readme.nuget.md</PackageReadmeFile>
-      <RootNamespace>App.Modules.Demos.Infrastructure</RootNamespace>
-      <!-- CA1716: Namespace conflicts with reserved keywords like 'Shared', 'Interface' -->
+    <RootNamespace>App.Modules.Demos.Infrastructure</RootNamespace>
     <NoWarn>$(NoWarn);CA1716;IDE0290;IDE0060;IDE0046;IDE0066;IDE0063;IDE0057;IDE0028;IDE0071;IDE0075;IDE0029;IDE0008</NoWarn>
-    <!-- Module asset embedding (ManifestEmbeddedFileProvider support) -->
     <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
   </PropertyGroup>
 
@@ -26,10 +23,6 @@
       <PackagePath>\</PackagePath>
       <Pack>true</Pack>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Domains\X\Configuration\" />
   </ItemGroup>
 
   <ItemGroup>
