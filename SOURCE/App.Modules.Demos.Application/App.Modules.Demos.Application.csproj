@@ -15,7 +15,6 @@
     <ProjectReference Include="..\..\..\BASE.Modules.Sys\SOURCE\App.Modules.Sys.Substrate\App.Modules.Sys.Substrate.csproj" />
     <ProjectReference Include="..\App.Modules.Demos.Domain\App.Modules.Demos.Domain.csproj" />
     <ProjectReference Include="..\App.Modules.Demos.Infrastructure.Data.EF\App.Modules.Demos.Infrastructure.Data.EF.csproj" />
-    <ProjectReference Include="..\App.Modules.Demos.Infrastructure\App.Modules.Demos.Infrastructure.csproj" />
     <ProjectReference Include="..\App.Modules.Demos.Shared\App.Modules.Demos.Shared.csproj" />
   </ItemGroup>
 
