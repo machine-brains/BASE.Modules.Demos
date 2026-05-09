@@ -13,7 +13,7 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.V1.Contributions
 /// </summary>
 [Route(ApiRoutes.Rest.V1.Discoveries.Base)]
 public class DiscoveriesController
-: SimpleCrudStateControllerBase<DiscoveryDto>
+: SimpleCrudStateControllerBase<DiscoveryReadDto>
 {
 /// <summary>
 /// Initializes a new instance of the
@@ -31,12 +31,12 @@ IDiscoveryApplicationService service)
 /// Supports OData query options: \\\, \\\, \\\, \\\, \\\.
 /// </summary>
 /// <param name="profileId">The unique identifier of the discoverer profile.</param>
-/// <returns>Queryable of <see cref="DiscoveryDto"/>.</returns>
+/// <returns>Queryable of <see cref="DiscoveryReadDto"/>.</returns>
 /// <response code="200">Returns the matching discoveries.</response>
 [HttpGet("by-profile/{profileId:guid}")]
 [EnableQuery]
 [ProducesResponseType(200)]
-public IQueryable<DiscoveryDto> GetByProfile(Guid profileId)
+public IQueryable<DiscoveryReadDto> GetByProfile(Guid profileId)
 {
 return ((IDiscoveryApplicationService)this.Service).QueryByProfile(profileId);
 }

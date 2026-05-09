@@ -12,7 +12,7 @@ namespace App.Modules.Demos.Application.Domains.Discoverers.Services.Implementat
     /// CRUST application service for <see cref="Discovery"/>.
     /// </summary>
     public class DiscoveryApplicationService
-        : SimpleCrustStateAppServiceBase<Discovery, DiscoveryDto>,
+        : SimpleCrustStateAppServiceBase<Discovery, DiscoveryReadDto>,
           IDiscoveryApplicationService
     {
         /// <summary>
@@ -28,9 +28,9 @@ namespace App.Modules.Demos.Application.Domains.Discoverers.Services.Implementat
         }
 
         /// <inheritdoc/>
-        public IQueryable<DiscoveryDto> QueryByProfile(Guid discovererProfileId)
+        public IQueryable<DiscoveryReadDto> QueryByProfile(Guid discovererProfileId)
         {
-            return this.ObjectMappingService.ProjectTo<Discovery, DiscoveryDto>(
+            return this.ObjectMappingService.ProjectTo<Discovery, DiscoveryReadDto>(
                 this.Repository.Query().Where(e => e.DiscovererProfileId == discovererProfileId));
         }
     }

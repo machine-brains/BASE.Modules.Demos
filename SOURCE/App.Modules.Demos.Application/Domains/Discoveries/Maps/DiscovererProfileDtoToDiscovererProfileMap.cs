@@ -4,8 +4,8 @@ using App.Modules.Sys.Shared.ObjectMaps.Models.Implementations.Base;
 
 namespace App.Modules.Demos.Application.Domains.Discoverers.Maps
 {
-    /// <summary>Maps DiscovererProfileDto to DiscovererProfile (for create/update operations). Discovered via IObjectMap scan.</summary>
-    public class DiscovererProfileDtoToDiscovererProfileMap : ObjectMapBase<DiscovererProfileDto, DiscovererProfile>
+    /// <summary>Maps DiscovererProfileReadDto to DiscovererProfile (for create/update operations). Discovered via IObjectMap scan.</summary>
+    public class DiscovererProfileDtoToDiscovererProfileMap : ObjectMapBase<DiscovererProfileReadDto, DiscovererProfile>
     {
         /// <inheritdoc/>
         protected override void ConfigureMapping()

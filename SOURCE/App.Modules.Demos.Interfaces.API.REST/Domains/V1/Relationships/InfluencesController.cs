@@ -13,7 +13,7 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.V1.Relationships
 /// </summary>
 [Route(ApiRoutes.Rest.V1.Influences.Base)]
 public class InfluencesController
-: SimpleCrudStateControllerBase<InfluenceDto>
+: SimpleCrudStateControllerBase<InfluenceReadDto>
 {
 /// <summary>
 /// Initializes a new instance of the
@@ -31,12 +31,12 @@ IInfluenceApplicationService service)
 /// Supports OData query options: \\\, \\\, \\\, \\\, \\\.
 /// </summary>
 /// <param name="profileId">The unique identifier of the influencing profile.</param>
-/// <returns>Queryable of <see cref="InfluenceDto"/>.</returns>
+/// <returns>Queryable of <see cref="InfluenceReadDto"/>.</returns>
 /// <response code="200">Returns the matching influence relationships.</response>
 [HttpGet("by-influencer/{profileId:guid}")]
 [EnableQuery]
 [ProducesResponseType(200)]
-public IQueryable<InfluenceDto> GetByInfluencer(Guid profileId)
+public IQueryable<InfluenceReadDto> GetByInfluencer(Guid profileId)
 {
 return ((IInfluenceApplicationService)this.Service).QueryByInfluencer(profileId);
 }
@@ -46,12 +46,12 @@ return ((IInfluenceApplicationService)this.Service).QueryByInfluencer(profileId)
 /// Supports OData query options: \\\, \\\, \\\, \\\, \\\.
 /// </summary>
 /// <param name="profileId">The unique identifier of the influenced profile.</param>
-/// <returns>Queryable of <see cref="InfluenceDto"/>.</returns>
+/// <returns>Queryable of <see cref="InfluenceReadDto"/>.</returns>
 /// <response code="200">Returns the matching influence relationships.</response>
 [HttpGet("by-influenced/{profileId:guid}")]
 [EnableQuery]
 [ProducesResponseType(200)]
-public IQueryable<InfluenceDto> GetByInfluenced(Guid profileId)
+public IQueryable<InfluenceReadDto> GetByInfluenced(Guid profileId)
 {
 return ((IInfluenceApplicationService)this.Service).QueryByInfluenced(profileId);
 }

@@ -4,8 +4,8 @@ using App.Modules.Sys.Shared.ObjectMaps.Models.Implementations.Base;
 
 namespace App.Modules.Demos.Application.Domains.Believers.Maps
 {
-    /// <summary>Maps BelieverProfileDto to BelieverProfile (for create/update operations). Discovered via IObjectMap scan.</summary>
-    public class BelieverProfileDtoToBelieverProfileMap : ObjectMapBase<BelieverProfileDto, BelieverProfile>
+    /// <summary>Maps BelieverProfileReadDto to BelieverProfile (for create/update operations). Discovered via IObjectMap scan.</summary>
+    public class BelieverProfileDtoToBelieverProfileMap : ObjectMapBase<BelieverProfileReadDto, BelieverProfile>
     {
         /// <inheritdoc/>
         protected override void ConfigureMapping()

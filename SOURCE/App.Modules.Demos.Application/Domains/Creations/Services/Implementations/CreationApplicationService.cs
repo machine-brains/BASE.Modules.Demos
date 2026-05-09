@@ -12,7 +12,7 @@ namespace App.Modules.Demos.Application.Domains.Creators.Services.Implementation
     /// CRUST application service for <see cref="Creation"/>.
     /// </summary>
     public class CreationApplicationService
-        : SimpleCrustStateAppServiceBase<Creation, CreationDto>,
+        : SimpleCrustStateAppServiceBase<Creation, CreationReadDto>,
           ICreationApplicationService
     {
         /// <summary>
@@ -28,9 +28,9 @@ namespace App.Modules.Demos.Application.Domains.Creators.Services.Implementation
         }
 
         /// <inheritdoc/>
-        public IQueryable<CreationDto> QueryByProfile(Guid creatorProfileId)
+        public IQueryable<CreationReadDto> QueryByProfile(Guid creatorProfileId)
         {
-            return this.ObjectMappingService.ProjectTo<Creation, CreationDto>(
+            return this.ObjectMappingService.ProjectTo<Creation, CreationReadDto>(
                 this.Repository.Query().Where(e => e.CreatorProfileId == creatorProfileId));
         }
     }

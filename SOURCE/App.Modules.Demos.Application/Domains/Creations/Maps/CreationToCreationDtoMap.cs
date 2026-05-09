@@ -4,8 +4,8 @@ using App.Modules.Sys.Shared.ObjectMaps.Models.Implementations.Base;
 
 namespace App.Modules.Demos.Application.Domains.Creators.Maps
 {
-	/// <summary>Maps Creation to CreationDto. Discovered via IObjectMap scan.</summary>
-	public class CreationToCreationDtoMap : ObjectMapBase<Creation, CreationDto>
+	/// <summary>Maps Creation to CreationReadDto. Discovered via IObjectMap scan.</summary>
+	public class CreationToCreationDtoMap : ObjectMapBase<Creation, CreationReadDto>
 	{
 		/// <inheritdoc/>
 		protected override void ConfigureMapping()

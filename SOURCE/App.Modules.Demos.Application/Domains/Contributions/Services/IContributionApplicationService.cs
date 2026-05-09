@@ -6,9 +6,9 @@ namespace App.Modules.Demos.Application.Domains.Contributions.Services
     /// <summary>
     /// Application service contract for Contribution CRUST operations.
     /// </summary>
-    public interface IContributionApplicationService : ICrudStateAppService<ContributionDto, ContributionDto, ContributionDto>
+    public interface IContributionApplicationService : ICrudStateAppService<ContributionReadDto, ContributionReadDto, ContributionReadDto>
     {
         /// <summary>Returns contributions for the given believer profile.</summary>
-        IQueryable<ContributionDto> QueryByProfile(Guid believerProfileId);
+        IQueryable<ContributionReadDto> QueryByProfile(Guid believerProfileId);
     }
 }

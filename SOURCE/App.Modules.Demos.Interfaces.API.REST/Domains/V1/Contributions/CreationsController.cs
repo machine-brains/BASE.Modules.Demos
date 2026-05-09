@@ -13,7 +13,7 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.V1.Contributions
 /// </summary>
 [Route(ApiRoutes.Rest.V1.Creations.Base)]
 public class CreationsController
-: SimpleCrudStateControllerBase<CreationDto>
+: SimpleCrudStateControllerBase<CreationReadDto>
 {
 /// <summary>
 /// Initializes a new instance of the
@@ -31,12 +31,12 @@ ICreationApplicationService service)
 /// Supports OData query options: \\\, \\\, \\\, \\\, \\\.
 /// </summary>
 /// <param name="profileId">The unique identifier of the creator profile.</param>
-/// <returns>Queryable of <see cref="CreationDto"/>.</returns>
+/// <returns>Queryable of <see cref="CreationReadDto"/>.</returns>
 /// <response code="200">Returns the matching creations.</response>
 [HttpGet("by-profile/{profileId:guid}")]
 [EnableQuery]
 [ProducesResponseType(200)]
-public IQueryable<CreationDto> GetByProfile(Guid profileId)
+public IQueryable<CreationReadDto> GetByProfile(Guid profileId)
 {
 return ((ICreationApplicationService)this.Service).QueryByProfile(profileId);
 }

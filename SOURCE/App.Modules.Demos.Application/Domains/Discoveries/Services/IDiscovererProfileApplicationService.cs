@@ -6,9 +6,9 @@ namespace App.Modules.Demos.Application.Domains.Discoverers.Services
     /// <summary>
     /// Application service contract for DiscovererProfile CRUST operations.
     /// </summary>
-    public interface IDiscovererProfileApplicationService : ICrudStateAppService<DiscovererProfileDto, DiscovererProfileDto, DiscovererProfileDto>
+    public interface IDiscovererProfileApplicationService : ICrudStateAppService<DiscovererProfileReadDto, DiscovererProfileReadDto, DiscovererProfileReadDto>
     {
         /// <summary>Returns discoverer profiles for the given person.</summary>
-        IQueryable<DiscovererProfileDto> QueryByPerson(Guid personId);
+        IQueryable<DiscovererProfileReadDto> QueryByPerson(Guid personId);
     }
 }

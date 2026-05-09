@@ -6,9 +6,9 @@ namespace App.Modules.Demos.Application.Domains.Creators.Services
     /// <summary>
     /// Application service contract for Creation CRUST operations.
     /// </summary>
-    public interface ICreationApplicationService : ICrudStateAppService<CreationDto, CreationDto, CreationDto>
+    public interface ICreationApplicationService : ICrudStateAppService<CreationReadDto, CreationReadDto, CreationReadDto>
     {
         /// <summary>Returns creations for the given creator profile.</summary>
-        IQueryable<CreationDto> QueryByProfile(Guid creatorProfileId);
+        IQueryable<CreationReadDto> QueryByProfile(Guid creatorProfileId);
     }
 }

@@ -4,8 +4,8 @@ using App.Modules.Sys.Shared.ObjectMaps.Models.Implementations.Base;
 
 namespace App.Modules.Demos.Application.Domains.Creators.Maps
 {
-    /// <summary>Maps CreatorProfileDto to CreatorProfile (for create/update operations). Discovered via IObjectMap scan.</summary>
-    public class CreatorProfileDtoToCreatorProfileMap : ObjectMapBase<CreatorProfileDto, CreatorProfile>
+    /// <summary>Maps CreatorProfileReadDto to CreatorProfile (for create/update operations). Discovered via IObjectMap scan.</summary>
+    public class CreatorProfileDtoToCreatorProfileMap : ObjectMapBase<CreatorProfileReadDto, CreatorProfile>
     {
         /// <inheritdoc/>
         protected override void ConfigureMapping()

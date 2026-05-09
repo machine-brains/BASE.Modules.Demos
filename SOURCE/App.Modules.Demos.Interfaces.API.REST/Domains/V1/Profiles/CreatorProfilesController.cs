@@ -13,7 +13,7 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.V1.Profiles
 /// </summary>
 [Route(ApiRoutes.Rest.V1.CreatorProfiles.Base)]
 public class CreatorProfilesController
-: SimpleCrudStateControllerBase<CreatorProfileDto>
+: SimpleCrudStateControllerBase<CreatorProfileReadDto>
 {
 /// <summary>
 /// Initializes a new instance of the
@@ -31,12 +31,12 @@ ICreatorProfileApplicationService service)
 /// Supports OData query options: \\\, \\\, \\\, \\\, \\\.
 /// </summary>
 /// <param name="personId">The unique identifier of the person.</param>
-/// <returns>Queryable of <see cref="CreatorProfileDto"/>.</returns>
+/// <returns>Queryable of <see cref="CreatorProfileReadDto"/>.</returns>
 /// <response code="200">Returns the matching creator profiles.</response>
 [HttpGet("by-person/{personId:guid}")]
 [EnableQuery]
 [ProducesResponseType(200)]
-public IQueryable<CreatorProfileDto> GetByPerson(Guid personId)
+public IQueryable<CreatorProfileReadDto> GetByPerson(Guid personId)
 {
 return ((ICreatorProfileApplicationService)this.Service).QueryByPerson(personId);
 }

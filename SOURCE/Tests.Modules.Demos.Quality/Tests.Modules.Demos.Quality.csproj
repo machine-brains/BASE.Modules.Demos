@@ -42,7 +42,7 @@
   <ItemGroup>
     <ProjectReference Include="..\App.Modules.Demos.Shared\App.Modules.Demos.Shared.csproj" />
     <ProjectReference Include="..\App.Modules.Demos.Domain\App.Modules.Demos.Domain.csproj" />
-    <ProjectReference Include="..\App.Modules.Demos.Infrastructure.Data.EF\App.Modules.Demos.Infrastructure.Data.EF.csproj" />
+    <ProjectReference Include="..\App.Modules.Demos.Infrastructure.Data.EF\App.Modules.Demos.Infrastructure.Persistence.EF.csproj" />
     <ProjectReference Include="..\App.Modules.Demos.Application\App.Modules.Demos.Application.csproj" />
     <ProjectReference Include="..\App.Modules.Demos.Interfaces.API.REST\App.Modules.Demos.Interfaces.API.REST.csproj" />
     <!-- Add UI.Web reference when that project is created -->

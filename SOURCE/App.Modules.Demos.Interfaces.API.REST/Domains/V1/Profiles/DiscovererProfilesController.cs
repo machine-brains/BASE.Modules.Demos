@@ -13,7 +13,7 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.V1.Profiles
 /// </summary>
 [Route(ApiRoutes.Rest.V1.DiscovererProfiles.Base)]
 public class DiscovererProfilesController
-: SimpleCrudStateControllerBase<DiscovererProfileDto>
+: SimpleCrudStateControllerBase<DiscovererProfileReadDto>
 {
 /// <summary>
 /// Initializes a new instance of the
@@ -31,12 +31,12 @@ IDiscovererProfileApplicationService service)
 /// Use OData <c>$filter</c> or the <c>by-person</c> route to narrow results.
 /// Supports OData query options: $filter, $orderby, $top, $skip, $count.
 /// </summary>
-/// <returns>Queryable of <see cref="DiscovererProfileDto"/>.</returns>
+/// <returns>Queryable of <see cref="DiscovererProfileReadDto"/>.</returns>
 /// <response code="200">Returns the matching discoverer profiles.</response>
 [HttpGet]
 [EnableQuery]
 [ProducesResponseType(200)]
-public override IQueryable<DiscovererProfileDto> GetAll()
+public override IQueryable<DiscovererProfileReadDto> GetAll()
 {
 return this.Service.Query();
 }
@@ -46,12 +46,12 @@ return this.Service.Query();
 /// Supports OData query options: \\\, \\\, \\\, \\\, \\\.
 /// </summary>
 /// <param name="personId">The unique identifier of the person.</param>
-/// <returns>Queryable of <see cref="DiscovererProfileDto"/>.</returns>
+/// <returns>Queryable of <see cref="DiscovererProfileReadDto"/>.</returns>
 /// <response code="200">Returns the matching discoverer profiles.</response>
 [HttpGet("by-person/{personId:guid}")]
 [EnableQuery]
 [ProducesResponseType(200)]
-public IQueryable<DiscovererProfileDto> GetByPerson(Guid personId)
+public IQueryable<DiscovererProfileReadDto> GetByPerson(Guid personId)
 {
 return ((IDiscovererProfileApplicationService)this.Service).QueryByPerson(personId);
 }

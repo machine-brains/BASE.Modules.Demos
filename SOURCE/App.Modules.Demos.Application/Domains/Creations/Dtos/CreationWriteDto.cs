@@ -1,15 +1,10 @@
-using App.Modules.Sys.Shared.Models.Persistence;
-
 namespace App.Modules.Demos.Application.Domains.Creators.Dtos
 {
     /// <summary>
-    /// Read DTO for <see cref="Shared.Domains.Contributions.Models.Creation"/>.
+    /// Write DTO for <c>Creation</c>. Used for create and update operations.
     /// </summary>
-    public class CreationDto : IHasGuidId
+    public class CreationWriteDto
     {
-        /// <inheritdoc/>
-        public Guid Id { get; set; }
-
         /// <summary>FK to the associated CreatorProfile.</summary>
         public Guid CreatorProfileId { get; set; }
 
@@ -22,13 +17,19 @@ namespace App.Modules.Demos.Application.Domains.Creators.Dtos
         /// <summary>Year of creation. Negative = BCE.</summary>
         public int Year { get; set; }
 
-        /// <summary>FK to the CreativeMediumReferenceData record identifying the creative medium.</summary>
+        /// <summary>Name of the creation location.</summary>
+        public string? LocationName { get; set; }
+
+        /// <summary>FK to the CreativeMediumReferenceData record.</summary>
         public Guid CreativeMediumId { get; set; }
 
-        /// <summary>Genre or sub-category.</summary>
+        /// <summary>Nationality or cultural origin.</summary>
+        public string? Nationality { get; set; }
+
+        /// <summary>Genre or sub-category within the medium.</summary>
         public string? Genre { get; set; }
 
-        /// <summary>Statement of significance.</summary>
+        /// <summary>Statement of cultural or artistic significance.</summary>
         public string? Significance { get; set; }
     }
 }

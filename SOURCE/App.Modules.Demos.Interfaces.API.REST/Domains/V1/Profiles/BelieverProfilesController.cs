@@ -13,7 +13,7 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.V1.Profiles
 /// </summary>
 [Route(ApiRoutes.Rest.V1.BelieverProfiles.Base)]
 public class BelieverProfilesController
-: SimpleCrudStateControllerBase<BelieverProfileDto>
+: SimpleCrudStateControllerBase<BelieverProfileReadDto>
 {
 /// <summary>
 /// Initializes a new instance of the
@@ -31,12 +31,12 @@ IBelieverProfileApplicationService service)
 /// Supports OData query options: \\\, \\\, \\\, \\\, \\\.
 /// </summary>
 /// <param name="personId">The unique identifier of the person.</param>
-/// <returns>Queryable of <see cref="BelieverProfileDto"/>.</returns>
+/// <returns>Queryable of <see cref="BelieverProfileReadDto"/>.</returns>
 /// <response code="200">Returns the matching believer profiles.</response>
 [HttpGet("by-person/{personId:guid}")]
 [EnableQuery]
 [ProducesResponseType(200)]
-public IQueryable<BelieverProfileDto> GetByPerson(Guid personId)
+public IQueryable<BelieverProfileReadDto> GetByPerson(Guid personId)
 {
 return ((IBelieverProfileApplicationService)this.Service).QueryByPerson(personId);
 }

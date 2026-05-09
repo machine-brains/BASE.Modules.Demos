@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\App.Modules.Demos.Infrastructure.Data.EF\App.Modules.Demos.Infrastructure.Data.EF.csproj" />
+    <ProjectReference Include="..\App.Modules.Demos.Infrastructure.Data.EF\App.Modules.Demos.Infrastructure.Persistence.EF.csproj" />
     <ProjectReference Include="..\App.Modules.Demos.Interfaces.API.REST\App.Modules.Demos.Interfaces.API.REST.csproj" />
   </ItemGroup>
 

@@ -4,8 +4,8 @@ using App.Modules.Sys.Shared.ObjectMaps.Models.Implementations.Base;
 
 namespace App.Modules.Demos.Application.Domains.Relationships.Maps
 {
-    /// <summary>Maps InfluenceDto to Influence (for create/update operations). Discovered via IObjectMap scan.</summary>
-    public class InfluenceDtoToInfluenceMap : ObjectMapBase<InfluenceDto, Influence>
+    /// <summary>Maps InfluenceReadDto to Influence (for create/update operations). Discovered via IObjectMap scan.</summary>
+    public class InfluenceDtoToInfluenceMap : ObjectMapBase<InfluenceReadDto, Influence>
     {
         /// <inheritdoc/>
         protected override void ConfigureMapping()

@@ -12,7 +12,7 @@ namespace App.Modules.Demos.Application.Domains.Contributions.Services.Implement
     /// CRUST application service for <see cref="Contribution"/>.
     /// </summary>
     public class ContributionApplicationService
-        : SimpleCrustStateAppServiceBase<Contribution, ContributionDto>,
+        : SimpleCrustStateAppServiceBase<Contribution, ContributionReadDto>,
           IContributionApplicationService
     {
         /// <summary>
@@ -28,9 +28,9 @@ namespace App.Modules.Demos.Application.Domains.Contributions.Services.Implement
         }
 
         /// <inheritdoc/>
-        public IQueryable<ContributionDto> QueryByProfile(Guid believerProfileId)
+        public IQueryable<ContributionReadDto> QueryByProfile(Guid believerProfileId)
         {
-            return this.ObjectMappingService.ProjectTo<Contribution, ContributionDto>(
+            return this.ObjectMappingService.ProjectTo<Contribution, ContributionReadDto>(
                 this.Repository.Query().Where(e => e.BelieverProfileId == believerProfileId));
         }
     }

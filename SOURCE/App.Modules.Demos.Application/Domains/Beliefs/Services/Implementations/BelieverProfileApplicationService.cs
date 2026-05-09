@@ -12,7 +12,7 @@ namespace App.Modules.Demos.Application.Domains.Believers.Services.Implementatio
     /// CRUST application service for <see cref="BelieverProfile"/>.
     /// </summary>
     public class BelieverProfileApplicationService
-        : SimpleCrustStateAppServiceBase<BelieverProfile, BelieverProfileDto>,
+        : SimpleCrustStateAppServiceBase<BelieverProfile, BelieverProfileReadDto>,
           IBelieverProfileApplicationService
     {
         /// <summary>
@@ -28,9 +28,9 @@ namespace App.Modules.Demos.Application.Domains.Believers.Services.Implementatio
         }
 
         /// <inheritdoc/>
-        public IQueryable<BelieverProfileDto> QueryByPerson(Guid personId)
+        public IQueryable<BelieverProfileReadDto> QueryByPerson(Guid personId)
         {
-            return this.ObjectMappingService.ProjectTo<BelieverProfile, BelieverProfileDto>(
+            return this.ObjectMappingService.ProjectTo<BelieverProfile, BelieverProfileReadDto>(
                 this.Repository.Query().Where(e => e.PersonId == personId));
         }
     }

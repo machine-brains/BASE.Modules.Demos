@@ -1,15 +1,10 @@
-using App.Modules.Sys.Shared.Models.Persistence;
-
 namespace App.Modules.Demos.Application.Domains.Relationships.Dtos
 {
     /// <summary>
-    /// Read DTO for <see cref="Shared.Domains.Relationships.Models.Influence"/>.
+    /// Write DTO for <c>Influence</c>. Used for create and update operations.
     /// </summary>
-    public class InfluenceDto : IHasGuidId
+    public class InfluenceWriteDto
     {
-        /// <inheritdoc/>
-        public Guid Id { get; set; }
-
         /// <summary>FK of the influencing profile.</summary>
         public Guid InfluencerProfileId { get; set; }
 

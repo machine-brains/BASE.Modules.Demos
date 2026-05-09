@@ -4,8 +4,8 @@ using App.Modules.Sys.Shared.ObjectMaps.Models.Implementations.Base;
 
 namespace App.Modules.Demos.Application.Domains.Contributions.Maps
 {
-    /// <summary>Maps ContributionDto to Contribution (for create/update operations). Discovered via IObjectMap scan.</summary>
-    public class ContributionDtoToContributionMap : ObjectMapBase<ContributionDto, Contribution>
+    /// <summary>Maps ContributionReadDto to Contribution (for create/update operations). Discovered via IObjectMap scan.</summary>
+    public class ContributionDtoToContributionMap : ObjectMapBase<ContributionReadDto, Contribution>
     {
         /// <inheritdoc/>
         protected override void ConfigureMapping()

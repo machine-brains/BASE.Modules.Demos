@@ -4,8 +4,8 @@ using App.Modules.Sys.Shared.ObjectMaps.Models.Implementations.Base;
 
 namespace App.Modules.Demos.Application.Domains.Discoverers.Maps
 {
-    /// <summary>Maps DiscoveryDto to Discovery (for create/update operations). Discovered via IObjectMap scan.</summary>
-    public class DiscoveryDtoToDiscoveryMap : ObjectMapBase<DiscoveryDto, Discovery>
+    /// <summary>Maps DiscoveryReadDto to Discovery (for create/update operations). Discovered via IObjectMap scan.</summary>
+    public class DiscoveryDtoToDiscoveryMap : ObjectMapBase<DiscoveryReadDto, Discovery>
     {
         /// <inheritdoc/>
         protected override void ConfigureMapping()
