@@ -1,4 +1,4 @@
-using App.Modules.Demos.Shared.Domains.Relationships.Models;
+using App.Modules.Demos.Domain.Domains.Influences.Structures.Entities;
 using App.Modules.Sys.Shared.Repositories;
 
 namespace App.Modules.Demos.Domain.Domains.Relationships.Repositories

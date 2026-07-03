@@ -1,4 +1,4 @@
-using App.Modules.Demos.Application.Domains.Believers.Dtos;
+using App.Modules.Demos.Application.Domains.Beliefs.Structures.InTransit.Dtos;
 using App.Modules.Demos.Application.Domains.Believers.Services;
 using App.Modules.Demos.Interfaces.API.REST.Domains.Constants;
 using App.Modules.Sys.Interfaces.Controllers.Base;

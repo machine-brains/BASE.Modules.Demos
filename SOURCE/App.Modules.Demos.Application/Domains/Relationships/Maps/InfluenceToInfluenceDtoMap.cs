@@ -1,5 +1,5 @@
-using App.Modules.Demos.Application.Domains.Relationships.Dtos;
-using App.Modules.Demos.Shared.Domains.Relationships.Models;
+using App.Modules.Demos.Application.Domains.Relationships.Structures.InTransit.Dtos;
+using App.Modules.Demos.Domain.Domains.Influences.Structures.Entities;
 using App.Modules.Sys.Shared.ObjectMaps.Models.Implementations.Base;
 
 namespace App.Modules.Demos.Application.Domains.Relationships.Maps

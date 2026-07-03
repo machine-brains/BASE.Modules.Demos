@@ -1,7 +1,7 @@
-using App.Modules.Demos.Application.Domains.Discoverers.Dtos;
 using App.Modules.Demos.Application.Domains.Discoverers.Services;
+using App.Modules.Demos.Application.Domains.Discoveries.Structures.InTransit.Dtos;
 using App.Modules.Demos.Domain.Domains.Discoverers.Repositories;
-using App.Modules.Demos.Shared.Domains.Contributions.Models;
+using App.Modules.Demos.Domain.Domains.Discoveries.Structures.AtRest.Entities;
 using App.Modules.Sys.Application.Base;
 using App.Modules.Sys.Infrastructure.Services;
 using App.Modules.Sys.Shared.Domains.Diagnostics;

@@ -1,4 +1,4 @@
-using App.Modules.Demos.Application.Domains.Creators.Dtos;
+using App.Modules.Demos.Application.Domains.Creations.Structures.InTransit.Dtos;
 using App.Modules.Demos.Application.Domains.Creators.Services;
 using App.Modules.Demos.Interfaces.API.REST.Domains.Constants;
 using App.Modules.Sys.Interfaces.Controllers.Base;

@@ -1,4 +1,4 @@
-using App.Modules.Demos.Application.Domains.Contributions.Dtos;
+using App.Modules.Demos.Application.Domains.Contributions.Structures.InTransit.Dtos;
 using App.Modules.Sys.Shared.Application;
 
 namespace App.Modules.Demos.Application.Domains.Contributions.Services

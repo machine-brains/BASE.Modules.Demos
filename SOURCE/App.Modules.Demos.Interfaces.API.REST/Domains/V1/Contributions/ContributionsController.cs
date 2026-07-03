@@ -1,5 +1,5 @@
-using App.Modules.Demos.Application.Domains.Contributions.Dtos;
 using App.Modules.Demos.Application.Domains.Contributions.Services;
+using App.Modules.Demos.Application.Domains.Contributions.Structures.InTransit.Dtos;
 using App.Modules.Demos.Interfaces.API.REST.Domains.Constants;
 using App.Modules.Sys.Interfaces.Controllers.Base;
 using Microsoft.AspNetCore.Mvc;

@@ -1,7 +1,7 @@
-using App.Modules.Demos.Application.Domains.Relationships.Dtos;
 using App.Modules.Demos.Application.Domains.Relationships.Services;
+using App.Modules.Demos.Application.Domains.Relationships.Structures.InTransit.Dtos;
+using App.Modules.Demos.Domain.Domains.Influences.Structures.Entities;
 using App.Modules.Demos.Domain.Domains.Relationships.Repositories;
-using App.Modules.Demos.Shared.Domains.Relationships.Models;
 using App.Modules.Sys.Application.Base;
 using App.Modules.Sys.Infrastructure.Services;
 using App.Modules.Sys.Shared.Domains.Diagnostics;

@@ -27,4 +27,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Domains\Beliefs\Models\Entitites\" />
+  </ItemGroup>
+
 </Project>

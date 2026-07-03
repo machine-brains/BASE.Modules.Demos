@@ -1,5 +1,5 @@
-using App.Modules.Demos.Application.Domains.Discoverers.Dtos;
-using App.Modules.Demos.Shared.Domains.Profiles.Models;
+using App.Modules.Demos.Application.Domains.Discoveries.Structures.InTransit.Dtos;
+using App.Modules.Demos.Domain.Domains.Discoverers.Structures;
 using App.Modules.Sys.Shared.ObjectMaps.Models.Implementations.Base;
 
 namespace App.Modules.Demos.Application.Domains.Discoverers.Maps

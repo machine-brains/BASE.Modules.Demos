@@ -1,4 +1,4 @@
-using App.Modules.Demos.Shared.Domains.Contributions.Models;
+using App.Modules.Demos.Domain.Domains.Discoveries.Structures.AtRest.Entities;
 using App.Modules.Sys.Shared.Repositories;
 
 namespace App.Modules.Demos.Domain.Domains.Discoverers.Repositories
