@@ -40,8 +40,7 @@ namespace App.Modules.Demos.Domain.Settings.Declarations
                         {
                             IsRequired = true,
                         },
-                        IsUserOverridable = false,
-                        IsGroupOverridable = false,
+                        IsLockedAt = SettingLockFloor.Workspace,
                     },
 
                     // ── Performance / Profiles ──────────────────────────────────
@@ -65,8 +64,7 @@ namespace App.Modules.Demos.Domain.Settings.Declarations
                             MinValue = 5,
                             MaxValue = 200,
                         },
-                        IsUserOverridable = false,
-                        IsGroupOverridable = false,
+                        IsLockedAt = SettingLockFloor.Workspace,
                     },
 
                     // ── Performance / Influence Graph ───────────────────────────
@@ -90,8 +88,7 @@ namespace App.Modules.Demos.Domain.Settings.Declarations
                             MinValue = 1,
                             MaxValue = 10,
                         },
-                        IsUserOverridable = false,
-                        IsGroupOverridable = false,
+                        IsLockedAt = SettingLockFloor.Workspace,
                     },
             ];
         }
