@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 {
     [DbContext(typeof(ModuleDbContext))]
-    [Migration("20260709110127_FixMediaContentSharedTableOwnership")]
-    partial class FixMediaContentSharedTableOwnership
+    [Migration("20260817025257_RemoveImageDescriptionFromEntities")]
+    partial class RemoveImageDescriptionFromEntities
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("demos")
-                .HasAnnotation("ProductVersion", "10.0.8")
+                .HasAnnotation("ProductVersion", "10.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -699,12 +699,12 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(25)
+                        .HasColumnOrder(27)
                         .HasComment("Gets or sets the principal id who created the record.");
 
                     b.Property<DateTimeOffset>("CreatedOnDateTimeUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(24)
+                        .HasColumnOrder(26)
                         .HasComment("Gets or sets the UTC DateTime created on.");
 
                     b.Property<string>("Description")
@@ -718,14 +718,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasDefaultValue(0)
-                        .HasColumnOrder(16)
+                        .HasColumnOrder(18)
                         .HasComment("A Hint to the Interface (UI/API) to organise item order on initial display. Non-unique. May be overridden by MRU settings.");
 
                     b.Property<string>("DisplayStyleHint")
                         .HasMaxLength(64)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(64)")
-                        .HasColumnOrder(15)
+                        .HasColumnOrder(17)
                         .HasComment("A Hint on how to display the item. Consider using the field for a Classname that will mean something to the UX interface.");
 
                     b.Property<bool>("Enabled")
@@ -737,18 +737,17 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<int?>("EnumValue")
                         .HasColumnType("int")
-                        .HasColumnOrder(21)
+                        .HasColumnOrder(23)
                         .HasComment("The integer value from the enum. For system-seeded records, this matches the enum value exactly.");
 
                     b.Property<DateTimeOffset?>("FromUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(19)
+                        .HasColumnOrder(21)
                         .HasComment("Gets or sets the start datetime.");
 
-                    b.Property<Guid?>("ImageFK")
+                    b.Property<Guid?>("ImageId")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(14)
-                        .HasComment("FK to the MediaContent record representing the image. Null when no image is assigned.");
+                        .HasComment("Opaque identifier for the related Image aggregate.");
 
                     b.Property<string>("Key")
                         .IsRequired()
@@ -763,34 +762,57 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(27)
+                        .HasColumnOrder(29)
                         .HasComment("Gets or sets the principal id who last modified the record.");
 
                     b.Property<DateTimeOffset>("LastModifiedOnDateTimeUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(26)
+                        .HasColumnOrder(28)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
+
+                    b.Property<Guid?>("MediaContentFK")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnOrder(16)
+                        .HasComment("FK to MediaContent when MediaType is Media. Null otherwise.");
+
+                    b.Property<Guid?>("MediaFK")
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("Foreign key to the Media record.");
+
+                    b.Property<string>("MediaFontKey")
+                        .HasMaxLength(200)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(200)")
+                        .HasColumnOrder(15)
+                        .HasComment("Font/icon key media source. Should be set only when MediaType is Font.");
+
+                    b.Property<int>("MediaType")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0)
+                        .HasColumnOrder(14)
+                        .HasComment("Discriminator that declares which media source field is active (None, Font, Media).");
 
                     b.Property<int>("RecordState")
                         .HasColumnType("int")
-                        .HasColumnOrder(23)
+                        .HasColumnOrder(25)
                         .HasComment("The state of the Record in terms of persistence.");
 
                     b.Property<int>("ReferenceDataType")
                         .HasColumnType("int")
-                        .HasColumnOrder(17)
+                        .HasColumnOrder(19)
                         .HasComment("Gets or sets the reference data classification.");
 
                     b.Property<string>("StateChangedByPrincipalId")
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(29)
+                        .HasColumnOrder(31)
                         .HasComment("Gets or sets the principal id who changed the state (nullable).");
 
                     b.Property<DateTimeOffset?>("StateChangedOnDateTimeUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(28)
+                        .HasColumnOrder(30)
                         .HasComment("Gets or sets the date when record state changed (nullable for soft delete).");
 
                     b.Property<DateTime>("SysEndTime")
@@ -810,7 +832,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion")
-                        .HasColumnOrder(22)
+                        .HasColumnOrder(24)
                         .HasComment("Gets or sets the datastore concurrency check timestamp.");
 
                     b.Property<string>("Title")
@@ -823,7 +845,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<DateTimeOffset?>("ToUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(20)
+                        .HasColumnOrder(22)
                         .HasComment("Gets or sets the end datetime.");
 
                     b.Property<string>("Value")
@@ -831,7 +853,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(256)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(18)
+                        .HasColumnOrder(20)
                         .HasComment("Stores the Value value for the Creative Medium Reference Data record.");
 
                     b.HasKey("Id");
@@ -851,12 +873,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .IsUnique()
                         .HasDatabaseName("IX_creative_medium_Id");
 
-                    b.HasIndex("ImageFK")
-                        .HasDatabaseName("IX_CreativeMediumReferenceData_ImageFK");
+                    b.HasIndex("ImageId");
 
                     b.HasIndex("Key")
                         .IsUnique()
                         .HasDatabaseName("IX_CreativeMediumReferenceData_Key");
+
+                    b.HasIndex("MediaContentFK")
+                        .HasDatabaseName("IX_CreativeMediumReferenceData_MediaContentFK");
 
                     b.HasIndex("RecordState")
                         .HasDatabaseName("IX_creative_medium_RecordState");
@@ -896,6 +920,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Undefined",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Undefined",
@@ -913,6 +938,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "NotApplicable",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Not Applicable",
@@ -930,6 +956,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Unspecified",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Unspecified",
@@ -947,6 +974,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Unknown",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Unknown",
@@ -964,6 +992,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Literature",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Literature",
@@ -981,6 +1010,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "VisualArt",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Visual Art",
@@ -998,6 +1028,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Music",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Music",
@@ -1015,6 +1046,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Architecture",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Architecture",
@@ -1032,6 +1064,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Science",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Science",
@@ -1049,6 +1082,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Technology",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Technology",
@@ -1066,6 +1100,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Philosophy",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Philosophy",
@@ -2494,12 +2529,12 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(25)
+                        .HasColumnOrder(27)
                         .HasComment("Gets or sets the principal id who created the record.");
 
                     b.Property<DateTimeOffset>("CreatedOnDateTimeUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(24)
+                        .HasColumnOrder(26)
                         .HasComment("Gets or sets the UTC DateTime created on.");
 
                     b.Property<string>("Description")
@@ -2513,14 +2548,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasDefaultValue(0)
-                        .HasColumnOrder(16)
+                        .HasColumnOrder(18)
                         .HasComment("A Hint to the Interface (UI/API) to organise item order on initial display. Non-unique. May be overridden by MRU settings.");
 
                     b.Property<string>("DisplayStyleHint")
                         .HasMaxLength(64)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(64)")
-                        .HasColumnOrder(15)
+                        .HasColumnOrder(17)
                         .HasComment("A Hint on how to display the item. Consider using the field for a Classname that will mean something to the UX interface.");
 
                     b.Property<bool>("Enabled")
@@ -2532,18 +2567,17 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<int?>("EnumValue")
                         .HasColumnType("int")
-                        .HasColumnOrder(21)
+                        .HasColumnOrder(23)
                         .HasComment("The integer value from the enum. For system-seeded records, this matches the enum value exactly.");
 
                     b.Property<DateTimeOffset?>("FromUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(19)
+                        .HasColumnOrder(21)
                         .HasComment("Gets or sets the start datetime.");
 
-                    b.Property<Guid?>("ImageFK")
+                    b.Property<Guid?>("ImageId")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(14)
-                        .HasComment("FK to the MediaContent record representing the image. Null when no image is assigned.");
+                        .HasComment("Opaque identifier for the related Image aggregate.");
 
                     b.Property<string>("Key")
                         .IsRequired()
@@ -2558,34 +2592,57 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(27)
+                        .HasColumnOrder(29)
                         .HasComment("Gets or sets the principal id who last modified the record.");
 
                     b.Property<DateTimeOffset>("LastModifiedOnDateTimeUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(26)
+                        .HasColumnOrder(28)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
+
+                    b.Property<Guid?>("MediaContentFK")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnOrder(16)
+                        .HasComment("FK to MediaContent when MediaType is Media. Null otherwise.");
+
+                    b.Property<Guid?>("MediaFK")
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("Foreign key to the Media record.");
+
+                    b.Property<string>("MediaFontKey")
+                        .HasMaxLength(200)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(200)")
+                        .HasColumnOrder(15)
+                        .HasComment("Font/icon key media source. Should be set only when MediaType is Font.");
+
+                    b.Property<int>("MediaType")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0)
+                        .HasColumnOrder(14)
+                        .HasComment("Discriminator that declares which media source field is active (None, Font, Media).");
 
                     b.Property<int>("RecordState")
                         .HasColumnType("int")
-                        .HasColumnOrder(23)
+                        .HasColumnOrder(25)
                         .HasComment("The state of the Record in terms of persistence.");
 
                     b.Property<int>("ReferenceDataType")
                         .HasColumnType("int")
-                        .HasColumnOrder(17)
+                        .HasColumnOrder(19)
                         .HasComment("Gets or sets the reference data classification.");
 
                     b.Property<string>("StateChangedByPrincipalId")
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(29)
+                        .HasColumnOrder(31)
                         .HasComment("Gets or sets the principal id who changed the state (nullable).");
 
                     b.Property<DateTimeOffset?>("StateChangedOnDateTimeUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(28)
+                        .HasColumnOrder(30)
                         .HasComment("Gets or sets the date when record state changed (nullable for soft delete).");
 
                     b.Property<DateTime>("SysEndTime")
@@ -2605,7 +2662,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion")
-                        .HasColumnOrder(22)
+                        .HasColumnOrder(24)
                         .HasComment("Gets or sets the datastore concurrency check timestamp.");
 
                     b.Property<string>("Title")
@@ -2618,7 +2675,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<DateTimeOffset?>("ToUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(20)
+                        .HasColumnOrder(22)
                         .HasComment("Gets or sets the end datetime.");
 
                     b.Property<string>("Value")
@@ -2626,7 +2683,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(256)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(18)
+                        .HasColumnOrder(20)
                         .HasComment("Stores the Value value for the Influence Strength Reference Data record.");
 
                     b.HasKey("Id");
@@ -2646,12 +2703,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .IsUnique()
                         .HasDatabaseName("IX_influence_strength_Id");
 
-                    b.HasIndex("ImageFK")
-                        .HasDatabaseName("IX_InfluenceStrengthReferenceData_ImageFK");
+                    b.HasIndex("ImageId");
 
                     b.HasIndex("Key")
                         .IsUnique()
                         .HasDatabaseName("IX_InfluenceStrengthReferenceData_Key");
+
+                    b.HasIndex("MediaContentFK")
+                        .HasDatabaseName("IX_InfluenceStrengthReferenceData_MediaContentFK");
 
                     b.HasIndex("RecordState")
                         .HasDatabaseName("IX_influence_strength_RecordState");
@@ -2691,6 +2750,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Undefined",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Undefined",
@@ -2708,6 +2768,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "NotApplicable",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Not Applicable",
@@ -2725,6 +2786,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Unspecified",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Unspecified",
@@ -2742,6 +2804,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Unknown",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Unknown",
@@ -2759,6 +2822,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Minor",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Minor",
@@ -2776,6 +2840,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Moderate",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Moderate",
@@ -2793,6 +2858,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Major",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Major",
@@ -2810,6 +2876,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Transformative",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Transformative",
@@ -2829,12 +2896,12 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(25)
+                        .HasColumnOrder(27)
                         .HasComment("Gets or sets the principal id who created the record.");
 
                     b.Property<DateTimeOffset>("CreatedOnDateTimeUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(24)
+                        .HasColumnOrder(26)
                         .HasComment("Gets or sets the UTC DateTime created on.");
 
                     b.Property<string>("Description")
@@ -2848,14 +2915,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasDefaultValue(0)
-                        .HasColumnOrder(16)
+                        .HasColumnOrder(18)
                         .HasComment("A Hint to the Interface (UI/API) to organise item order on initial display. Non-unique. May be overridden by MRU settings.");
 
                     b.Property<string>("DisplayStyleHint")
                         .HasMaxLength(64)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(64)")
-                        .HasColumnOrder(15)
+                        .HasColumnOrder(17)
                         .HasComment("A Hint on how to display the item. Consider using the field for a Classname that will mean something to the UX interface.");
 
                     b.Property<bool>("Enabled")
@@ -2867,18 +2934,17 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<int?>("EnumValue")
                         .HasColumnType("int")
-                        .HasColumnOrder(21)
+                        .HasColumnOrder(23)
                         .HasComment("The integer value from the enum. For system-seeded records, this matches the enum value exactly.");
 
                     b.Property<DateTimeOffset?>("FromUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(19)
+                        .HasColumnOrder(21)
                         .HasComment("Gets or sets the start datetime.");
 
-                    b.Property<Guid?>("ImageFK")
+                    b.Property<Guid?>("ImageId")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(14)
-                        .HasComment("FK to the MediaContent record representing the image. Null when no image is assigned.");
+                        .HasComment("Opaque identifier for the related Image aggregate.");
 
                     b.Property<string>("Key")
                         .IsRequired()
@@ -2893,34 +2959,57 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(27)
+                        .HasColumnOrder(29)
                         .HasComment("Gets or sets the principal id who last modified the record.");
 
                     b.Property<DateTimeOffset>("LastModifiedOnDateTimeUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(26)
+                        .HasColumnOrder(28)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
+
+                    b.Property<Guid?>("MediaContentFK")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnOrder(16)
+                        .HasComment("FK to MediaContent when MediaType is Media. Null otherwise.");
+
+                    b.Property<Guid?>("MediaFK")
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("Foreign key to the Media record.");
+
+                    b.Property<string>("MediaFontKey")
+                        .HasMaxLength(200)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(200)")
+                        .HasColumnOrder(15)
+                        .HasComment("Font/icon key media source. Should be set only when MediaType is Font.");
+
+                    b.Property<int>("MediaType")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0)
+                        .HasColumnOrder(14)
+                        .HasComment("Discriminator that declares which media source field is active (None, Font, Media).");
 
                     b.Property<int>("RecordState")
                         .HasColumnType("int")
-                        .HasColumnOrder(23)
+                        .HasColumnOrder(25)
                         .HasComment("The state of the Record in terms of persistence.");
 
                     b.Property<int>("ReferenceDataType")
                         .HasColumnType("int")
-                        .HasColumnOrder(17)
+                        .HasColumnOrder(19)
                         .HasComment("Gets or sets the reference data classification.");
 
                     b.Property<string>("StateChangedByPrincipalId")
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(29)
+                        .HasColumnOrder(31)
                         .HasComment("Gets or sets the principal id who changed the state (nullable).");
 
                     b.Property<DateTimeOffset?>("StateChangedOnDateTimeUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(28)
+                        .HasColumnOrder(30)
                         .HasComment("Gets or sets the date when record state changed (nullable for soft delete).");
 
                     b.Property<DateTime>("SysEndTime")
@@ -2940,7 +3029,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion")
-                        .HasColumnOrder(22)
+                        .HasColumnOrder(24)
                         .HasComment("Gets or sets the datastore concurrency check timestamp.");
 
                     b.Property<string>("Title")
@@ -2953,7 +3042,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<DateTimeOffset?>("ToUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(20)
+                        .HasColumnOrder(22)
                         .HasComment("Gets or sets the end datetime.");
 
                     b.Property<string>("Value")
@@ -2961,7 +3050,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(256)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(18)
+                        .HasColumnOrder(20)
                         .HasComment("Stores the Value value for the Influence Type Reference Data record.");
 
                     b.HasKey("Id");
@@ -2981,12 +3070,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .IsUnique()
                         .HasDatabaseName("IX_influence_type_Id");
 
-                    b.HasIndex("ImageFK")
-                        .HasDatabaseName("IX_InfluenceTypeReferenceData_ImageFK");
+                    b.HasIndex("ImageId");
 
                     b.HasIndex("Key")
                         .IsUnique()
                         .HasDatabaseName("IX_InfluenceTypeReferenceData_Key");
+
+                    b.HasIndex("MediaContentFK")
+                        .HasDatabaseName("IX_InfluenceTypeReferenceData_MediaContentFK");
 
                     b.HasIndex("RecordState")
                         .HasDatabaseName("IX_influence_type_RecordState");
@@ -3026,6 +3117,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Undefined",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Undefined",
@@ -3043,6 +3135,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "NotApplicable",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Not Applicable",
@@ -3060,6 +3153,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Unspecified",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Unspecified",
@@ -3077,6 +3171,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Unknown",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Unknown",
@@ -3094,6 +3189,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Direct",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Direct",
@@ -3111,6 +3207,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Indirect",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Indirect",
@@ -3128,6 +3225,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Intellectual",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Intellectual",
@@ -3145,6 +3243,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Spiritual",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Spiritual",
@@ -3162,6 +3261,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Artistic",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Artistic",
@@ -3179,6 +3279,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Scientific",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Scientific",
@@ -3196,6 +3297,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Philosophical",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Philosophical",
@@ -3215,12 +3317,12 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(25)
+                        .HasColumnOrder(27)
                         .HasComment("Gets or sets the principal id who created the record.");
 
                     b.Property<DateTimeOffset>("CreatedOnDateTimeUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(24)
+                        .HasColumnOrder(26)
                         .HasComment("Gets or sets the UTC DateTime created on.");
 
                     b.Property<string>("Description")
@@ -3234,14 +3336,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasDefaultValue(0)
-                        .HasColumnOrder(16)
+                        .HasColumnOrder(18)
                         .HasComment("A Hint to the Interface (UI/API) to organise item order on initial display. Non-unique. May be overridden by MRU settings.");
 
                     b.Property<string>("DisplayStyleHint")
                         .HasMaxLength(64)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(64)")
-                        .HasColumnOrder(15)
+                        .HasColumnOrder(17)
                         .HasComment("A Hint on how to display the item. Consider using the field for a Classname that will mean something to the UX interface.");
 
                     b.Property<bool>("Enabled")
@@ -3253,18 +3355,17 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<int?>("EnumValue")
                         .HasColumnType("int")
-                        .HasColumnOrder(21)
+                        .HasColumnOrder(23)
                         .HasComment("The integer value from the enum. For system-seeded records, this matches the enum value exactly.");
 
                     b.Property<DateTimeOffset?>("FromUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(19)
+                        .HasColumnOrder(21)
                         .HasComment("Gets or sets the start datetime.");
 
-                    b.Property<Guid?>("ImageFK")
+                    b.Property<Guid?>("ImageId")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(14)
-                        .HasComment("FK to the MediaContent record representing the image. Null when no image is assigned.");
+                        .HasComment("Opaque identifier for the related Image aggregate.");
 
                     b.Property<string>("Key")
                         .IsRequired()
@@ -3279,34 +3380,57 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(27)
+                        .HasColumnOrder(29)
                         .HasComment("Gets or sets the principal id who last modified the record.");
 
                     b.Property<DateTimeOffset>("LastModifiedOnDateTimeUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(26)
+                        .HasColumnOrder(28)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
+
+                    b.Property<Guid?>("MediaContentFK")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnOrder(16)
+                        .HasComment("FK to MediaContent when MediaType is Media. Null otherwise.");
+
+                    b.Property<Guid?>("MediaFK")
+                        .HasColumnType("uniqueidentifier")
+                        .HasComment("Foreign key to the Media record.");
+
+                    b.Property<string>("MediaFontKey")
+                        .HasMaxLength(200)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(200)")
+                        .HasColumnOrder(15)
+                        .HasComment("Font/icon key media source. Should be set only when MediaType is Font.");
+
+                    b.Property<int>("MediaType")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0)
+                        .HasColumnOrder(14)
+                        .HasComment("Discriminator that declares which media source field is active (None, Font, Media).");
 
                     b.Property<int>("RecordState")
                         .HasColumnType("int")
-                        .HasColumnOrder(23)
+                        .HasColumnOrder(25)
                         .HasComment("The state of the Record in terms of persistence.");
 
                     b.Property<int>("ReferenceDataType")
                         .HasColumnType("int")
-                        .HasColumnOrder(17)
+                        .HasColumnOrder(19)
                         .HasComment("Gets or sets the reference data classification.");
 
                     b.Property<string>("StateChangedByPrincipalId")
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(29)
+                        .HasColumnOrder(31)
                         .HasComment("Gets or sets the principal id who changed the state (nullable).");
 
                     b.Property<DateTimeOffset?>("StateChangedOnDateTimeUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(28)
+                        .HasColumnOrder(30)
                         .HasComment("Gets or sets the date when record state changed (nullable for soft delete).");
 
                     b.Property<DateTime>("SysEndTime")
@@ -3326,7 +3450,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion")
-                        .HasColumnOrder(22)
+                        .HasColumnOrder(24)
                         .HasComment("Gets or sets the datastore concurrency check timestamp.");
 
                     b.Property<string>("Title")
@@ -3339,7 +3463,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<DateTimeOffset?>("ToUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(20)
+                        .HasColumnOrder(22)
                         .HasComment("Gets or sets the end datetime.");
 
                     b.Property<string>("Value")
@@ -3347,7 +3471,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(256)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(18)
+                        .HasColumnOrder(20)
                         .HasComment("Stores the Value value for the Profile Type Reference Data record.");
 
                     b.HasKey("Id");
@@ -3367,12 +3491,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .IsUnique()
                         .HasDatabaseName("IX_profile_type_Id");
 
-                    b.HasIndex("ImageFK")
-                        .HasDatabaseName("IX_ProfileTypeReferenceData_ImageFK");
+                    b.HasIndex("ImageId");
 
                     b.HasIndex("Key")
                         .IsUnique()
                         .HasDatabaseName("IX_ProfileTypeReferenceData_Key");
+
+                    b.HasIndex("MediaContentFK")
+                        .HasDatabaseName("IX_ProfileTypeReferenceData_MediaContentFK");
 
                     b.HasIndex("RecordState")
                         .HasDatabaseName("IX_profile_type_RecordState");
@@ -3412,6 +3538,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Undefined",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Undefined",
@@ -3429,6 +3556,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "NotApplicable",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Not Applicable",
@@ -3446,6 +3574,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Unspecified",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Unspecified",
@@ -3463,6 +3592,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Unknown",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Unknown",
@@ -3480,6 +3610,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Discoverer",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Discoverer",
@@ -3497,6 +3628,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Creator",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Creator",
@@ -3514,6 +3646,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Key = "Believer",
                             LastModifiedByPrincipalId = "SYSTEM",
                             LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
                             Title = "Believer",
@@ -3813,6 +3946,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnType("datetimeoffset")
                         .HasComment("Gets or sets the UTC DateTime created on. Changed To DateTimeOffset.");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("The textual Description. Note that it records put Descriptions in DBs makes it harder to be international later. Consider using the field for a token that a post processor could recognise and replace with a localised text resource.");
+
                     b.Property<int?>("HeightPx")
                         .HasColumnType("int")
                         .HasComment("Height of the image in pixels. See for full context.");
@@ -3820,7 +3958,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                     b.Property<string>("Key")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasComment("Logical content key used to group culture variants together. Example: \"terms_md\", \"logo_png\".");
+                        .HasComment("Get/Set the list item's unique key. Note: Consider the difference with .");
 
                     b.Property<string>("LastModifiedByPrincipalId")
                         .IsRequired()
@@ -3855,6 +3993,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnType("rowversion")
                         .HasComment("Gets or sets the datastore concurrency check timestamp. Note that this is filled in when persisted in the db -- so it's usable to determine whether Record is New or not.");
 
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("The (display) title");
+
                     b.Property<int?>("WidthPx")
                         .HasColumnType("int")
                         .HasComment("Width of the image in pixels. Only populated for image media types (e.g. image/png, image/jpeg, image/webp). Null for non-image content. Used for aspect-ratio preservation during resize operations and to emit width / height HTML attributes that prevent cumulative layout shift (CLS).");
@@ -3873,40 +4016,64 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                 {
                     b.HasOne("App.Modules.Sys.Shared.Models.Implementations.MediaContent", "Image")
                         .WithMany()
-                        .HasForeignKey("ImageFK")
+                        .HasForeignKey("ImageId");
+
+                    b.HasOne("App.Modules.Sys.Shared.Models.Implementations.MediaContent", "MediaContent")
+                        .WithMany()
+                        .HasForeignKey("MediaContentFK")
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Image");
+
+                    b.Navigation("MediaContent");
                 });
 
             modelBuilder.Entity("App.Modules.Demos.Domain.Domains.Influences.Structures.Entities.InfluenceStrengthReferenceData", b =>
                 {
                     b.HasOne("App.Modules.Sys.Shared.Models.Implementations.MediaContent", "Image")
                         .WithMany()
-                        .HasForeignKey("ImageFK")
+                        .HasForeignKey("ImageId");
+
+                    b.HasOne("App.Modules.Sys.Shared.Models.Implementations.MediaContent", "MediaContent")
+                        .WithMany()
+                        .HasForeignKey("MediaContentFK")
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Image");
+
+                    b.Navigation("MediaContent");
                 });
 
             modelBuilder.Entity("App.Modules.Demos.Domain.Domains.Influences.Structures.Entities.InfluenceTypeReferenceData", b =>
                 {
                     b.HasOne("App.Modules.Sys.Shared.Models.Implementations.MediaContent", "Image")
                         .WithMany()
-                        .HasForeignKey("ImageFK")
+                        .HasForeignKey("ImageId");
+
+                    b.HasOne("App.Modules.Sys.Shared.Models.Implementations.MediaContent", "MediaContent")
+                        .WithMany()
+                        .HasForeignKey("MediaContentFK")
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Image");
+
+                    b.Navigation("MediaContent");
                 });
 
             modelBuilder.Entity("App.Modules.Demos.Domain.Domains.Structures.ReferenceData.ProfileTypeReferenceData", b =>
                 {
                     b.HasOne("App.Modules.Sys.Shared.Models.Implementations.MediaContent", "Image")
                         .WithMany()
-                        .HasForeignKey("ImageFK")
+                        .HasForeignKey("ImageId");
+
+                    b.HasOne("App.Modules.Sys.Shared.Models.Implementations.MediaContent", "MediaContent")
+                        .WithMany()
+                        .HasForeignKey("MediaContentFK")
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Image");
+
+                    b.Navigation("MediaContent");
                 });
 #pragma warning restore 612, 618
         }

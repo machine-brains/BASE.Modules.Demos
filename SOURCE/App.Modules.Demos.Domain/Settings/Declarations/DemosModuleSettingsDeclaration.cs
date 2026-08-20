@@ -1,4 +1,4 @@
-using App.Modules.Sys.Shared.Domains.Configuration.Settings;
+using App.Modules.Sys.Shared.Domains.Settings;
 
 namespace App.Modules.Demos.Domain.Settings.Declarations
 {

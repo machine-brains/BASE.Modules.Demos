@@ -32,7 +32,7 @@ namespace App.Modules.Demos
 		/// <summary>
 		/// The description of the module.
 		/// </summary>
-		public const string Description = "Boorstin Trilogy Demo — Discoverers, Creators, Believers.";
+		public const string Description = "Boorstin Trilogy Demo ÔÇö Discoverers, Creators, Believers.";
 
 		/// <summary>
 		/// The name of the ConnectionString in app settings.

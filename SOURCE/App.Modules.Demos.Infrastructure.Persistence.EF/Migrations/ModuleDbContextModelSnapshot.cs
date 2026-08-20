@@ -43,7 +43,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnOrder(4)
                         .HasComment("Gets or sets the principal id who created the record.");
 
-                    b.Property<DateTimeOffset>("CreatedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("CreatedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasColumnOrder(3)
                         .HasComment("Gets or sets the UTC DateTime created on.");
@@ -63,7 +63,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnOrder(6)
                         .HasComment("Gets or sets the principal id who last modified the record.");
 
-                    b.Property<DateTimeOffset>("LastModifiedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("LastModifiedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasColumnOrder(5)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
@@ -165,10 +165,10 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Id = new Guid("30000003-0003-0003-0003-000000000001"),
                             BelieverProfileId = new Guid("10000003-0003-0003-0003-000000000001"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Comprehensive theological treatise synthesising Aristotelian philosophy with Christian doctrine across five volumes.",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "The most influential work of medieval theology and a pillar of Catholic intellectual tradition.",
                             Title = "Summa Theologica",
@@ -180,10 +180,10 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Id = new Guid("30000003-0003-0003-0003-000000000002"),
                             BelieverProfileId = new Guid("10000003-0003-0003-0003-000000000002"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "List of propositions challenging the sale of indulgences and papal authority, posted at Wittenberg in 1517.",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "Ignited the Protestant Reformation and permanently fractured Western Christendom.",
                             Title = "95 Theses",
@@ -195,10 +195,10 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Id = new Guid("30000003-0003-0003-0003-000000000003"),
                             BelieverProfileId = new Guid("10000003-0003-0003-0003-000000000002"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Luther's translation of the Bible into vernacular German, making scripture accessible to ordinary readers.",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "Standardised the German language and advanced the principle of individual scriptural engagement.",
                             Title = "German Translation of Bible",
@@ -210,10 +210,10 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Id = new Guid("30000003-0003-0003-0003-000000000004"),
                             BelieverProfileId = new Guid("10000003-0003-0003-0003-000000000003"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Collection of sayings and ideas attributed to Confucius, covering ethics, governance, and personal cultivation.",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "The foundational text of Confucian thought, shaping East Asian civilisation for over two millennia.",
                             Title = "Analects",
@@ -225,10 +225,10 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Id = new Guid("30000003-0003-0003-0003-000000000005"),
                             BelieverProfileId = new Guid("10000003-0003-0003-0003-000000000004"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "The core teaching of Buddhism: the truth of suffering, its origin, its cessation, and the path leading to cessation.",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "The cornerstone of Buddhist philosophy and practice, adopted across Asia and beyond.",
                             Title = "Four Noble Truths",
@@ -240,10 +240,10 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Id = new Guid("30000003-0003-0003-0003-000000000006"),
                             BelieverProfileId = new Guid("10000003-0003-0003-0003-000000000005"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Philosophical work harmonising Aristotelian rationalism with Jewish theology for intellectually troubled believers.",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "The foremost work of medieval Jewish philosophy, influential in both Jewish and Christian scholasticism.",
                             Title = "Guide for the Perplexed",
@@ -255,10 +255,10 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Id = new Guid("30000003-0003-0003-0003-000000000007"),
                             BelieverProfileId = new Guid("10000003-0003-0003-0003-000000000006"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Treatise on the nature of the good life, virtue, and human flourishing through rational activity of the soul.",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "The most influential work of Western ethical philosophy and a foundation of virtue ethics.",
                             Title = "Nicomachean Ethics",
@@ -270,10 +270,10 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Id = new Guid("30000003-0003-0003-0003-000000000008"),
                             BelieverProfileId = new Guid("10000003-0003-0003-0003-000000000006"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Investigation into the nature of being, substance, causation, and the first principles of reality.",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "Defined the discipline of metaphysics and shaped ontological inquiry for two millennia.",
                             Title = "Metaphysics",
@@ -285,10 +285,10 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             Id = new Guid("30000003-0003-0003-0003-000000000009"),
                             BelieverProfileId = new Guid("10000003-0003-0003-0003-000000000007"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Dialogue exploring justice, the ideal state, and the philosopher-king, centred on the Allegory of the Cave.",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "One of the most influential works of philosophy and political theory in Western history.",
                             Title = "The Republic",
@@ -312,7 +312,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnOrder(4)
                         .HasComment("Gets or sets the principal id who created the record.");
 
-                    b.Property<DateTimeOffset>("CreatedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("CreatedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasColumnOrder(3)
                         .HasComment("Gets or sets the UTC DateTime created on.");
@@ -349,7 +349,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnOrder(6)
                         .HasComment("Gets or sets the principal id who last modified the record.");
 
-                    b.Property<DateTimeOffset>("LastModifiedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("LastModifiedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasColumnOrder(5)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
@@ -446,13 +446,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000002-0002-0002-0002-000000000001"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000004"),
                             CreatorProfileId = new Guid("10000002-0002-0002-0002-000000000001"),
                             Description = "Tragedy exploring the moral complexities of revenge, madness, and mortality through the Prince of Denmark.",
                             Genre = "Tragedy",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "Considered the most influential play in the English language and a cornerstone of Western drama.",
                             Title = "Hamlet",
@@ -462,13 +462,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000002-0002-0002-0002-000000000002"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000004"),
                             CreatorProfileId = new Guid("10000002-0002-0002-0002-000000000001"),
                             Description = "Romance exploring themes of power, magic, forgiveness, and colonial encounter on an enchanted island.",
                             Genre = "Romance",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "Shakespeare's final solo play and a profound meditation on art, authority, and reconciliation.",
                             Title = "The Tempest",
@@ -478,13 +478,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000002-0002-0002-0002-000000000003"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000005"),
                             CreatorProfileId = new Guid("10000002-0002-0002-0002-000000000002"),
                             Description = "Monumental fresco cycle depicting scenes from Genesis, painted on the vault of the Sistine Chapel in Vatican City.",
                             Genre = "Fresco",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "One of the supreme achievements of Renaissance art and a defining masterpiece of Western visual culture.",
                             Title = "Sistine Chapel Ceiling",
@@ -494,13 +494,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000002-0002-0002-0002-000000000004"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000005"),
                             CreatorProfileId = new Guid("10000002-0002-0002-0002-000000000002"),
                             Description = "Monumental marble sculpture of the biblical hero David, embodying the Renaissance ideal of human beauty and civic virtue.",
                             Genre = "Sculpture",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "A symbol of Florentine strength and one of the most recognised works of sculpture in history.",
                             Title = "David",
@@ -510,13 +510,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000002-0002-0002-0002-000000000005"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000006"),
                             CreatorProfileId = new Guid("10000002-0002-0002-0002-000000000003"),
                             Description = "Collection of preludes and fugues in all 24 major and minor keys, demonstrating the viability of well temperament.",
                             Genre = "Keyboard",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "A foundational work for keyboard technique and a touchstone for every subsequent generation of composers.",
                             Title = "Well-Tempered Clavier",
@@ -526,13 +526,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000002-0002-0002-0002-000000000006"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000006"),
                             CreatorProfileId = new Guid("10000002-0002-0002-0002-000000000003"),
                             Description = "Monumental choral setting of the Latin Mass regarded as one of the greatest compositions in the history of music.",
                             Genre = "Choral / Sacred",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "Represents the culmination of Baroque choral writing and a universal statement of musical faith.",
                             Title = "Mass in B Minor",
@@ -542,13 +542,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000002-0002-0002-0002-000000000007"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000005"),
                             CreatorProfileId = new Guid("10000002-0002-0002-0002-000000000004"),
                             Description = "Half-length portrait renowned for its sfumato technique, enigmatic expression, and atmospheric landscape.",
                             Genre = "Portrait",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "The most famous painting in the world and an enduring icon of Renaissance art.",
                             Title = "Mona Lisa",
@@ -558,13 +558,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000002-0002-0002-0002-000000000008"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000005"),
                             CreatorProfileId = new Guid("10000002-0002-0002-0002-000000000004"),
                             Description = "Mural depicting the moment Christ announces one of his disciples will betray him, painted in the refectory of Santa Maria delle Grazie.",
                             Genre = "Mural",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "A masterpiece of narrative composition and one of the most studied works in art history.",
                             Title = "The Last Supper",
@@ -574,13 +574,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000002-0002-0002-0002-000000000009"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000009"),
                             CreatorProfileId = new Guid("10000002-0002-0002-0002-000000000005"),
                             Description = "Mechanical movable-type printing system that enabled the mass production of books and printed material.",
                             Genre = "Mechanical Innovation",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "Arguably the most transformative invention of the second millennium, enabling the democratisation of knowledge.",
                             Title = "Printing Press",
@@ -590,13 +590,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000002-0002-0002-0002-000000000010"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000004"),
                             CreatorProfileId = new Guid("10000002-0002-0002-0002-000000000005"),
                             Description = "The first major book printed using movable type in the West, a Latin Vulgate Bible of extraordinary craftsmanship.",
                             Genre = "Sacred Text",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "Demonstrated the commercial and cultural viability of printed books, launching the print revolution.",
                             Title = "Gutenberg Bible",
@@ -606,13 +606,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000002-0002-0002-0002-000000000011"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000006"),
                             CreatorProfileId = new Guid("10000002-0002-0002-0002-000000000006"),
                             Description = "Comic opera in four acts based on Beaumarchais's play, blending wit, emotional depth, and social commentary.",
                             Genre = "Opera",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "A pinnacle of operatic art that redefined the integration of music and dramatic characterisation.",
                             Title = "The Marriage of Figaro",
@@ -622,13 +622,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000002-0002-0002-0002-000000000012"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000006"),
                             CreatorProfileId = new Guid("10000002-0002-0002-0002-000000000006"),
                             Description = "Unfinished Requiem Mass in D minor composed in the final weeks of Mozart's life, completed posthumously.",
                             Genre = "Choral / Sacred",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "One of the most celebrated and emotionally powerful sacred choral works ever composed.",
                             Title = "Requiem",
@@ -638,13 +638,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000002-0002-0002-0002-000000000013"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000008"),
                             CreatorProfileId = new Guid("10000002-0002-0002-0002-000000000007"),
                             Description = "Philosophiæ Naturalis Principia Mathematica, laying out the laws of motion and universal gravitation in mathematical form.",
                             Genre = "Treatise",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "The single most influential scientific publication in history, unifying terrestrial and celestial mechanics.",
                             Title = "Principia Mathematica",
@@ -654,13 +654,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000002-0002-0002-0002-000000000014"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000008"),
                             CreatorProfileId = new Guid("10000002-0002-0002-0002-000000000007"),
                             Description = "Development of the mathematical method of fluxions, Newton's formulation of infinitesimal calculus.",
                             Genre = "Mathematical Method",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "Provided the mathematical language essential for physics, engineering, and the modern sciences.",
                             Title = "Method of Fluxions (Calculus)",
@@ -670,13 +670,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000002-0002-0002-0002-000000000015"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000009"),
                             CreatorProfileId = new Guid("10000002-0002-0002-0002-000000000008"),
                             Description = "Watt's improved steam engine with a separate condenser, dramatically increasing thermal efficiency.",
                             Genre = "Mechanical Engineering",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4,
                             Significance = "Powered the factories, mines, and transport networks of the Industrial Revolution.",
                             Title = "Steam Engine (Improved)",
@@ -696,12 +696,12 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(28)
+                        .HasColumnOrder(27)
                         .HasComment("Gets or sets the principal id who created the record.");
 
-                    b.Property<DateTimeOffset>("CreatedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("CreatedOnUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(27)
+                        .HasColumnOrder(26)
                         .HasComment("Gets or sets the UTC DateTime created on.");
 
                     b.Property<string>("Description")
@@ -715,14 +715,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasDefaultValue(0)
-                        .HasColumnOrder(19)
+                        .HasColumnOrder(18)
                         .HasComment("A Hint to the Interface (UI/API) to organise item order on initial display. Non-unique. May be overridden by MRU settings.");
 
                     b.Property<string>("DisplayStyleHint")
                         .HasMaxLength(64)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(64)")
-                        .HasColumnOrder(18)
+                        .HasColumnOrder(17)
                         .HasComment("A Hint on how to display the item. Consider using the field for a Classname that will mean something to the UX interface.");
 
                     b.Property<bool>("Enabled")
@@ -734,20 +734,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<int?>("EnumValue")
                         .HasColumnType("int")
-                        .HasColumnOrder(24)
+                        .HasColumnOrder(23)
                         .HasComment("The integer value from the enum. For system-seeded records, this matches the enum value exactly.");
 
                     b.Property<DateTimeOffset?>("FromUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(22)
+                        .HasColumnOrder(21)
                         .HasComment("Gets or sets the start datetime.");
-
-                    b.Property<string>("ImageDescription")
-                        .HasMaxLength(256)
-                        .IsUnicode(true)
-                        .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(16)
-                        .HasComment("Accessible description of the associated image (rendered as the HTML alt attribute or equivalent ARIA label by the UI layer).");
 
                     b.Property<Guid?>("ImageId")
                         .HasColumnType("uniqueidentifier")
@@ -766,17 +759,17 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(30)
+                        .HasColumnOrder(29)
                         .HasComment("Gets or sets the principal id who last modified the record.");
 
-                    b.Property<DateTimeOffset>("LastModifiedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("LastModifiedOnUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(29)
+                        .HasColumnOrder(28)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
 
                     b.Property<Guid?>("MediaContentFK")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(17)
+                        .HasColumnOrder(16)
                         .HasComment("FK to MediaContent when MediaType is Media. Null otherwise.");
 
                     b.Property<Guid?>("MediaFK")
@@ -799,24 +792,24 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<int>("RecordState")
                         .HasColumnType("int")
-                        .HasColumnOrder(26)
+                        .HasColumnOrder(25)
                         .HasComment("The state of the Record in terms of persistence.");
 
                     b.Property<int>("ReferenceDataType")
                         .HasColumnType("int")
-                        .HasColumnOrder(20)
+                        .HasColumnOrder(19)
                         .HasComment("Gets or sets the reference data classification.");
 
                     b.Property<string>("StateChangedByPrincipalId")
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(32)
+                        .HasColumnOrder(31)
                         .HasComment("Gets or sets the principal id who changed the state (nullable).");
 
                     b.Property<DateTimeOffset?>("StateChangedOnDateTimeUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(31)
+                        .HasColumnOrder(30)
                         .HasComment("Gets or sets the date when record state changed (nullable for soft delete).");
 
                     b.Property<DateTime>("SysEndTime")
@@ -836,7 +829,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion")
-                        .HasColumnOrder(25)
+                        .HasColumnOrder(24)
                         .HasComment("Gets or sets the datastore concurrency check timestamp.");
 
                     b.Property<string>("Title")
@@ -849,7 +842,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<DateTimeOffset?>("ToUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(23)
+                        .HasColumnOrder(22)
                         .HasComment("Gets or sets the end datetime.");
 
                     b.Property<string>("Value")
@@ -857,7 +850,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(256)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(21)
+                        .HasColumnOrder(20)
                         .HasComment("Stores the Value value for the Creative Medium Reference Data record.");
 
                     b.HasKey("Id");
@@ -916,14 +909,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000000"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Creative medium has not been set.",
                             DisplayOrderHint = 0,
                             Enabled = true,
                             EnumValue = 0,
                             Key = "Undefined",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -934,14 +927,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Creative medium is not applicable in this context.",
                             DisplayOrderHint = 1,
                             Enabled = true,
                             EnumValue = 1,
                             Key = "NotApplicable",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -952,14 +945,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000002"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Creative medium was not specified.",
                             DisplayOrderHint = 2,
                             Enabled = true,
                             EnumValue = 2,
                             Key = "Unspecified",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -970,14 +963,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000003"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Creative medium is not known.",
                             DisplayOrderHint = 3,
                             Enabled = true,
                             EnumValue = 3,
                             Key = "Unknown",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -988,14 +981,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000004"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Written works including prose, poetry, drama, and non-fiction.",
                             DisplayOrderHint = 4,
                             Enabled = true,
                             EnumValue = 4,
                             Key = "Literature",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -1006,14 +999,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000005"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Painting, sculpture, printmaking, and other visual art forms.",
                             DisplayOrderHint = 5,
                             Enabled = true,
                             EnumValue = 5,
                             Key = "VisualArt",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -1024,14 +1017,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000006"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Composition, performance, and musical theory across all traditions.",
                             DisplayOrderHint = 6,
                             Enabled = true,
                             EnumValue = 6,
                             Key = "Music",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -1042,14 +1035,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000007"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Design and construction of buildings, monuments, and planned spaces.",
                             DisplayOrderHint = 7,
                             Enabled = true,
                             EnumValue = 7,
                             Key = "Architecture",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -1060,14 +1053,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000008"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Empirical inquiry, experimentation, and systematic knowledge production.",
                             DisplayOrderHint = 8,
                             Enabled = true,
                             EnumValue = 8,
                             Key = "Science",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -1078,14 +1071,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000009"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Applied invention, engineering, and tool-making for practical ends.",
                             DisplayOrderHint = 9,
                             Enabled = true,
                             EnumValue = 9,
                             Key = "Technology",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -1096,14 +1089,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-00000000000a"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Systems of thought, ethics, logic, and metaphysical inquiry.",
                             DisplayOrderHint = 10,
                             Enabled = true,
                             EnumValue = 10,
                             Key = "Philosophy",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -1127,7 +1120,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnOrder(4)
                         .HasComment("Gets or sets the principal id who created the record.");
 
-                    b.Property<DateTimeOffset>("CreatedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("CreatedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasColumnOrder(3)
                         .HasComment("Gets or sets the UTC DateTime created on.");
@@ -1162,7 +1155,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnOrder(6)
                         .HasComment("Gets or sets the principal id who last modified the record.");
 
-                    b.Property<DateTimeOffset>("LastModifiedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("LastModifiedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasColumnOrder(5)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
@@ -1260,13 +1253,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000002-0002-0002-0002-000000000001"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000004"),
                             Description = "English playwright and poet widely regarded as the greatest writer in the English language and the world's pre-eminent dramatist.",
                             EraFrom = 1564,
                             EraTo = 1616,
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "English",
                             PersonId = new Guid("20000002-0002-0002-0002-000000000001"),
                             RecordState = 4,
@@ -1276,13 +1269,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000002-0002-0002-0002-000000000002"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000005"),
                             Description = "Italian sculptor, painter, and architect whose works in the Sistine Chapel and the statue of David epitomise Renaissance art.",
                             EraFrom = 1475,
                             EraTo = 1564,
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Italian",
                             PersonId = new Guid("20000002-0002-0002-0002-000000000002"),
                             RecordState = 4,
@@ -1292,13 +1285,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000002-0002-0002-0002-000000000003"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000006"),
                             Description = "German composer and musician whose mastery of counterpoint and harmonic organisation profoundly shaped Western classical music.",
                             EraFrom = 1685,
                             EraTo = 1750,
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "German",
                             PersonId = new Guid("20000002-0002-0002-0002-000000000003"),
                             RecordState = 4,
@@ -1308,13 +1301,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000002-0002-0002-0002-000000000004"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000005"),
                             Description = "Florentine polymath whose paintings, including the Mona Lisa and The Last Supper, set enduring standards for artistic achievement.",
                             EraFrom = 1452,
                             EraTo = 1519,
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Italian",
                             PersonId = new Guid("20000001-0001-0001-0001-000000000006"),
                             RecordState = 4,
@@ -1324,13 +1317,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000002-0002-0002-0002-000000000005"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000009"),
                             Description = "German blacksmith and inventor who introduced mechanical movable-type printing to Europe, revolutionising the dissemination of knowledge.",
                             EraFrom = 1400,
                             EraTo = 1468,
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "German",
                             PersonId = new Guid("20000002-0002-0002-0002-000000000005"),
                             RecordState = 4,
@@ -1340,13 +1333,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000002-0002-0002-0002-000000000006"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000006"),
                             Description = "Austrian composer and child prodigy whose prolific output in symphonies, operas, and chamber music epitomises the Classical era.",
                             EraFrom = 1756,
                             EraTo = 1791,
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Austrian",
                             PersonId = new Guid("20000002-0002-0002-0002-000000000006"),
                             RecordState = 4,
@@ -1356,13 +1349,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000002-0002-0002-0002-000000000007"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000008"),
                             Description = "English polymath whose Principia Mathematica and invention of calculus rank among the most influential intellectual creations in history.",
                             EraFrom = 1643,
                             EraTo = 1727,
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "English",
                             PersonId = new Guid("20000001-0001-0001-0001-000000000004"),
                             RecordState = 4,
@@ -1372,13 +1365,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000002-0002-0002-0002-000000000008"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             CreativeMediumId = new Guid("00000000-0000-0000-0000-000000000009"),
                             Description = "Scottish inventor whose improved steam engine with a separate condenser was a decisive technological creation of the Industrial Revolution.",
                             EraFrom = 1736,
                             EraTo = 1819,
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Scottish",
                             PersonId = new Guid("20000001-0001-0001-0001-000000000010"),
                             RecordState = 4,
@@ -1401,7 +1394,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnOrder(4)
                         .HasComment("Gets or sets the principal id who created the record.");
 
-                    b.Property<DateTimeOffset>("CreatedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("CreatedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasColumnOrder(3)
                         .HasComment("Gets or sets the UTC DateTime created on.");
@@ -1438,7 +1431,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnOrder(6)
                         .HasComment("Gets or sets the principal id who last modified the record.");
 
-                    b.Property<DateTimeOffset>("LastModifiedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("LastModifiedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasColumnOrder(5)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
@@ -1533,13 +1526,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000001-0001-0001-0001-000000000001"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Genoese navigator whose transatlantic voyages opened sustained European contact with the Americas.",
                             EraFrom = 1451,
                             EraTo = 1506,
                             FieldOfStudy = "Navigation and Exploration",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Genoese",
                             PersonId = new Guid("20000001-0001-0001-0001-000000000001"),
                             RecordState = 4,
@@ -1549,13 +1542,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000001-0001-0001-0001-000000000002"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Renaissance polymath who formulated the heliocentric model of the universe, displacing the Earth from the centre of the cosmos.",
                             EraFrom = 1473,
                             EraTo = 1543,
                             FieldOfStudy = "Astronomy and Mathematics",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Polish",
                             PersonId = new Guid("20000001-0001-0001-0001-000000000002"),
                             RecordState = 4,
@@ -1565,13 +1558,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000001-0001-0001-0001-000000000003"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Italian astronomer and physicist whose telescopic observations and experiments laid the groundwork for modern observational science.",
                             EraFrom = 1564,
                             EraTo = 1642,
                             FieldOfStudy = "Astronomy and Physics",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Italian",
                             PersonId = new Guid("20000001-0001-0001-0001-000000000003"),
                             RecordState = 4,
@@ -1581,13 +1574,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000001-0001-0001-0001-000000000004"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "English mathematician and natural philosopher who unified celestial and terrestrial mechanics through the laws of motion and universal gravitation.",
                             EraFrom = 1643,
                             EraTo = 1727,
                             FieldOfStudy = "Physics, Mathematics, and Optics",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "English",
                             PersonId = new Guid("20000001-0001-0001-0001-000000000004"),
                             RecordState = 4,
@@ -1597,13 +1590,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000001-0001-0001-0001-000000000005"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "English naturalist whose theory of evolution by natural selection transformed the understanding of biological diversity.",
                             EraFrom = 1809,
                             EraTo = 1882,
                             FieldOfStudy = "Natural History and Biology",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "English",
                             PersonId = new Guid("20000001-0001-0001-0001-000000000005"),
                             RecordState = 4,
@@ -1613,13 +1606,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000001-0001-0001-0001-000000000006"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Florentine polymath whose empirical investigations of anatomy, flight, and engineering anticipated modern scientific method.",
                             EraFrom = 1452,
                             EraTo = 1519,
                             FieldOfStudy = "Anatomy, Engineering, and Natural Philosophy",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Italian",
                             PersonId = new Guid("20000001-0001-0001-0001-000000000006"),
                             RecordState = 4,
@@ -1629,13 +1622,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000001-0001-0001-0001-000000000007"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Greek philosopher who established formal logic and pioneered the systematic classification of knowledge across natural philosophy, ethics, and politics.",
                             EraFrom = -384,
                             EraTo = -322,
                             FieldOfStudy = "Logic, Natural Philosophy, and Biology",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Greek",
                             PersonId = new Guid("20000001-0001-0001-0001-000000000007"),
                             RecordState = 4,
@@ -1645,13 +1638,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000001-0001-0001-0001-000000000008"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Dutch tradesman and self-taught lens grinder who first observed microorganisms, founding the discipline of microbiology.",
                             EraFrom = 1632,
                             EraTo = 1723,
                             FieldOfStudy = "Microscopy and Microbiology",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Dutch",
                             PersonId = new Guid("20000001-0001-0001-0001-000000000008"),
                             RecordState = 4,
@@ -1661,13 +1654,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000001-0001-0001-0001-000000000009"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Polish-French physicist and chemist who conducted pioneering research on radioactivity, discovering polonium and radium.",
                             EraFrom = 1867,
                             EraTo = 1934,
                             FieldOfStudy = "Physics and Chemistry",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Polish-French",
                             PersonId = new Guid("20000001-0001-0001-0001-000000000009"),
                             RecordState = 4,
@@ -1677,13 +1670,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000001-0001-0001-0001-000000000010"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Scottish inventor and mechanical engineer whose separate condenser transformed steam power and catalysed the Industrial Revolution.",
                             EraFrom = 1736,
                             EraTo = 1819,
                             FieldOfStudy = "Mechanical Engineering and Thermodynamics",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Scottish",
                             PersonId = new Guid("20000001-0001-0001-0001-000000000010"),
                             RecordState = 4,
@@ -1693,13 +1686,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000001-0001-0001-0001-000000000011"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Greco-Egyptian astronomer and mathematician whose geocentric model dominated Western and Islamic astronomy for over a millennium.",
                             EraFrom = 100,
                             EraTo = 170,
                             FieldOfStudy = "Astronomy, Geography, and Mathematics",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Greco-Egyptian",
                             PersonId = new Guid("20000001-0001-0001-0001-000000000011"),
                             RecordState = 4,
@@ -1722,7 +1715,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnOrder(4)
                         .HasComment("Gets or sets the principal id who created the record.");
 
-                    b.Property<DateTimeOffset>("CreatedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("CreatedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasColumnOrder(3)
                         .HasComment("Gets or sets the UTC DateTime created on.");
@@ -1747,7 +1740,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnOrder(6)
                         .HasComment("Gets or sets the principal id who last modified the record.");
 
-                    b.Property<DateTimeOffset>("LastModifiedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("LastModifiedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasColumnOrder(5)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
@@ -1860,11 +1853,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000001-0001-0001-0001-000000000001"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "First sustained European contact with the American continents following the transatlantic voyage of 1492.",
                             DiscovererProfileId = new Guid("10000001-0001-0001-0001-000000000001"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Latitude = 18.199999999999999,
                             LocationName = "Caribbean Sea",
                             Longitude = -66.5,
@@ -1877,11 +1870,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000001-0001-0001-0001-000000000002"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "The model placing the Sun rather than the Earth at the centre of the universe, published in De Revolutionibus Orbium Coelestium.",
                             DiscovererProfileId = new Guid("10000001-0001-0001-0001-000000000002"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Latitude = 54.350000000000001,
                             LocationName = "Frombork, Poland",
                             Longitude = 19.68,
@@ -1894,11 +1887,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000001-0001-0001-0001-000000000003"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Telescopic observation of four moons orbiting Jupiter, demonstrating that not all celestial bodies revolve around the Earth.",
                             DiscovererProfileId = new Guid("10000001-0001-0001-0001-000000000003"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Latitude = 45.409999999999997,
                             LocationName = "Padua, Italy",
                             Longitude = 11.880000000000001,
@@ -1911,11 +1904,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000001-0001-0001-0001-000000000004"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Telescopic observation that Venus exhibits a full set of phases, consistent only with an orbit around the Sun.",
                             DiscovererProfileId = new Guid("10000001-0001-0001-0001-000000000003"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Latitude = 45.409999999999997,
                             LocationName = "Padua, Italy",
                             Longitude = 11.880000000000001,
@@ -1928,11 +1921,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000001-0001-0001-0001-000000000005"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Three laws of motion and the inverse-square law of gravitational attraction, unifying terrestrial and celestial mechanics.",
                             DiscovererProfileId = new Guid("10000001-0001-0001-0001-000000000004"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Latitude = 52.200000000000003,
                             LocationName = "Cambridge, England",
                             Longitude = 0.12,
@@ -1945,11 +1938,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000001-0001-0001-0001-000000000006"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Prism experiments demonstrating that white light is composed of a spectrum of colours that can be separated and recombined.",
                             DiscovererProfileId = new Guid("10000001-0001-0001-0001-000000000004"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Latitude = 52.200000000000003,
                             LocationName = "Cambridge, England",
                             Longitude = 0.12,
@@ -1962,11 +1955,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000001-0001-0001-0001-000000000007"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "The mechanism by which organisms with favourable traits are more likely to survive and reproduce, driving evolutionary change.",
                             DiscovererProfileId = new Guid("10000001-0001-0001-0001-000000000005"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Latitude = 51.329999999999998,
                             LocationName = "Down House, Kent",
                             Longitude = 0.050000000000000003,
@@ -1979,11 +1972,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000001-0001-0001-0001-000000000008"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Detailed dissections and anatomical drawings revealing the structure of the human body with unprecedented accuracy.",
                             DiscovererProfileId = new Guid("10000001-0001-0001-0001-000000000006"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Latitude = 45.460000000000001,
                             LocationName = "Milan, Italy",
                             Longitude = 9.1899999999999995,
@@ -1996,11 +1989,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000001-0001-0001-0001-000000000009"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Studies of bird flight and designs for flying machines based on empirical observation of aerodynamic principles.",
                             DiscovererProfileId = new Guid("10000001-0001-0001-0001-000000000006"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Latitude = 43.770000000000003,
                             LocationName = "Florence, Italy",
                             Longitude = 11.25,
@@ -2013,11 +2006,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000001-0001-0001-0001-000000000010"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "The system of deductive reasoning through syllogisms, establishing logic as a formal discipline.",
                             DiscovererProfileId = new Guid("10000001-0001-0001-0001-000000000007"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Latitude = 37.969999999999999,
                             LocationName = "Athens, Greece",
                             Longitude = 23.719999999999999,
@@ -2030,11 +2023,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000001-0001-0001-0001-000000000011"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Systematic observation and categorisation of animal species, distinguishing genera and species by shared characteristics.",
                             DiscovererProfileId = new Guid("10000001-0001-0001-0001-000000000007"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Latitude = 37.969999999999999,
                             LocationName = "Athens, Greece",
                             Longitude = 23.719999999999999,
@@ -2047,11 +2040,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000001-0001-0001-0001-000000000012"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "First observation of single-celled organisms through hand-crafted high-powered microscope lenses.",
                             DiscovererProfileId = new Guid("10000001-0001-0001-0001-000000000008"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Latitude = 52.009999999999998,
                             LocationName = "Delft, Netherlands",
                             Longitude = 4.3600000000000003,
@@ -2064,11 +2057,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000001-0001-0001-0001-000000000013"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Isolation of two new radioactive elements and pioneering research into the nature of radioactive decay.",
                             DiscovererProfileId = new Guid("10000001-0001-0001-0001-000000000009"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Latitude = 48.850000000000001,
                             LocationName = "Paris, France",
                             Longitude = 2.3500000000000001,
@@ -2081,11 +2074,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("30000001-0001-0001-0001-000000000014"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "The insight that condensing steam in a separate vessel dramatically improves the efficiency of the steam engine.",
                             DiscovererProfileId = new Guid("10000001-0001-0001-0001-000000000010"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Latitude = 55.859999999999999,
                             LocationName = "Glasgow, Scotland",
                             Longitude = -4.25,
@@ -2111,7 +2104,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnOrder(4)
                         .HasComment("Gets or sets the principal id who created the record.");
 
-                    b.Property<DateTimeOffset>("CreatedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("CreatedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasColumnOrder(3)
                         .HasComment("Gets or sets the UTC DateTime created on.");
@@ -2161,7 +2154,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnOrder(6)
                         .HasComment("Gets or sets the principal id who last modified the record.");
 
-                    b.Property<DateTimeOffset>("LastModifiedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("LastModifiedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasColumnOrder(5)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
@@ -2251,7 +2244,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000001"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Aristotle's cosmological and logical framework provided the philosophical scaffolding for Ptolemy's geocentric astronomical model.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000006"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000006"),
@@ -2260,14 +2253,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000001-0001-0001-0001-000000000007"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000004"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         },
                         new
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000002"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Aristotle's metaphysics and ethics were the intellectual bedrock on which Aquinas constructed the Summa Theologica.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000007"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000006"),
@@ -2276,14 +2269,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000003-0003-0003-0003-000000000006"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000006"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         },
                         new
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000003"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Plato's Academy shaped Aristotle's formative intellectual development; Aristotle's philosophy arose partly in critical dialogue with Plato's theory of Forms.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000007"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000004"),
@@ -2292,14 +2285,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000003-0003-0003-0003-000000000007"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000006"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         },
                         new
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000004"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Copernicus's heliocentric model motivated Galileo's telescopic observations that provided the first empirical confirmation.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000007"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000004"),
@@ -2308,14 +2301,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000001-0001-0001-0001-000000000002"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000004"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         },
                         new
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000005"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Galileo's kinematics and experimental methodology laid the groundwork on which Newton built his three laws of motion.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000006"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000004"),
@@ -2324,14 +2317,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000001-0001-0001-0001-000000000003"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000004"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         },
                         new
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000006"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Newton's example of explaining natural phenomena through universal laws inspired Darwin's ambition to find a comparable law for biology.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000005"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000005"),
@@ -2340,14 +2333,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000001-0001-0001-0001-000000000004"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000004"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         },
                         new
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000007"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Gutenberg's printing press enabled the rapid mass reproduction of Luther's 95 Theses, amplifying the Reformation across Europe.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000007"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000005"),
@@ -2356,14 +2349,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000002-0002-0002-0002-000000000005"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000005"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         },
                         new
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000008"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "The print revolution expanded literacy and created the reading public that sustained Elizabethan theatre and Shakespeare's audience.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000006"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000005"),
@@ -2372,14 +2365,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000002-0002-0002-0002-000000000005"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000005"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         },
                         new
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000009"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Gutenberg's press enabled the wide dissemination of De Revolutionibus, ensuring Copernicus's heliocentric theory reached scholars across Europe.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000006"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000005"),
@@ -2388,14 +2381,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000002-0002-0002-0002-000000000005"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000005"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         },
                         new
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000010"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Leonardo's insistence on empirical observation and systematic experimentation foreshadowed and influenced Galileo's scientific method.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000006"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000004"),
@@ -2404,14 +2397,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000001-0001-0001-0001-000000000006"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000004"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         },
                         new
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000011"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Leonardo's anatomical studies and mastery of human proportion influenced Michelangelo's sculptural and painted depiction of the human form.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000005"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000005"),
@@ -2420,14 +2413,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000002-0002-0002-0002-000000000004"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000005"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         },
                         new
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000012"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Bach's contrapuntal mastery deeply influenced Mozart's later works, particularly his integration of fugal techniques into the Classical style.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000006"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000004"),
@@ -2436,14 +2429,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000002-0002-0002-0002-000000000003"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000005"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         },
                         new
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000013"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Watt's steam engine powered the global shipping networks that enabled Darwin's Voyage of the Beagle and his collection of worldwide specimens.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000006"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000005"),
@@ -2452,14 +2445,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000001-0001-0001-0001-000000000010"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000004"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         },
                         new
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000014"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Leeuwenhoek's pioneering use of precision instruments to reveal invisible phenomena established the tradition of instrument-driven discovery that Curie continued.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000005"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000005"),
@@ -2468,14 +2461,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000001-0001-0001-0001-000000000008"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000004"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         },
                         new
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000015"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Confucius and Buddha developed parallel Eastern wisdom traditions; their shared cultural milieu fostered complementary ethical frameworks.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000004"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000005"),
@@ -2484,14 +2477,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000003-0003-0003-0003-000000000003"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000006"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         },
                         new
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000016"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Aristotle's rational philosophy was the primary intellectual source for Maimonides's Guide for the Perplexed.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000006"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000006"),
@@ -2500,14 +2493,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000003-0003-0003-0003-000000000006"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000006"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         },
                         new
                         {
                             Id = new Guid("40000001-0001-0001-0001-000000000017"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Maimonides's synthesis of Aristotelian philosophy with monotheistic theology directly informed Aquinas's own scholastic project.",
                             InfluenceStrengthId = new Guid("00000000-0000-0000-0000-000000000006"),
                             InfluenceTypeId = new Guid("00000000-0000-0000-0000-000000000006"),
@@ -2516,7 +2509,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                             InfluencerProfileId = new Guid("10000003-0003-0003-0003-000000000005"),
                             InfluencerProfileTypeId = new Guid("00000000-0000-0000-0000-000000000006"),
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             RecordState = 4
                         });
                 });
@@ -2533,12 +2526,12 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(28)
+                        .HasColumnOrder(27)
                         .HasComment("Gets or sets the principal id who created the record.");
 
-                    b.Property<DateTimeOffset>("CreatedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("CreatedOnUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(27)
+                        .HasColumnOrder(26)
                         .HasComment("Gets or sets the UTC DateTime created on.");
 
                     b.Property<string>("Description")
@@ -2552,14 +2545,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasDefaultValue(0)
-                        .HasColumnOrder(19)
+                        .HasColumnOrder(18)
                         .HasComment("A Hint to the Interface (UI/API) to organise item order on initial display. Non-unique. May be overridden by MRU settings.");
 
                     b.Property<string>("DisplayStyleHint")
                         .HasMaxLength(64)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(64)")
-                        .HasColumnOrder(18)
+                        .HasColumnOrder(17)
                         .HasComment("A Hint on how to display the item. Consider using the field for a Classname that will mean something to the UX interface.");
 
                     b.Property<bool>("Enabled")
@@ -2571,20 +2564,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<int?>("EnumValue")
                         .HasColumnType("int")
-                        .HasColumnOrder(24)
+                        .HasColumnOrder(23)
                         .HasComment("The integer value from the enum. For system-seeded records, this matches the enum value exactly.");
 
                     b.Property<DateTimeOffset?>("FromUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(22)
+                        .HasColumnOrder(21)
                         .HasComment("Gets or sets the start datetime.");
-
-                    b.Property<string>("ImageDescription")
-                        .HasMaxLength(256)
-                        .IsUnicode(true)
-                        .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(16)
-                        .HasComment("Accessible description of the associated image (rendered as the HTML alt attribute or equivalent ARIA label by the UI layer).");
 
                     b.Property<Guid?>("ImageId")
                         .HasColumnType("uniqueidentifier")
@@ -2603,17 +2589,17 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(30)
+                        .HasColumnOrder(29)
                         .HasComment("Gets or sets the principal id who last modified the record.");
 
-                    b.Property<DateTimeOffset>("LastModifiedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("LastModifiedOnUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(29)
+                        .HasColumnOrder(28)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
 
                     b.Property<Guid?>("MediaContentFK")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(17)
+                        .HasColumnOrder(16)
                         .HasComment("FK to MediaContent when MediaType is Media. Null otherwise.");
 
                     b.Property<Guid?>("MediaFK")
@@ -2636,24 +2622,24 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<int>("RecordState")
                         .HasColumnType("int")
-                        .HasColumnOrder(26)
+                        .HasColumnOrder(25)
                         .HasComment("The state of the Record in terms of persistence.");
 
                     b.Property<int>("ReferenceDataType")
                         .HasColumnType("int")
-                        .HasColumnOrder(20)
+                        .HasColumnOrder(19)
                         .HasComment("Gets or sets the reference data classification.");
 
                     b.Property<string>("StateChangedByPrincipalId")
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(32)
+                        .HasColumnOrder(31)
                         .HasComment("Gets or sets the principal id who changed the state (nullable).");
 
                     b.Property<DateTimeOffset?>("StateChangedOnDateTimeUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(31)
+                        .HasColumnOrder(30)
                         .HasComment("Gets or sets the date when record state changed (nullable for soft delete).");
 
                     b.Property<DateTime>("SysEndTime")
@@ -2673,7 +2659,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion")
-                        .HasColumnOrder(25)
+                        .HasColumnOrder(24)
                         .HasComment("Gets or sets the datastore concurrency check timestamp.");
 
                     b.Property<string>("Title")
@@ -2686,7 +2672,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<DateTimeOffset?>("ToUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(23)
+                        .HasColumnOrder(22)
                         .HasComment("Gets or sets the end datetime.");
 
                     b.Property<string>("Value")
@@ -2694,7 +2680,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(256)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(21)
+                        .HasColumnOrder(20)
                         .HasComment("Stores the Value value for the Influence Strength Reference Data record.");
 
                     b.HasKey("Id");
@@ -2753,14 +2739,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000000"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Influence strength has not been set.",
                             DisplayOrderHint = 0,
                             Enabled = true,
                             EnumValue = 0,
                             Key = "Undefined",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -2771,14 +2757,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Influence strength is not applicable in this context.",
                             DisplayOrderHint = 1,
                             Enabled = true,
                             EnumValue = 1,
                             Key = "NotApplicable",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -2789,14 +2775,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000002"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Influence strength was not specified.",
                             DisplayOrderHint = 2,
                             Enabled = true,
                             EnumValue = 2,
                             Key = "Unspecified",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -2807,14 +2793,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000003"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Influence strength is not known.",
                             DisplayOrderHint = 3,
                             Enabled = true,
                             EnumValue = 3,
                             Key = "Unknown",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -2825,14 +2811,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000004"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "A minor influence with limited or localised impact.",
                             DisplayOrderHint = 4,
                             Enabled = true,
                             EnumValue = 4,
                             Key = "Minor",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -2843,14 +2829,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000005"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "A moderate influence with noticeable but bounded effect.",
                             DisplayOrderHint = 5,
                             Enabled = true,
                             EnumValue = 5,
                             Key = "Moderate",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -2861,14 +2847,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000006"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "A major influence with broad and lasting significance.",
                             DisplayOrderHint = 6,
                             Enabled = true,
                             EnumValue = 6,
                             Key = "Major",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -2879,14 +2865,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000007"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "A transformative influence that fundamentally reshaped a field, tradition, or civilisation.",
                             DisplayOrderHint = 7,
                             Enabled = true,
                             EnumValue = 7,
                             Key = "Transformative",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -2907,12 +2893,12 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(28)
+                        .HasColumnOrder(27)
                         .HasComment("Gets or sets the principal id who created the record.");
 
-                    b.Property<DateTimeOffset>("CreatedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("CreatedOnUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(27)
+                        .HasColumnOrder(26)
                         .HasComment("Gets or sets the UTC DateTime created on.");
 
                     b.Property<string>("Description")
@@ -2926,14 +2912,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasDefaultValue(0)
-                        .HasColumnOrder(19)
+                        .HasColumnOrder(18)
                         .HasComment("A Hint to the Interface (UI/API) to organise item order on initial display. Non-unique. May be overridden by MRU settings.");
 
                     b.Property<string>("DisplayStyleHint")
                         .HasMaxLength(64)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(64)")
-                        .HasColumnOrder(18)
+                        .HasColumnOrder(17)
                         .HasComment("A Hint on how to display the item. Consider using the field for a Classname that will mean something to the UX interface.");
 
                     b.Property<bool>("Enabled")
@@ -2945,20 +2931,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<int?>("EnumValue")
                         .HasColumnType("int")
-                        .HasColumnOrder(24)
+                        .HasColumnOrder(23)
                         .HasComment("The integer value from the enum. For system-seeded records, this matches the enum value exactly.");
 
                     b.Property<DateTimeOffset?>("FromUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(22)
+                        .HasColumnOrder(21)
                         .HasComment("Gets or sets the start datetime.");
-
-                    b.Property<string>("ImageDescription")
-                        .HasMaxLength(256)
-                        .IsUnicode(true)
-                        .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(16)
-                        .HasComment("Accessible description of the associated image (rendered as the HTML alt attribute or equivalent ARIA label by the UI layer).");
 
                     b.Property<Guid?>("ImageId")
                         .HasColumnType("uniqueidentifier")
@@ -2977,17 +2956,17 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(30)
+                        .HasColumnOrder(29)
                         .HasComment("Gets or sets the principal id who last modified the record.");
 
-                    b.Property<DateTimeOffset>("LastModifiedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("LastModifiedOnUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(29)
+                        .HasColumnOrder(28)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
 
                     b.Property<Guid?>("MediaContentFK")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(17)
+                        .HasColumnOrder(16)
                         .HasComment("FK to MediaContent when MediaType is Media. Null otherwise.");
 
                     b.Property<Guid?>("MediaFK")
@@ -3010,24 +2989,24 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<int>("RecordState")
                         .HasColumnType("int")
-                        .HasColumnOrder(26)
+                        .HasColumnOrder(25)
                         .HasComment("The state of the Record in terms of persistence.");
 
                     b.Property<int>("ReferenceDataType")
                         .HasColumnType("int")
-                        .HasColumnOrder(20)
+                        .HasColumnOrder(19)
                         .HasComment("Gets or sets the reference data classification.");
 
                     b.Property<string>("StateChangedByPrincipalId")
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(32)
+                        .HasColumnOrder(31)
                         .HasComment("Gets or sets the principal id who changed the state (nullable).");
 
                     b.Property<DateTimeOffset?>("StateChangedOnDateTimeUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(31)
+                        .HasColumnOrder(30)
                         .HasComment("Gets or sets the date when record state changed (nullable for soft delete).");
 
                     b.Property<DateTime>("SysEndTime")
@@ -3047,7 +3026,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion")
-                        .HasColumnOrder(25)
+                        .HasColumnOrder(24)
                         .HasComment("Gets or sets the datastore concurrency check timestamp.");
 
                     b.Property<string>("Title")
@@ -3060,7 +3039,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<DateTimeOffset?>("ToUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(23)
+                        .HasColumnOrder(22)
                         .HasComment("Gets or sets the end datetime.");
 
                     b.Property<string>("Value")
@@ -3068,7 +3047,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(256)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(21)
+                        .HasColumnOrder(20)
                         .HasComment("Stores the Value value for the Influence Type Reference Data record.");
 
                     b.HasKey("Id");
@@ -3127,14 +3106,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000000"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Influence type has not been set.",
                             DisplayOrderHint = 0,
                             Enabled = true,
                             EnumValue = 0,
                             Key = "Undefined",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3145,14 +3124,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Influence type is not applicable in this context.",
                             DisplayOrderHint = 1,
                             Enabled = true,
                             EnumValue = 1,
                             Key = "NotApplicable",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3163,14 +3142,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000002"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Influence type was not specified.",
                             DisplayOrderHint = 2,
                             Enabled = true,
                             EnumValue = 2,
                             Key = "Unspecified",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3181,14 +3160,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000003"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Influence type is not known.",
                             DisplayOrderHint = 3,
                             Enabled = true,
                             EnumValue = 3,
                             Key = "Unknown",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3199,14 +3178,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000004"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Direct personal influence through mentorship, collaboration, or immediate contact.",
                             DisplayOrderHint = 4,
                             Enabled = true,
                             EnumValue = 4,
                             Key = "Direct",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3217,14 +3196,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000005"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Indirect influence through works, writings, or cultural legacy rather than personal contact.",
                             DisplayOrderHint = 5,
                             Enabled = true,
                             EnumValue = 5,
                             Key = "Indirect",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3235,14 +3214,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000006"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Influence through ideas, theories, or intellectual frameworks.",
                             DisplayOrderHint = 6,
                             Enabled = true,
                             EnumValue = 6,
                             Key = "Intellectual",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3253,14 +3232,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000007"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Influence through religious thought, mysticism, or faith traditions.",
                             DisplayOrderHint = 7,
                             Enabled = true,
                             EnumValue = 7,
                             Key = "Spiritual",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3271,14 +3250,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000008"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Influence through creative expression in visual, literary, or performing arts.",
                             DisplayOrderHint = 8,
                             Enabled = true,
                             EnumValue = 8,
                             Key = "Artistic",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3289,14 +3268,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000009"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Influence through empirical discovery, experimentation, or technological innovation.",
                             DisplayOrderHint = 9,
                             Enabled = true,
                             EnumValue = 9,
                             Key = "Scientific",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3307,14 +3286,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-00000000000a"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Influence through systems of thought, ethics, logic, or metaphysics.",
                             DisplayOrderHint = 10,
                             Enabled = true,
                             EnumValue = 10,
                             Key = "Philosophical",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3335,12 +3314,12 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(28)
+                        .HasColumnOrder(27)
                         .HasComment("Gets or sets the principal id who created the record.");
 
-                    b.Property<DateTimeOffset>("CreatedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("CreatedOnUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(27)
+                        .HasColumnOrder(26)
                         .HasComment("Gets or sets the UTC DateTime created on.");
 
                     b.Property<string>("Description")
@@ -3354,14 +3333,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasDefaultValue(0)
-                        .HasColumnOrder(19)
+                        .HasColumnOrder(18)
                         .HasComment("A Hint to the Interface (UI/API) to organise item order on initial display. Non-unique. May be overridden by MRU settings.");
 
                     b.Property<string>("DisplayStyleHint")
                         .HasMaxLength(64)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(64)")
-                        .HasColumnOrder(18)
+                        .HasColumnOrder(17)
                         .HasComment("A Hint on how to display the item. Consider using the field for a Classname that will mean something to the UX interface.");
 
                     b.Property<bool>("Enabled")
@@ -3373,20 +3352,13 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<int?>("EnumValue")
                         .HasColumnType("int")
-                        .HasColumnOrder(24)
+                        .HasColumnOrder(23)
                         .HasComment("The integer value from the enum. For system-seeded records, this matches the enum value exactly.");
 
                     b.Property<DateTimeOffset?>("FromUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(22)
+                        .HasColumnOrder(21)
                         .HasComment("Gets or sets the start datetime.");
-
-                    b.Property<string>("ImageDescription")
-                        .HasMaxLength(256)
-                        .IsUnicode(true)
-                        .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(16)
-                        .HasComment("Accessible description of the associated image (rendered as the HTML alt attribute or equivalent ARIA label by the UI layer).");
 
                     b.Property<Guid?>("ImageId")
                         .HasColumnType("uniqueidentifier")
@@ -3405,17 +3377,17 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(30)
+                        .HasColumnOrder(29)
                         .HasComment("Gets or sets the principal id who last modified the record.");
 
-                    b.Property<DateTimeOffset>("LastModifiedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("LastModifiedOnUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(29)
+                        .HasColumnOrder(28)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
 
                     b.Property<Guid?>("MediaContentFK")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(17)
+                        .HasColumnOrder(16)
                         .HasComment("FK to MediaContent when MediaType is Media. Null otherwise.");
 
                     b.Property<Guid?>("MediaFK")
@@ -3438,24 +3410,24 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<int>("RecordState")
                         .HasColumnType("int")
-                        .HasColumnOrder(26)
+                        .HasColumnOrder(25)
                         .HasComment("The state of the Record in terms of persistence.");
 
                     b.Property<int>("ReferenceDataType")
                         .HasColumnType("int")
-                        .HasColumnOrder(20)
+                        .HasColumnOrder(19)
                         .HasComment("Gets or sets the reference data classification.");
 
                     b.Property<string>("StateChangedByPrincipalId")
                         .HasMaxLength(36)
                         .IsUnicode(false)
                         .HasColumnType("varchar(36)")
-                        .HasColumnOrder(32)
+                        .HasColumnOrder(31)
                         .HasComment("Gets or sets the principal id who changed the state (nullable).");
 
                     b.Property<DateTimeOffset?>("StateChangedOnDateTimeUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(31)
+                        .HasColumnOrder(30)
                         .HasComment("Gets or sets the date when record state changed (nullable for soft delete).");
 
                     b.Property<DateTime>("SysEndTime")
@@ -3475,7 +3447,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion")
-                        .HasColumnOrder(25)
+                        .HasColumnOrder(24)
                         .HasComment("Gets or sets the datastore concurrency check timestamp.");
 
                     b.Property<string>("Title")
@@ -3488,7 +3460,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
 
                     b.Property<DateTimeOffset?>("ToUtc")
                         .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(23)
+                        .HasColumnOrder(22)
                         .HasComment("Gets or sets the end datetime.");
 
                     b.Property<string>("Value")
@@ -3496,7 +3468,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasMaxLength(256)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(21)
+                        .HasColumnOrder(20)
                         .HasComment("Stores the Value value for the Profile Type Reference Data record.");
 
                     b.HasKey("Id");
@@ -3555,14 +3527,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000000"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Profile type has not been set.",
                             DisplayOrderHint = 0,
                             Enabled = true,
                             EnumValue = 0,
                             Key = "Undefined",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3573,14 +3545,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Profile type is not applicable in this context.",
                             DisplayOrderHint = 1,
                             Enabled = true,
                             EnumValue = 1,
                             Key = "NotApplicable",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3591,14 +3563,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000002"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Profile type was not specified.",
                             DisplayOrderHint = 2,
                             Enabled = true,
                             EnumValue = 2,
                             Key = "Unspecified",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3609,14 +3581,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000003"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Profile type is not known.",
                             DisplayOrderHint = 3,
                             Enabled = true,
                             EnumValue = 3,
                             Key = "Unknown",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3627,14 +3599,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000004"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "One who expands the boundaries of knowledge through exploration and inquiry.",
                             DisplayOrderHint = 4,
                             Enabled = true,
                             EnumValue = 4,
                             Key = "Discoverer",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3645,14 +3617,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000005"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "One who produces enduring works of art, literature, music, or architecture.",
                             DisplayOrderHint = 5,
                             Enabled = true,
                             EnumValue = 5,
                             Key = "Creator",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3663,14 +3635,14 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000006"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "One who shapes civilisation through faith, philosophy, or ideological vision.",
                             DisplayOrderHint = 6,
                             Enabled = true,
                             EnumValue = 6,
                             Key = "Believer",
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             MediaType = 0,
                             RecordState = 4,
                             ReferenceDataType = 4,
@@ -3694,7 +3666,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnOrder(4)
                         .HasComment("Gets or sets the principal id who created the record.");
 
-                    b.Property<DateTimeOffset>("CreatedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("CreatedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasColumnOrder(3)
                         .HasComment("Gets or sets the UTC DateTime created on.");
@@ -3724,7 +3696,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnOrder(6)
                         .HasComment("Gets or sets the principal id who last modified the record.");
 
-                    b.Property<DateTimeOffset>("LastModifiedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("LastModifiedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasColumnOrder(5)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
@@ -3826,12 +3798,12 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000003-0003-0003-0003-000000000001"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Italian Dominican friar and theologian who synthesised Aristotelian philosophy with Christian doctrine in the Summa Theologica.",
                             EraFrom = 1225,
                             EraTo = 1274,
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Italian",
                             PersonId = new Guid("20000003-0003-0003-0003-000000000001"),
                             RecordState = 4,
@@ -3842,12 +3814,12 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000003-0003-0003-0003-000000000002"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "German theologian and reformer whose 95 Theses ignited the Protestant Reformation and reshaped Western Christianity.",
                             EraFrom = 1483,
                             EraTo = 1546,
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "German",
                             PersonId = new Guid("20000003-0003-0003-0003-000000000002"),
                             RecordState = 4,
@@ -3858,12 +3830,12 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000003-0003-0003-0003-000000000003"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Chinese philosopher whose teachings on ethics, family loyalty, and governance became the foundation of East Asian moral and political thought.",
                             EraFrom = -551,
                             EraTo = -479,
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Chinese",
                             PersonId = new Guid("20000003-0003-0003-0003-000000000003"),
                             RecordState = 4,
@@ -3874,12 +3846,12 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000003-0003-0003-0003-000000000004"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Indian spiritual teacher whose Four Noble Truths and Eightfold Path founded Buddhism, one of the world's major wisdom traditions.",
                             EraFrom = -563,
                             EraTo = -483,
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Indian",
                             PersonId = new Guid("20000003-0003-0003-0003-000000000004"),
                             RecordState = 4,
@@ -3890,12 +3862,12 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000003-0003-0003-0003-000000000005"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Medieval Sephardic Jewish philosopher and Torah scholar whose Guide for the Perplexed harmonised Aristotelian philosophy with Jewish theology.",
                             EraFrom = 1138,
                             EraTo = 1204,
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Andalusian",
                             PersonId = new Guid("20000003-0003-0003-0003-000000000005"),
                             RecordState = 4,
@@ -3906,12 +3878,12 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000003-0003-0003-0003-000000000006"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Greek philosopher whose ethical and metaphysical writings shaped Western philosophy, Christian scholasticism, and Islamic thought for two millennia.",
                             EraFrom = -384,
                             EraTo = -322,
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Greek",
                             PersonId = new Guid("20000001-0001-0001-0001-000000000007"),
                             RecordState = 4,
@@ -3922,12 +3894,12 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         {
                             Id = new Guid("10000003-0003-0003-0003-000000000007"),
                             CreatedByPrincipalId = "SYSTEM",
-                            CreatedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Athenian philosopher and founder of the Academy whose theory of Forms and political philosophy profoundly influenced Western thought.",
                             EraFrom = -428,
                             EraTo = -348,
                             LastModifiedByPrincipalId = "SYSTEM",
-                            LastModifiedOnDateTimeUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            LastModifiedOnUtc = new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Nationality = "Greek",
                             PersonId = new Guid("20000003-0003-0003-0003-000000000007"),
                             RecordState = 4,
@@ -3967,7 +3939,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasComment("Gets or sets the principal id who created the record.");
 
-                    b.Property<DateTimeOffset>("CreatedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("CreatedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasComment("Gets or sets the UTC DateTime created on. Changed To DateTimeOffset.");
 
@@ -3990,7 +3962,7 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasComment("Gets or sets the principal id who last modified the record.");
 
-                    b.Property<DateTimeOffset>("LastModifiedOnDateTimeUtc")
+                    b.Property<DateTimeOffset>("LastModifiedOnUtc")
                         .HasColumnType("datetimeoffset")
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
 

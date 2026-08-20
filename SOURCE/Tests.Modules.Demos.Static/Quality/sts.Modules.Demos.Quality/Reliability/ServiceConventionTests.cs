@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using Tests.Modules.Demos.Quality.Helpers;
 
 namespace Tests.Modules.Demos.Quality.Reliability
