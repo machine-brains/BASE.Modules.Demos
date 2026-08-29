@@ -7,7 +7,7 @@ namespace App.Modules.Demos.Application.Domains.Contributions.Permissions
     /// <summary>
     /// Permission constants for the Contributions domain of the Demos module.
     /// </summary>
-    public class ContributionsPermissionsConfigurationObject : IPermissionsGroup
+    public class ContributionsPermissionsPermissionsGroup : IPermissionsGroup
     {
         private const string Grouping = ModuleConstants.Key + ";Contributions";
 

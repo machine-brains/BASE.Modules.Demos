@@ -7,7 +7,7 @@ namespace App.Modules.Demos.Application.Domains.Creations.Permissions
 /// <summary>
 /// Permission constants for the Creators domain of the Demos module.
 /// </summary>
-public class CreationsPermissionsConfigurationObject : IPermissionsGroup
+public class CreationsPermissionsPermissionsGroup : IPermissionsGroup
 {
 private const string Grouping = ModuleConstants.Key + ";Creators";
 

@@ -7,7 +7,7 @@ namespace App.Modules.Demos.Application.Domains.Discoveries.Permissions
 /// <summary>
 /// Permission constants for the Discoverers domain of the Demos module.
 /// </summary>
-public class DiscoveriesPermissionsConfigurationObject : IPermissionsGroup
+public class DiscoveriesPermissionsGroup : IPermissionsGroup
 {
 private const string Grouping = ModuleConstants.Key + ";Discoverers";
 

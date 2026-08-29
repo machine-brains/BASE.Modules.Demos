@@ -7,7 +7,7 @@ namespace App.Modules.Demos.Application.Domains.Relationships.Permissions
 /// <summary>
 /// Permission constants for the Influences domain of the Demos module.
 /// </summary>
-public class InfluencesPermissionsConfigurationObject : IPermissionsGroup
+public class InfluencesPermissionsGroupObject : IPermissionsGroup
 {
 private const string Grouping = ModuleConstants.Key + ";Influences";
 

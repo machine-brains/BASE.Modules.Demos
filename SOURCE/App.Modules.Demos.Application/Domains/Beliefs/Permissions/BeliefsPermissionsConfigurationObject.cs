@@ -9,7 +9,7 @@ namespace App.Modules.Demos.Application.Domains.Beliefs.Permissions
     /// Each constant is decorated with <see cref="PermissionDescriptionAttribute"/>
     /// for discovery and seeding at startup.
     /// </summary>
-    public class BeliefsPermissions : IPermissionsGroup
+    public class BeliefsPermissionsGroup : IPermissionsGroup
     {
         private const string Grouping = ModuleConstants.Name + ";Believers";
 

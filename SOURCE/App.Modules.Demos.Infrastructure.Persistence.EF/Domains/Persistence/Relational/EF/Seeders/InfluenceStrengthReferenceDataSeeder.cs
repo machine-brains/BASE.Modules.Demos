@@ -42,7 +42,7 @@ namespace App.Modules.Demos.Infrastructure.Domains.Persistence.Relational.EF.See
                 Title = title,
                 Description = description,
                 Enabled = true,
-                ReferenceDataType = ReferenceDataType.System,
+                RecordMutability = RecordMutabilityType.System,
                 EnumValue = (int)enumValue,
                 DisplayOrderHint = displayOrder
             };

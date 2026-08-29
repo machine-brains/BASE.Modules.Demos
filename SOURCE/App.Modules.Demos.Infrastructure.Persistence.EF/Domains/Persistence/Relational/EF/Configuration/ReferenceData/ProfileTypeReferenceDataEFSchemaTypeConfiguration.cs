@@ -30,7 +30,7 @@ namespace App.Modules.Demos.Infrastructure.Domains.Persistence.Relational.EF.Con
                 .HasDatabaseName($"IX_{DbSchemaTableNameConstants.ProfileTypeReferenceData}_EnumValue")
                 .HasFilter("[EnumValue] IS NOT NULL")
                 .IsUnique();
-            builder.DefineIHasTimestampRecordStateAndAuditability(ref order);
+            builder.DefineIHasTimestampMutabilityRecordStateAndAuditability(ref order);
         }
     }
 }
