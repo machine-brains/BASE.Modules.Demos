@@ -4,6 +4,8 @@
     <Title>$(AssemblyName)</Title>
     <PackageReadmeFile>_Packaging/readme.nuget.md</PackageReadmeFile>
     <NoWarn>$(NoWarn);CA1716;IDE0290;IDE0060;IDE0046;IDE0066;IDE0063;IDE0057;IDE0028;IDE0071;IDE0075;IDE0029;IDE0008</NoWarn>
+      <RootNamespace>App.Modules.Demos.Application</RootNamespace>
+
   </PropertyGroup>
 
   <ItemGroup>

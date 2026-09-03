@@ -3,7 +3,7 @@ using App.Modules.Demos.Infrastructure.Constants;
 using App.Modules.Sys.Infrastructure.Domains.Persistence.Relational.EF.Schema;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace App.Modules.Demos.Infrastructure.Domains.Persistence.Relational.EF.Configuration.Relationships
+namespace App.Modules.Demos.Infrastructure.Domains.DbSchemas.Relationships
 {
     /// <summary>
     /// EF Core schema configuration for <see cref="Influence"/>.

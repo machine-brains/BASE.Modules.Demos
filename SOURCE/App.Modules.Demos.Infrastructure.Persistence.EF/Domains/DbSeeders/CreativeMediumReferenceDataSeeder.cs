@@ -5,7 +5,7 @@ using App.Modules.Sys.Shared.Domains.Indexes;
 using App.Modules.Sys.Shared.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 
-namespace App.Modules.Demos.Infrastructure.Domains.Persistence.Relational.EF.Seeders
+namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
 {
     /// <summary>
     /// Seeds the <see cref="CreativeMediumReferenceData"/> table from the

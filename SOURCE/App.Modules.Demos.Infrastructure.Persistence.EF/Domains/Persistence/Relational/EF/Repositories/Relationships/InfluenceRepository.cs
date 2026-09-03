@@ -3,7 +3,7 @@ using App.Modules.Demos.Domain.Domains.Relationships.Repositories;
 using App.Modules.Sys.Infrastructure.Domains.Persistence.Relational.EF.Repositories.Implementations.Base;
 using App.Modules.Sys.Shared.Domains.Diagnostics;
 
-namespace App.Modules.Demos.Infrastructure.Domains.Persistence.Relational.EF.Repositories.Relationships
+namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.Repositories.Relationships
 {
     /// <summary>
     /// EF Core CRUST repository for <see cref="Influence"/>.

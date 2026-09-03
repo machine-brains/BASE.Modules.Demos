@@ -4,7 +4,7 @@ using App.Modules.Sys.Infrastructure.Domains.Persistence.Relational.EF.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace App.Modules.Demos.Infrastructure.Domains.Persistence.Relational.EF.Configuration.ReferenceData
+namespace App.Modules.Demos.Infrastructure.Domains.DbSchemas.ReferenceData
 {
     /// <summary>
     /// EF Core schema configuration for <see cref="InfluenceTypeReferenceData"/>.

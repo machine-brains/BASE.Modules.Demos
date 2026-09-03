@@ -7,38 +7,38 @@ using Microsoft.AspNetCore.OData.Query;
 
 namespace App.Modules.Demos.Interfaces.API.REST.Domains.V1.Profiles
 {
-/// <summary>
-/// REST API controller for BelieverProfile operations.
-/// Provides CRUST endpoints with OData queryability.
-/// </summary>
-[Route(ApiRoutes.Rest.V1.BelieverProfiles.Base)]
-public class BelieverProfilesController
-: SimpleCrudStateControllerBase<BelieverProfileReadDto>
-{
-/// <summary>
-/// Initializes a new instance of the
-/// <see cref="BelieverProfilesController"/> class.
-/// </summary>
-/// <param name="service">The believer profile application service.</param>
-public BelieverProfilesController(
-IBelieverProfileApplicationService service)
-: base(service)
-{
-}
+    /// <summary>
+    /// REST API controller for BelieverProfile operations.
+    /// Provides CRUST endpoints with OData queryability.
+    /// </summary>
+    [Route(ApiRoutes.Rest.V1.BelieverProfiles.Base)]
+    public class BelieverProfilesController
+    : SimpleCrudStateControllerBase<BelieverProfileReadDto>
+    {
+        /// <summary>
+        /// Initializes a new instance of the
+        /// <see cref="BelieverProfilesController"/> class.
+        /// </summary>
+        /// <param name="service">The believer profile application service.</param>
+        public BelieverProfilesController(
+        IBelieverProfileApplicationService service)
+        : base(service)
+        {
+        }
 
-/// <summary>
-/// Gets believer profiles for a specific person.
-/// Supports OData query options: \\\, \\\, \\\, \\\, \\\.
-/// </summary>
-/// <param name="personId">The unique identifier of the person.</param>
-/// <returns>Queryable of <see cref="BelieverProfileReadDto"/>.</returns>
-/// <response code="200">Returns the matching believer profiles.</response>
-[HttpGet("by-person/{personId:guid}")]
-[EnableQuery]
-[ProducesResponseType(200)]
-public IQueryable<BelieverProfileReadDto> GetByPerson(Guid personId)
-{
-return ((IBelieverProfileApplicationService)this.Service).QueryByPerson(personId);
-}
-}
+        /// <summary>
+        /// Gets believer profiles for a specific person.
+        /// Supports OData query options: \\\, \\\, \\\, \\\, \\\.
+        /// </summary>
+        /// <param name="personId">The unique identifier of the person.</param>
+        /// <returns>Queryable of <see cref="BelieverProfileReadDto"/>.</returns>
+        /// <response code="200">Returns the matching believer profiles.</response>
+        [HttpGet("by-person/{personId:guid}")]
+        [EnableQuery]
+        [ProducesResponseType(200)]
+        public IQueryable<BelieverProfileReadDto> GetByPerson(Guid personId)
+        {
+            return ((IBelieverProfileApplicationService)this.Service).QueryByPerson(personId);
+        }
+    }
 }

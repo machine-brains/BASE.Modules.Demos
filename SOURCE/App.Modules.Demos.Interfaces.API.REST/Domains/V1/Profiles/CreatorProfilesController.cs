@@ -7,38 +7,38 @@ using Microsoft.AspNetCore.OData.Query;
 
 namespace App.Modules.Demos.Interfaces.API.REST.Domains.V1.Profiles
 {
-/// <summary>
-/// REST API controller for CreatorProfile operations.
-/// Provides CRUST endpoints with OData queryability.
-/// </summary>
-[Route(ApiRoutes.Rest.V1.CreatorProfiles.Base)]
-public class CreatorProfilesController
-: SimpleCrudStateControllerBase<CreatorProfileReadDto>
-{
-/// <summary>
-/// Initializes a new instance of the
-/// <see cref="CreatorProfilesController"/> class.
-/// </summary>
-/// <param name="service">The creator profile application service.</param>
-public CreatorProfilesController(
-ICreatorProfileApplicationService service)
-: base(service)
-{
-}
+    /// <summary>
+    /// REST API controller for CreatorProfile operations.
+    /// Provides CRUST endpoints with OData queryability.
+    /// </summary>
+    [Route(ApiRoutes.Rest.V1.CreatorProfiles.Base)]
+    public class CreatorProfilesController
+    : SimpleCrudStateControllerBase<CreatorProfileReadDto>
+    {
+        /// <summary>
+        /// Initializes a new instance of the
+        /// <see cref="CreatorProfilesController"/> class.
+        /// </summary>
+        /// <param name="service">The creator profile application service.</param>
+        public CreatorProfilesController(
+        ICreatorProfileApplicationService service)
+        : base(service)
+        {
+        }
 
-/// <summary>
-/// Gets creator profiles for a specific person.
-/// Supports OData query options: \\\, \\\, \\\, \\\, \\\.
-/// </summary>
-/// <param name="personId">The unique identifier of the person.</param>
-/// <returns>Queryable of <see cref="CreatorProfileReadDto"/>.</returns>
-/// <response code="200">Returns the matching creator profiles.</response>
-[HttpGet("by-person/{personId:guid}")]
-[EnableQuery]
-[ProducesResponseType(200)]
-public IQueryable<CreatorProfileReadDto> GetByPerson(Guid personId)
-{
-return ((ICreatorProfileApplicationService)this.Service).QueryByPerson(personId);
-}
-}
+        /// <summary>
+        /// Gets creator profiles for a specific person.
+        /// Supports OData query options: \\\, \\\, \\\, \\\, \\\.
+        /// </summary>
+        /// <param name="personId">The unique identifier of the person.</param>
+        /// <returns>Queryable of <see cref="CreatorProfileReadDto"/>.</returns>
+        /// <response code="200">Returns the matching creator profiles.</response>
+        [HttpGet("by-person/{personId:guid}")]
+        [EnableQuery]
+        [ProducesResponseType(200)]
+        public IQueryable<CreatorProfileReadDto> GetByPerson(Guid personId)
+        {
+            return ((ICreatorProfileApplicationService)this.Service).QueryByPerson(personId);
+        }
+    }
 }

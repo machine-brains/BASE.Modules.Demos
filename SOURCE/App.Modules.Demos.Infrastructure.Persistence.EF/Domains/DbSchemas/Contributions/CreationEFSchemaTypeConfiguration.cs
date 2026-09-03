@@ -4,7 +4,7 @@ using App.Modules.Sys.Infrastructure.Domains.Persistence.Relational.EF.Schema;
 using App.Modules.Sys.Shared.Domains.Persistence.Relational.Constants.Constants;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace App.Modules.Demos.Infrastructure.Domains.Persistence.Relational.EF.Configuration.Contributions
+namespace App.Modules.Demos.Infrastructure.Domains.DbSchemas.Contributions
 {
     /// <summary>
     /// EF Core schema configuration for <see cref="Creation"/>.

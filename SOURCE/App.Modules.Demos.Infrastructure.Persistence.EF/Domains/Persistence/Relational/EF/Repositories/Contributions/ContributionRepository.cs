@@ -3,7 +3,7 @@ using App.Modules.Demos.Domain.Domains.Contributions.Structures.AtRest.Entities;
 using App.Modules.Sys.Infrastructure.Domains.Persistence.Relational.EF.Repositories.Implementations.Base;
 using App.Modules.Sys.Shared.Domains.Diagnostics;
 
-namespace App.Modules.Demos.Infrastructure.Domains.Persistence.Relational.EF.Repositories.Contributions
+namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.Repositories.Contributions
 {
     /// <summary>
     /// EF Core CRUST repository for <see cref="Contribution"/>.
