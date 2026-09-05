@@ -45,7 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\App.Modules.Demos.Interfaces.API.REST\App.Modules.Demos.AppInterfaces.API.REST.csproj" />
+    <ProjectReference Include="..\App.Modules.Demos.AppInterfaces.API.REST\App.Modules.Demos.AppInterfaces.API.REST.csproj" />
     <ProjectReference Include="..\App.Modules.Demos.Application\App.Modules.Demos.Application.csproj" />
     <ProjectReference Include="..\App.Modules.Demos.Shared\App.Modules.Demos.Shared.csproj" />
   </ItemGroup>

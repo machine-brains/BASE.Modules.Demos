@@ -33,7 +33,7 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.V1.Profiles
         /// <param name="personId">The unique identifier of the person.</param>
         /// <returns>Queryable of <see cref="BelieverProfileReadDto"/>.</returns>
         /// <response code="200">Returns the matching believer profiles.</response>
-        [HttpGet("by-person/{personId:guid}")]
+        [HttpGet(ApiRoutes.Rest.V1.BelieverProfiles.ByPerson)]
         [EnableQuery]
         [ProducesResponseType(200)]
         public IQueryable<BelieverProfileReadDto> GetByPerson(Guid personId)

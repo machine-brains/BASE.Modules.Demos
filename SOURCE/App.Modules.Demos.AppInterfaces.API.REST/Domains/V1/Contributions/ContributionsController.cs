@@ -33,7 +33,7 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.V1.Contributions
         /// <param name="profileId">The unique identifier of the believer profile.</param>
         /// <returns>Queryable of <see cref="ContributionReadDto"/>.</returns>
         /// <response code="200">Returns the matching contributions.</response>
-        [HttpGet("by-profile/{profileId:guid}")]
+        [HttpGet(ApiRoutes.Rest.V1.Contributions.ByProfile)]
         [EnableQuery]
         [ProducesResponseType(200)]
         public IQueryable<ContributionReadDto> GetByProfile(Guid profileId)

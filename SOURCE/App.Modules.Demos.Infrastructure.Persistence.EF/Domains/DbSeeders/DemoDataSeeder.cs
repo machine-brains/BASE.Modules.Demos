@@ -1,5 +1,4 @@
 using App.Modules.Sys.Infrastructure.Domains.Persistence.Relational.EF.Schema.Implementations;
-using App.Modules.Sys.Shared.Domains.Indexes;
 using App.Modules.Demos.Shared.Domains.Profiles.Models;
 using Microsoft.EntityFrameworkCore;
 using App.Modules.Demos.Domain.Domains.Creations.Structures.AtRest.Models;
@@ -10,6 +9,7 @@ using App.Modules.Demos.Domain.Domains.Discoveries.Structures.AtRest.Entities;
 using App.Modules.Demos.Domain.Domains.Influences.Structures.Entities;
 using App.Modules.Demos.Domain.Domains.Influences.Structures.Enums;
 using App.Modules.Demos.Domain.Domains.Structures.ReferenceData;
+using App.Modules.Sys.Substrate.Domains.Indexes;
 
 namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
 {

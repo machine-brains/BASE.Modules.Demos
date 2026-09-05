@@ -33,7 +33,7 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.V1.Relationships
         /// <param name="profileId">The unique identifier of the influencing profile.</param>
         /// <returns>Queryable of <see cref="InfluenceReadDto"/>.</returns>
         /// <response code="200">Returns the matching influence relationships.</response>
-        [HttpGet("by-influencer/{profileId:guid}")]
+        [HttpGet(ApiRoutes.Rest.V1.Influences.ByInfluencer)]
         [EnableQuery]
         [ProducesResponseType(200)]
         public IQueryable<InfluenceReadDto> GetByInfluencer(Guid profileId)
@@ -48,7 +48,7 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.V1.Relationships
         /// <param name="profileId">The unique identifier of the influenced profile.</param>
         /// <returns>Queryable of <see cref="InfluenceReadDto"/>.</returns>
         /// <response code="200">Returns the matching influence relationships.</response>
-        [HttpGet("by-influenced/{profileId:guid}")]
+        [HttpGet(ApiRoutes.Rest.V1.Influences.ByInfluenced)]
         [EnableQuery]
         [ProducesResponseType(200)]
         public IQueryable<InfluenceReadDto> GetByInfluenced(Guid profileId)

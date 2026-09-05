@@ -1,5 +1,5 @@
 using App.Modules.Demos.Domain.Domains.Contributions.Structures.AtRest.Entities;
-using App.Modules.Sys.Shared.Repositories;
+using App.Modules.Sys.Shared.Domains.Persistence.Repositories;
 
 namespace App.Modules.Demos.Domain.Domains.Contributions.Repositories
 {

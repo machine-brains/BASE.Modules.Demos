@@ -1,5 +1,5 @@
 using App.Modules.Demos.Domain.Domains.Influences.Structures.Enums;
-using App.Modules.Sys.Shared.Models.Base;
+using App.Modules.Sys.Shared.Domains.Persistence.Models.Implementations.Base;
 
 namespace App.Modules.Demos.Domain.Domains.Influences.Structures.Entities
 {

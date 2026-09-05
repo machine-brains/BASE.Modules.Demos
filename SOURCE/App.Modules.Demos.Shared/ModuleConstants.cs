@@ -1,4 +1,4 @@
-using App.Modules.Sys.Infrastructure.Domains.Constants;
+using App.Modules.Sys.Substrate.Domains.Constants;
 
 namespace App.Modules.Demos
 {

@@ -1,5 +1,5 @@
 using App.Modules.Demos.Domain.Domains.Creations.Structures.AtRest.Models;
-using App.Modules.Sys.Shared.Repositories;
+using App.Modules.Sys.Shared.Domains.Persistence.Repositories;
 
 namespace App.Modules.Demos.Domain.Domains.Creators.Repositories
 {
@@ -10,5 +10,3 @@ namespace App.Modules.Demos.Domain.Domains.Creators.Repositories
     {
     }
 }
-
-

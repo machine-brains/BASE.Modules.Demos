@@ -1,5 +1,8 @@
 using App.Modules.Sys.AccessControl.Constants;
-using App.Modules.Sys.Substrate.Infrastructure.Constants;
+using App.Modules.Sys.Shared.Domains.AccessControl.Constants;
+using App.Modules.Sys.Shared.Domains.Configuration.Constants;
+
+using App.Modules.Sys.Shared.Domains.Presentation.Constants;
 
 namespace App.Modules.Demos.Interfaces.API.REST.Domains.Constants
 {
@@ -16,7 +19,7 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.Constants
     {
         private const string ModuleId = App.Modules.Demos.ModuleConstants.Key;
 
-        private const string RestModuleBase = ApiConstants.Root + "/" + ApiConstants.RestType + "/" + ModuleId;
+        private const string RestModuleBase = ApiConstants.RestPrefix + ModuleId;
 
         /// <summary>
         /// REST API routes for the Demos module.
@@ -28,7 +31,7 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.Constants
             /// </summary>
             public static class V1
             {
-                internal const string VersionBase = RestModuleBase + "/" + ApiConstants.Versions.V1;
+                internal const string VersionBase = RestModuleBase + ApiConstants.RouteSeparator + ApiConstants.Versions.V1;
 
                 /// <summary>
                 /// Standard controller route template for the Demos module.
@@ -45,6 +48,11 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.Constants
                     /// Base path: <c>api/rest/demos/v1/discoverer-profiles</c>.
                     /// </summary>
                     public const string Base = VersionBase + "/discoverer-profiles";
+
+                    /// <summary>
+                    /// Gets the relative route for profiles belonging to a person.
+                    /// </summary>
+                    public const string ByPerson = "by-person/{personId:guid}";
                 }
 
                 /// <summary>
@@ -56,6 +64,11 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.Constants
                     /// Base path: <c>api/rest/demos/v1/creator-profiles</c>.
                     /// </summary>
                     public const string Base = VersionBase + "/creator-profiles";
+
+                    /// <summary>
+                    /// Gets the relative route for profiles belonging to a person.
+                    /// </summary>
+                    public const string ByPerson = "by-person/{personId:guid}";
                 }
 
                 /// <summary>
@@ -67,6 +80,11 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.Constants
                     /// Base path: <c>api/rest/demos/v1/believer-profiles</c>.
                     /// </summary>
                     public const string Base = VersionBase + "/believer-profiles";
+
+                    /// <summary>
+                    /// Gets the relative route for profiles belonging to a person.
+                    /// </summary>
+                    public const string ByPerson = "by-person/{personId:guid}";
                 }
 
                 /// <summary>
@@ -78,6 +96,11 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.Constants
                     /// Base path: <c>api/rest/demos/v1/discoveries</c>.
                     /// </summary>
                     public const string Base = VersionBase + "/discoveries";
+
+                    /// <summary>
+                    /// Gets the relative route for discoveries belonging to a profile.
+                    /// </summary>
+                    public const string ByProfile = "by-profile/{profileId:guid}";
                 }
 
                 /// <summary>
@@ -89,6 +112,11 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.Constants
                     /// Base path: <c>api/rest/demos/v1/creations</c>.
                     /// </summary>
                     public const string Base = VersionBase + "/creations";
+
+                    /// <summary>
+                    /// Gets the relative route for creations belonging to a profile.
+                    /// </summary>
+                    public const string ByProfile = "by-profile/{profileId:guid}";
                 }
 
                 /// <summary>
@@ -100,6 +128,11 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.Constants
                     /// Base path: <c>api/rest/demos/v1/contributions</c>.
                     /// </summary>
                     public const string Base = VersionBase + "/contributions";
+
+                    /// <summary>
+                    /// Gets the relative route for contributions belonging to a profile.
+                    /// </summary>
+                    public const string ByProfile = "by-profile/{profileId:guid}";
                 }
 
                 /// <summary>
@@ -111,6 +144,16 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.Constants
                     /// Base path: <c>api/rest/demos/v1/influences</c>.
                     /// </summary>
                     public const string Base = VersionBase + "/influences";
+
+                    /// <summary>
+                    /// Gets the relative route for relationships by influencing profile.
+                    /// </summary>
+                    public const string ByInfluencer = "by-influencer/{profileId:guid}";
+
+                    /// <summary>
+                    /// Gets the relative route for relationships by influenced profile.
+                    /// </summary>
+                    public const string ByInfluenced = "by-influenced/{profileId:guid}";
                 }
             }
         }

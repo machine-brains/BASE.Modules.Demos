@@ -1,8 +1,8 @@
 using App.Modules.Demos.Domain.Domains.Creations.Structures.AtRest.Enums;
 using App.Modules.Demos.Domain.Domains.Creations.Structures.AtRest.Models;
 using App.Modules.Sys.Infrastructure.Domains.Persistence.Relational.EF.Schema.Implementations;
-using App.Modules.Sys.Shared.Domains.Indexes;
-using App.Modules.Sys.Shared.Models.Enums;
+using App.Modules.Sys.Substrate.Domains.Indexes;
+using App.Modules.Sys.Substrate.Domains.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders

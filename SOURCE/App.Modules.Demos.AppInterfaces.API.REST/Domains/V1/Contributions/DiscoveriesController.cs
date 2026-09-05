@@ -33,7 +33,7 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.V1.Contributions
         /// <param name="profileId">The unique identifier of the discoverer profile.</param>
         /// <returns>Queryable of <see cref="DiscoveryReadDto"/>.</returns>
         /// <response code="200">Returns the matching discoveries.</response>
-        [HttpGet("by-profile/{profileId:guid}")]
+        [HttpGet(ApiRoutes.Rest.V1.Discoveries.ByProfile)]
         [EnableQuery]
         [ProducesResponseType(200)]
         public IQueryable<DiscoveryReadDto> GetByProfile(Guid profileId)

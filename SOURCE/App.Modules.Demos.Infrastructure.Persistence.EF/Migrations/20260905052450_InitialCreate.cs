@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
+namespace App.Modules.Demos.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -148,9 +148,9 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                     Enabled = table.Column<bool>(type: "bit", nullable: false, defaultValue: true, comment: "Get/Set whether the entity is enabled or not."),
                     Title = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false, comment: "The (display) title."),
                     Description = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: true, comment: "The textual Description."),
-                    MediaType = table.Column<int>(type: "int", nullable: false, defaultValue: 0, comment: "Discriminator that declares which media source field is active (None, Font, Media)."),
-                    MediaFontKey = table.Column<string>(type: "varchar(200)", unicode: false, maxLength: 200, nullable: true, comment: "Font/icon key media source. Should be set only when MediaType is Font."),
-                    MediaContentFK = table.Column<Guid>(type: "uniqueidentifier", nullable: true, comment: "FK to MediaContent when MediaType is Media. Null otherwise."),
+                    MediaReferenceKind = table.Column<int>(type: "int", nullable: false, defaultValue: 0, comment: "Discriminator that declares which media source field is active (None, Font, Media)."),
+                    MediaFontKey = table.Column<string>(type: "varchar(200)", unicode: false, maxLength: 200, nullable: true, comment: "Font/icon key media source. Should be set only when MediaReferenceKind is Font."),
+                    MediaContentFK = table.Column<Guid>(type: "uniqueidentifier", nullable: true, comment: "FK to MediaContent when MediaReferenceKind is Media. Null otherwise."),
                     DisplayStyleHint = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true, comment: "A Hint on how to display the item. Consider using the field for a Classname that will mean something to the UX interface."),
                     DisplayOrderHint = table.Column<int>(type: "int", nullable: false, defaultValue: 0, comment: "A Hint to the Interface (UI/API) to organise item order on initial display. Non-unique. May be overridden by MRU settings."),
                     Value = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false, comment: "Stores the Value value for the Creative Medium Reference Data record."),
@@ -169,19 +169,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                     SysEndTime = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Stores the Sys End Time value for the Creative Medium Reference Data record.")
                         .Annotation("SqlServer:TemporalIsPeriodEndColumn", true),
                     SysStartTime = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Stores the Sys Start Time value for the Creative Medium Reference Data record.")
-                        .Annotation("SqlServer:TemporalIsPeriodStartColumn", true),
-                    MediaFK = table.Column<Guid>(type: "uniqueidentifier", nullable: true, comment: "Foreign key to the Media record."),
-                    ImageId = table.Column<Guid>(type: "uniqueidentifier", nullable: true, comment: "Opaque identifier for the related Image aggregate.")
+                        .Annotation("SqlServer:TemporalIsPeriodStartColumn", true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_creative_medium", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_creative_medium_MediaContents_ImageId",
-                        column: x => x.ImageId,
-                        principalSchema: "sys_core",
-                        principalTable: "MediaContents",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_creative_medium_MediaContents_MediaContentFK",
                         column: x => x.MediaContentFK,
@@ -360,9 +352,9 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                     Enabled = table.Column<bool>(type: "bit", nullable: false, defaultValue: true, comment: "Get/Set whether the entity is enabled or not."),
                     Title = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false, comment: "The (display) title."),
                     Description = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: true, comment: "The textual Description."),
-                    MediaType = table.Column<int>(type: "int", nullable: false, defaultValue: 0, comment: "Discriminator that declares which media source field is active (None, Font, Media)."),
-                    MediaFontKey = table.Column<string>(type: "varchar(200)", unicode: false, maxLength: 200, nullable: true, comment: "Font/icon key media source. Should be set only when MediaType is Font."),
-                    MediaContentFK = table.Column<Guid>(type: "uniqueidentifier", nullable: true, comment: "FK to MediaContent when MediaType is Media. Null otherwise."),
+                    MediaReferenceKind = table.Column<int>(type: "int", nullable: false, defaultValue: 0, comment: "Discriminator that declares which media source field is active (None, Font, Media)."),
+                    MediaFontKey = table.Column<string>(type: "varchar(200)", unicode: false, maxLength: 200, nullable: true, comment: "Font/icon key media source. Should be set only when MediaReferenceKind is Font."),
+                    MediaContentFK = table.Column<Guid>(type: "uniqueidentifier", nullable: true, comment: "FK to MediaContent when MediaReferenceKind is Media. Null otherwise."),
                     DisplayStyleHint = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true, comment: "A Hint on how to display the item. Consider using the field for a Classname that will mean something to the UX interface."),
                     DisplayOrderHint = table.Column<int>(type: "int", nullable: false, defaultValue: 0, comment: "A Hint to the Interface (UI/API) to organise item order on initial display. Non-unique. May be overridden by MRU settings."),
                     Value = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false, comment: "Stores the Value value for the Influence Strength Reference Data record."),
@@ -381,19 +373,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                     SysEndTime = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Stores the Sys End Time value for the Influence Strength Reference Data record.")
                         .Annotation("SqlServer:TemporalIsPeriodEndColumn", true),
                     SysStartTime = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Stores the Sys Start Time value for the Influence Strength Reference Data record.")
-                        .Annotation("SqlServer:TemporalIsPeriodStartColumn", true),
-                    MediaFK = table.Column<Guid>(type: "uniqueidentifier", nullable: true, comment: "Foreign key to the Media record."),
-                    ImageId = table.Column<Guid>(type: "uniqueidentifier", nullable: true, comment: "Opaque identifier for the related Image aggregate.")
+                        .Annotation("SqlServer:TemporalIsPeriodStartColumn", true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_influence_strength", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_influence_strength_MediaContents_ImageId",
-                        column: x => x.ImageId,
-                        principalSchema: "sys_core",
-                        principalTable: "MediaContents",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_influence_strength_MediaContents_MediaContentFK",
                         column: x => x.MediaContentFK,
@@ -419,9 +403,9 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                     Enabled = table.Column<bool>(type: "bit", nullable: false, defaultValue: true, comment: "Get/Set whether the entity is enabled or not."),
                     Title = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false, comment: "The (display) title."),
                     Description = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: true, comment: "The textual Description."),
-                    MediaType = table.Column<int>(type: "int", nullable: false, defaultValue: 0, comment: "Discriminator that declares which media source field is active (None, Font, Media)."),
-                    MediaFontKey = table.Column<string>(type: "varchar(200)", unicode: false, maxLength: 200, nullable: true, comment: "Font/icon key media source. Should be set only when MediaType is Font."),
-                    MediaContentFK = table.Column<Guid>(type: "uniqueidentifier", nullable: true, comment: "FK to MediaContent when MediaType is Media. Null otherwise."),
+                    MediaReferenceKind = table.Column<int>(type: "int", nullable: false, defaultValue: 0, comment: "Discriminator that declares which media source field is active (None, Font, Media)."),
+                    MediaFontKey = table.Column<string>(type: "varchar(200)", unicode: false, maxLength: 200, nullable: true, comment: "Font/icon key media source. Should be set only when MediaReferenceKind is Font."),
+                    MediaContentFK = table.Column<Guid>(type: "uniqueidentifier", nullable: true, comment: "FK to MediaContent when MediaReferenceKind is Media. Null otherwise."),
                     DisplayStyleHint = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true, comment: "A Hint on how to display the item. Consider using the field for a Classname that will mean something to the UX interface."),
                     DisplayOrderHint = table.Column<int>(type: "int", nullable: false, defaultValue: 0, comment: "A Hint to the Interface (UI/API) to organise item order on initial display. Non-unique. May be overridden by MRU settings."),
                     Value = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false, comment: "Stores the Value value for the Influence Type Reference Data record."),
@@ -440,19 +424,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                     SysEndTime = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Stores the Sys End Time value for the Influence Type Reference Data record.")
                         .Annotation("SqlServer:TemporalIsPeriodEndColumn", true),
                     SysStartTime = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Stores the Sys Start Time value for the Influence Type Reference Data record.")
-                        .Annotation("SqlServer:TemporalIsPeriodStartColumn", true),
-                    MediaFK = table.Column<Guid>(type: "uniqueidentifier", nullable: true, comment: "Foreign key to the Media record."),
-                    ImageId = table.Column<Guid>(type: "uniqueidentifier", nullable: true, comment: "Opaque identifier for the related Image aggregate.")
+                        .Annotation("SqlServer:TemporalIsPeriodStartColumn", true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_influence_type", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_influence_type_MediaContents_ImageId",
-                        column: x => x.ImageId,
-                        principalSchema: "sys_core",
-                        principalTable: "MediaContents",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_influence_type_MediaContents_MediaContentFK",
                         column: x => x.MediaContentFK,
@@ -478,9 +454,9 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                     Enabled = table.Column<bool>(type: "bit", nullable: false, defaultValue: true, comment: "Get/Set whether the entity is enabled or not."),
                     Title = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false, comment: "The (display) title."),
                     Description = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: true, comment: "The textual Description."),
-                    MediaType = table.Column<int>(type: "int", nullable: false, defaultValue: 0, comment: "Discriminator that declares which media source field is active (None, Font, Media)."),
-                    MediaFontKey = table.Column<string>(type: "varchar(200)", unicode: false, maxLength: 200, nullable: true, comment: "Font/icon key media source. Should be set only when MediaType is Font."),
-                    MediaContentFK = table.Column<Guid>(type: "uniqueidentifier", nullable: true, comment: "FK to MediaContent when MediaType is Media. Null otherwise."),
+                    MediaReferenceKind = table.Column<int>(type: "int", nullable: false, defaultValue: 0, comment: "Discriminator that declares which media source field is active (None, Font, Media)."),
+                    MediaFontKey = table.Column<string>(type: "varchar(200)", unicode: false, maxLength: 200, nullable: true, comment: "Font/icon key media source. Should be set only when MediaReferenceKind is Font."),
+                    MediaContentFK = table.Column<Guid>(type: "uniqueidentifier", nullable: true, comment: "FK to MediaContent when MediaReferenceKind is Media. Null otherwise."),
                     DisplayStyleHint = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true, comment: "A Hint on how to display the item. Consider using the field for a Classname that will mean something to the UX interface."),
                     DisplayOrderHint = table.Column<int>(type: "int", nullable: false, defaultValue: 0, comment: "A Hint to the Interface (UI/API) to organise item order on initial display. Non-unique. May be overridden by MRU settings."),
                     Value = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false, comment: "Stores the Value value for the Profile Type Reference Data record."),
@@ -499,19 +475,11 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                     SysEndTime = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Stores the Sys End Time value for the Profile Type Reference Data record.")
                         .Annotation("SqlServer:TemporalIsPeriodEndColumn", true),
                     SysStartTime = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Stores the Sys Start Time value for the Profile Type Reference Data record.")
-                        .Annotation("SqlServer:TemporalIsPeriodStartColumn", true),
-                    MediaFK = table.Column<Guid>(type: "uniqueidentifier", nullable: true, comment: "Foreign key to the Media record."),
-                    ImageId = table.Column<Guid>(type: "uniqueidentifier", nullable: true, comment: "Opaque identifier for the related Image aggregate.")
+                        .Annotation("SqlServer:TemporalIsPeriodStartColumn", true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_profile_type", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_profile_type_MediaContents_ImageId",
-                        column: x => x.ImageId,
-                        principalSchema: "sys_core",
-                        principalTable: "MediaContents",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_profile_type_MediaContents_MediaContentFK",
                         column: x => x.MediaContentFK,
@@ -585,25 +553,25 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
             migrationBuilder.InsertData(
                 schema: "demos_ref",
                 table: "creative_medium",
-                columns: new[] { "Id", "CreatedByPrincipalId", "CreatedOnUtc", "Description", "DisplayStyleHint", "Enabled", "EnumValue", "FromUtc", "ImageId", "Key", "LastModifiedByPrincipalId", "LastModifiedOnUtc", "MediaContentFK", "MediaFK", "MediaFontKey", "RecordMutability", "RecordState", "StateChangedByPrincipalId", "StateChangedOnDateTimeUtc", "Title", "ToUtc", "Value" },
-                values: new object[] { new Guid("00000000-0000-0000-0000-000000000000"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Creative medium has not been set.", null, true, 0, null, null, "Undefined", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Undefined", null, "" });
+                columns: new[] { "Id", "CreatedByPrincipalId", "CreatedOnUtc", "Description", "DisplayStyleHint", "Enabled", "EnumValue", "FromUtc", "Key", "LastModifiedByPrincipalId", "LastModifiedOnUtc", "MediaContentFK", "MediaFontKey", "RecordMutability", "RecordState", "StateChangedByPrincipalId", "StateChangedOnDateTimeUtc", "Title", "ToUtc", "Value" },
+                values: new object[] { new Guid("00000000-0000-0000-0000-000000000000"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Creative medium has not been set.", null, true, 0, null, "Undefined", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Undefined", null, "" });
 
             migrationBuilder.InsertData(
                 schema: "demos_ref",
                 table: "creative_medium",
-                columns: new[] { "Id", "CreatedByPrincipalId", "CreatedOnUtc", "Description", "DisplayOrderHint", "DisplayStyleHint", "Enabled", "EnumValue", "FromUtc", "ImageId", "Key", "LastModifiedByPrincipalId", "LastModifiedOnUtc", "MediaContentFK", "MediaFK", "MediaFontKey", "RecordMutability", "RecordState", "StateChangedByPrincipalId", "StateChangedOnDateTimeUtc", "Title", "ToUtc", "Value" },
+                columns: new[] { "Id", "CreatedByPrincipalId", "CreatedOnUtc", "Description", "DisplayOrderHint", "DisplayStyleHint", "Enabled", "EnumValue", "FromUtc", "Key", "LastModifiedByPrincipalId", "LastModifiedOnUtc", "MediaContentFK", "MediaFontKey", "RecordMutability", "RecordState", "StateChangedByPrincipalId", "StateChangedOnDateTimeUtc", "Title", "ToUtc", "Value" },
                 values: new object[,]
                 {
-                    { new Guid("00000000-0000-0000-0000-000000000001"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Creative medium is not applicable in this context.", 1, null, true, 1, null, null, "NotApplicable", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Not Applicable", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000002"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Creative medium was not specified.", 2, null, true, 2, null, null, "Unspecified", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Unspecified", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000003"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Creative medium is not known.", 3, null, true, 3, null, null, "Unknown", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Unknown", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000004"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Written works including prose, poetry, drama, and non-fiction.", 4, null, true, 4, null, null, "Literature", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Literature", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000005"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Painting, sculpture, printmaking, and other visual art forms.", 5, null, true, 5, null, null, "VisualArt", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Visual Art", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000006"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Composition, performance, and musical theory across all traditions.", 6, null, true, 6, null, null, "Music", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Music", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000007"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Design and construction of buildings, monuments, and planned spaces.", 7, null, true, 7, null, null, "Architecture", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Architecture", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000008"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Empirical inquiry, experimentation, and systematic knowledge production.", 8, null, true, 8, null, null, "Science", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Science", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000009"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Applied invention, engineering, and tool-making for practical ends.", 9, null, true, 9, null, null, "Technology", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Technology", null, "" },
-                    { new Guid("00000000-0000-0000-0000-00000000000a"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Systems of thought, ethics, logic, and metaphysical inquiry.", 10, null, true, 10, null, null, "Philosophy", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Philosophy", null, "" }
+                    { new Guid("00000000-0000-0000-0000-000000000001"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Creative medium is not applicable in this context.", 1, null, true, 1, null, "NotApplicable", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Not Applicable", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000002"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Creative medium was not specified.", 2, null, true, 2, null, "Unspecified", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Unspecified", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000003"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Creative medium is not known.", 3, null, true, 3, null, "Unknown", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Unknown", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000004"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Written works including prose, poetry, drama, and non-fiction.", 4, null, true, 4, null, "Literature", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Literature", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000005"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Painting, sculpture, printmaking, and other visual art forms.", 5, null, true, 5, null, "VisualArt", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Visual Art", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000006"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Composition, performance, and musical theory across all traditions.", 6, null, true, 6, null, "Music", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Music", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000007"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Design and construction of buildings, monuments, and planned spaces.", 7, null, true, 7, null, "Architecture", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Architecture", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000008"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Empirical inquiry, experimentation, and systematic knowledge production.", 8, null, true, 8, null, "Science", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Science", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000009"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Applied invention, engineering, and tool-making for practical ends.", 9, null, true, 9, null, "Technology", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Technology", null, "" },
+                    { new Guid("00000000-0000-0000-0000-00000000000a"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Systems of thought, ethics, logic, and metaphysical inquiry.", 10, null, true, 10, null, "Philosophy", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Philosophy", null, "" }
                 });
 
             migrationBuilder.InsertData(
@@ -691,66 +659,66 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
             migrationBuilder.InsertData(
                 schema: "demos_ref",
                 table: "influence_strength",
-                columns: new[] { "Id", "CreatedByPrincipalId", "CreatedOnUtc", "Description", "DisplayStyleHint", "Enabled", "EnumValue", "FromUtc", "ImageId", "Key", "LastModifiedByPrincipalId", "LastModifiedOnUtc", "MediaContentFK", "MediaFK", "MediaFontKey", "RecordMutability", "RecordState", "StateChangedByPrincipalId", "StateChangedOnDateTimeUtc", "Title", "ToUtc", "Value" },
-                values: new object[] { new Guid("00000000-0000-0000-0000-000000000000"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence strength has not been set.", null, true, 0, null, null, "Undefined", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Undefined", null, "" });
+                columns: new[] { "Id", "CreatedByPrincipalId", "CreatedOnUtc", "Description", "DisplayStyleHint", "Enabled", "EnumValue", "FromUtc", "Key", "LastModifiedByPrincipalId", "LastModifiedOnUtc", "MediaContentFK", "MediaFontKey", "RecordMutability", "RecordState", "StateChangedByPrincipalId", "StateChangedOnDateTimeUtc", "Title", "ToUtc", "Value" },
+                values: new object[] { new Guid("00000000-0000-0000-0000-000000000000"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence strength has not been set.", null, true, 0, null, "Undefined", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Undefined", null, "" });
 
             migrationBuilder.InsertData(
                 schema: "demos_ref",
                 table: "influence_strength",
-                columns: new[] { "Id", "CreatedByPrincipalId", "CreatedOnUtc", "Description", "DisplayOrderHint", "DisplayStyleHint", "Enabled", "EnumValue", "FromUtc", "ImageId", "Key", "LastModifiedByPrincipalId", "LastModifiedOnUtc", "MediaContentFK", "MediaFK", "MediaFontKey", "RecordMutability", "RecordState", "StateChangedByPrincipalId", "StateChangedOnDateTimeUtc", "Title", "ToUtc", "Value" },
+                columns: new[] { "Id", "CreatedByPrincipalId", "CreatedOnUtc", "Description", "DisplayOrderHint", "DisplayStyleHint", "Enabled", "EnumValue", "FromUtc", "Key", "LastModifiedByPrincipalId", "LastModifiedOnUtc", "MediaContentFK", "MediaFontKey", "RecordMutability", "RecordState", "StateChangedByPrincipalId", "StateChangedOnDateTimeUtc", "Title", "ToUtc", "Value" },
                 values: new object[,]
                 {
-                    { new Guid("00000000-0000-0000-0000-000000000001"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence strength is not applicable in this context.", 1, null, true, 1, null, null, "NotApplicable", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Not Applicable", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000002"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence strength was not specified.", 2, null, true, 2, null, null, "Unspecified", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Unspecified", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000003"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence strength is not known.", 3, null, true, 3, null, null, "Unknown", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Unknown", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000004"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "A minor influence with limited or localised impact.", 4, null, true, 4, null, null, "Minor", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Minor", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000005"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "A moderate influence with noticeable but bounded effect.", 5, null, true, 5, null, null, "Moderate", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Moderate", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000006"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "A major influence with broad and lasting significance.", 6, null, true, 6, null, null, "Major", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Major", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000007"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "A transformative influence that fundamentally reshaped a field, tradition, or civilisation.", 7, null, true, 7, null, null, "Transformative", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Transformative", null, "" }
+                    { new Guid("00000000-0000-0000-0000-000000000001"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence strength is not applicable in this context.", 1, null, true, 1, null, "NotApplicable", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Not Applicable", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000002"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence strength was not specified.", 2, null, true, 2, null, "Unspecified", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Unspecified", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000003"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence strength is not known.", 3, null, true, 3, null, "Unknown", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Unknown", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000004"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "A minor influence with limited or localised impact.", 4, null, true, 4, null, "Minor", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Minor", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000005"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "A moderate influence with noticeable but bounded effect.", 5, null, true, 5, null, "Moderate", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Moderate", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000006"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "A major influence with broad and lasting significance.", 6, null, true, 6, null, "Major", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Major", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000007"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "A transformative influence that fundamentally reshaped a field, tradition, or civilisation.", 7, null, true, 7, null, "Transformative", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Transformative", null, "" }
                 });
 
             migrationBuilder.InsertData(
                 schema: "demos_ref",
                 table: "influence_type",
-                columns: new[] { "Id", "CreatedByPrincipalId", "CreatedOnUtc", "Description", "DisplayStyleHint", "Enabled", "EnumValue", "FromUtc", "ImageId", "Key", "LastModifiedByPrincipalId", "LastModifiedOnUtc", "MediaContentFK", "MediaFK", "MediaFontKey", "RecordMutability", "RecordState", "StateChangedByPrincipalId", "StateChangedOnDateTimeUtc", "Title", "ToUtc", "Value" },
-                values: new object[] { new Guid("00000000-0000-0000-0000-000000000000"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence type has not been set.", null, true, 0, null, null, "Undefined", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Undefined", null, "" });
+                columns: new[] { "Id", "CreatedByPrincipalId", "CreatedOnUtc", "Description", "DisplayStyleHint", "Enabled", "EnumValue", "FromUtc", "Key", "LastModifiedByPrincipalId", "LastModifiedOnUtc", "MediaContentFK", "MediaFontKey", "RecordMutability", "RecordState", "StateChangedByPrincipalId", "StateChangedOnDateTimeUtc", "Title", "ToUtc", "Value" },
+                values: new object[] { new Guid("00000000-0000-0000-0000-000000000000"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence type has not been set.", null, true, 0, null, "Undefined", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Undefined", null, "" });
 
             migrationBuilder.InsertData(
                 schema: "demos_ref",
                 table: "influence_type",
-                columns: new[] { "Id", "CreatedByPrincipalId", "CreatedOnUtc", "Description", "DisplayOrderHint", "DisplayStyleHint", "Enabled", "EnumValue", "FromUtc", "ImageId", "Key", "LastModifiedByPrincipalId", "LastModifiedOnUtc", "MediaContentFK", "MediaFK", "MediaFontKey", "RecordMutability", "RecordState", "StateChangedByPrincipalId", "StateChangedOnDateTimeUtc", "Title", "ToUtc", "Value" },
+                columns: new[] { "Id", "CreatedByPrincipalId", "CreatedOnUtc", "Description", "DisplayOrderHint", "DisplayStyleHint", "Enabled", "EnumValue", "FromUtc", "Key", "LastModifiedByPrincipalId", "LastModifiedOnUtc", "MediaContentFK", "MediaFontKey", "RecordMutability", "RecordState", "StateChangedByPrincipalId", "StateChangedOnDateTimeUtc", "Title", "ToUtc", "Value" },
                 values: new object[,]
                 {
-                    { new Guid("00000000-0000-0000-0000-000000000001"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence type is not applicable in this context.", 1, null, true, 1, null, null, "NotApplicable", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Not Applicable", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000002"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence type was not specified.", 2, null, true, 2, null, null, "Unspecified", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Unspecified", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000003"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence type is not known.", 3, null, true, 3, null, null, "Unknown", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Unknown", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000004"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Direct personal influence through mentorship, collaboration, or immediate contact.", 4, null, true, 4, null, null, "Direct", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Direct", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000005"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Indirect influence through works, writings, or cultural legacy rather than personal contact.", 5, null, true, 5, null, null, "Indirect", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Indirect", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000006"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence through ideas, theories, or intellectual frameworks.", 6, null, true, 6, null, null, "Intellectual", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Intellectual", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000007"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence through religious thought, mysticism, or faith traditions.", 7, null, true, 7, null, null, "Spiritual", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Spiritual", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000008"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence through creative expression in visual, literary, or performing arts.", 8, null, true, 8, null, null, "Artistic", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Artistic", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000009"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence through empirical discovery, experimentation, or technological innovation.", 9, null, true, 9, null, null, "Scientific", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Scientific", null, "" },
-                    { new Guid("00000000-0000-0000-0000-00000000000a"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence through systems of thought, ethics, logic, or metaphysics.", 10, null, true, 10, null, null, "Philosophical", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Philosophical", null, "" }
+                    { new Guid("00000000-0000-0000-0000-000000000001"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence type is not applicable in this context.", 1, null, true, 1, null, "NotApplicable", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Not Applicable", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000002"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence type was not specified.", 2, null, true, 2, null, "Unspecified", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Unspecified", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000003"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence type is not known.", 3, null, true, 3, null, "Unknown", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Unknown", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000004"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Direct personal influence through mentorship, collaboration, or immediate contact.", 4, null, true, 4, null, "Direct", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Direct", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000005"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Indirect influence through works, writings, or cultural legacy rather than personal contact.", 5, null, true, 5, null, "Indirect", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Indirect", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000006"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence through ideas, theories, or intellectual frameworks.", 6, null, true, 6, null, "Intellectual", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Intellectual", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000007"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence through religious thought, mysticism, or faith traditions.", 7, null, true, 7, null, "Spiritual", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Spiritual", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000008"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence through creative expression in visual, literary, or performing arts.", 8, null, true, 8, null, "Artistic", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Artistic", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000009"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence through empirical discovery, experimentation, or technological innovation.", 9, null, true, 9, null, "Scientific", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Scientific", null, "" },
+                    { new Guid("00000000-0000-0000-0000-00000000000a"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Influence through systems of thought, ethics, logic, or metaphysics.", 10, null, true, 10, null, "Philosophical", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Philosophical", null, "" }
                 });
 
             migrationBuilder.InsertData(
                 schema: "demos_ref",
                 table: "profile_type",
-                columns: new[] { "Id", "CreatedByPrincipalId", "CreatedOnUtc", "Description", "DisplayStyleHint", "Enabled", "EnumValue", "FromUtc", "ImageId", "Key", "LastModifiedByPrincipalId", "LastModifiedOnUtc", "MediaContentFK", "MediaFK", "MediaFontKey", "RecordMutability", "RecordState", "StateChangedByPrincipalId", "StateChangedOnDateTimeUtc", "Title", "ToUtc", "Value" },
-                values: new object[] { new Guid("00000000-0000-0000-0000-000000000000"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Profile type has not been set.", null, true, 0, null, null, "Undefined", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Undefined", null, "" });
+                columns: new[] { "Id", "CreatedByPrincipalId", "CreatedOnUtc", "Description", "DisplayStyleHint", "Enabled", "EnumValue", "FromUtc", "Key", "LastModifiedByPrincipalId", "LastModifiedOnUtc", "MediaContentFK", "MediaFontKey", "RecordMutability", "RecordState", "StateChangedByPrincipalId", "StateChangedOnDateTimeUtc", "Title", "ToUtc", "Value" },
+                values: new object[] { new Guid("00000000-0000-0000-0000-000000000000"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Profile type has not been set.", null, true, 0, null, "Undefined", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Undefined", null, "" });
 
             migrationBuilder.InsertData(
                 schema: "demos_ref",
                 table: "profile_type",
-                columns: new[] { "Id", "CreatedByPrincipalId", "CreatedOnUtc", "Description", "DisplayOrderHint", "DisplayStyleHint", "Enabled", "EnumValue", "FromUtc", "ImageId", "Key", "LastModifiedByPrincipalId", "LastModifiedOnUtc", "MediaContentFK", "MediaFK", "MediaFontKey", "RecordMutability", "RecordState", "StateChangedByPrincipalId", "StateChangedOnDateTimeUtc", "Title", "ToUtc", "Value" },
+                columns: new[] { "Id", "CreatedByPrincipalId", "CreatedOnUtc", "Description", "DisplayOrderHint", "DisplayStyleHint", "Enabled", "EnumValue", "FromUtc", "Key", "LastModifiedByPrincipalId", "LastModifiedOnUtc", "MediaContentFK", "MediaFontKey", "RecordMutability", "RecordState", "StateChangedByPrincipalId", "StateChangedOnDateTimeUtc", "Title", "ToUtc", "Value" },
                 values: new object[,]
                 {
-                    { new Guid("00000000-0000-0000-0000-000000000001"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Profile type is not applicable in this context.", 1, null, true, 1, null, null, "NotApplicable", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Not Applicable", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000002"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Profile type was not specified.", 2, null, true, 2, null, null, "Unspecified", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Unspecified", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000003"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Profile type is not known.", 3, null, true, 3, null, null, "Unknown", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Unknown", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000004"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "One who expands the boundaries of knowledge through exploration and inquiry.", 4, null, true, 4, null, null, "Discoverer", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Discoverer", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000005"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "One who produces enduring works of art, literature, music, or architecture.", 5, null, true, 5, null, null, "Creator", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Creator", null, "" },
-                    { new Guid("00000000-0000-0000-0000-000000000006"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "One who shapes civilisation through faith, philosophy, or ideological vision.", 6, null, true, 6, null, null, "Believer", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, null, 4, 4, null, null, "Believer", null, "" }
+                    { new Guid("00000000-0000-0000-0000-000000000001"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Profile type is not applicable in this context.", 1, null, true, 1, null, "NotApplicable", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Not Applicable", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000002"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Profile type was not specified.", 2, null, true, 2, null, "Unspecified", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Unspecified", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000003"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Profile type is not known.", 3, null, true, 3, null, "Unknown", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Unknown", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000004"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "One who expands the boundaries of knowledge through exploration and inquiry.", 4, null, true, 4, null, "Discoverer", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Discoverer", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000005"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "One who produces enduring works of art, literature, music, or architecture.", 5, null, true, 5, null, "Creator", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Creator", null, "" },
+                    { new Guid("00000000-0000-0000-0000-000000000006"), "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "One who shapes civilisation through faith, philosophy, or ideological vision.", 6, null, true, 6, null, "Believer", "SYSTEM", new DateTimeOffset(new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, null, 4, 4, null, null, "Believer", null, "" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -830,12 +798,6 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                 table: "creative_medium",
                 column: "Id",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_creative_medium_ImageId",
-                schema: "demos_ref",
-                table: "creative_medium",
-                column: "ImageId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_creative_medium_RecordState",
@@ -1002,12 +964,6 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_influence_strength_ImageId",
-                schema: "demos_ref",
-                table: "influence_strength",
-                column: "ImageId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_influence_strength_RecordState",
                 schema: "demos_ref",
                 table: "influence_strength",
@@ -1060,12 +1016,6 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_influence_type_ImageId",
-                schema: "demos_ref",
-                table: "influence_type",
-                column: "ImageId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_influence_type_RecordState",
                 schema: "demos_ref",
                 table: "influence_type",
@@ -1116,12 +1066,6 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF.Migrations
                 table: "profile_type",
                 column: "Id",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_profile_type_ImageId",
-                schema: "demos_ref",
-                table: "profile_type",
-                column: "ImageId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_profile_type_RecordState",

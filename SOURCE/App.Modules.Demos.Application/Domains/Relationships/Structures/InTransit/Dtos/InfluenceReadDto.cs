@@ -1,4 +1,4 @@
-using App.Modules.Sys.Shared.Models.Persistence;
+using App.Modules.Sys.Shared.Domains.Persistence.Models;
 
 namespace App.Modules.Demos.Application.Domains.Relationships.Structures.InTransit.Dtos
 {

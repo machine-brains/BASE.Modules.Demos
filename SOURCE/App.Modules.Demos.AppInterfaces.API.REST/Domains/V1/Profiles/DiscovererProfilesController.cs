@@ -48,7 +48,7 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.V1.Profiles
         /// <param name="personId">The unique identifier of the person.</param>
         /// <returns>Queryable of <see cref="DiscovererProfileReadDto"/>.</returns>
         /// <response code="200">Returns the matching discoverer profiles.</response>
-        [HttpGet("by-person/{personId:guid}")]
+        [HttpGet(ApiRoutes.Rest.V1.DiscovererProfiles.ByPerson)]
         [EnableQuery]
         [ProducesResponseType(200)]
         public IQueryable<DiscovererProfileReadDto> GetByPerson(Guid personId)

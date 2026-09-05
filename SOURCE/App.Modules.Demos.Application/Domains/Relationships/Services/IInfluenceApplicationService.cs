@@ -1,5 +1,5 @@
 using App.Modules.Demos.Application.Domains.Relationships.Structures.InTransit.Dtos;
-using App.Modules.Sys.Shared.Application;
+using App.Modules.Sys.Shared.Domains.Application;
 
 namespace App.Modules.Demos.Application.Domains.Relationships.Services
 {
