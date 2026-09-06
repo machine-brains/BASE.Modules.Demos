@@ -58,14 +58,3 @@ The title and description values shown in the Template example are plain strings
 In the long-term design, those should be i18n keys rather than hard-coded user-facing text.
 The Template module is explanatory first; it is not trying to be fully production-ready.
 
-## Template example ##
-
-`ExamplePermissionsConfigurationObject` demonstrates:
-
-- a discoverable permission-definition container
-- attributed permission constants
-- `Grouping` as one composed value
-- a permission cluster owned by the logical module itself
-
-This is intentionally only a mini-example.
-The current runtime bridge still projects these declarations into the older singular permission runtime contract while migration continues.

@@ -1,9 +1,8 @@
 using App.Modules.Demos.Domain.Domains.Creations.Structures.AtRest.Enums;
 using App.Modules.Demos.Domain.Domains.Creations.Structures.AtRest.Models;
-using App.Modules.Sys.Infrastructure.Domains.Persistence.Relational.EF.Schema.Implementations;
+using App.Modules.Sys.Shared.Domains.Initialisation.Services.Seeding;
 using App.Modules.Sys.Substrate.Domains.Indexes;
 using App.Modules.Sys.Substrate.Domains.Models.Enums;
-using Microsoft.EntityFrameworkCore;
 
 namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
 {
@@ -16,12 +15,14 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
     /// resolve well-known IDs without a database lookup.
     /// </para>
     /// </summary>
-    public sealed class CreativeMediumReferenceDataSeeder : EFDataSeederBase
+    public sealed class CreativeMediumReferenceDataSeeder : IEntityDataSeeder<CreativeMediumReferenceData>
     {
         /// <inheritdoc />
-        public override void Seed(ModelBuilder modelBuilder)
+        public Task<IEnumerable<CreativeMediumReferenceData>> GetSeedDeclarationsAsync(IServiceProvider serviceProvider)
         {
-            modelBuilder.Entity<CreativeMediumReferenceData>().HasData(
+            ArgumentNullException.ThrowIfNull(serviceProvider);
+            IEnumerable<CreativeMediumReferenceData> entries = new List<CreativeMediumReferenceData>
+            {
                 Create(CreativeMedium.Undefined, "Undefined", "Creative medium has not been set.", 0),
                 Create(CreativeMedium.NotApplicable, "Not Applicable", "Creative medium is not applicable in this context.", 1),
                 Create(CreativeMedium.Unspecified, "Unspecified", "Creative medium was not specified.", 2),
@@ -33,7 +34,8 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
                 Create(CreativeMedium.Science, "Science", "Empirical inquiry, experimentation, and systematic knowledge production.", 8),
                 Create(CreativeMedium.Technology, "Technology", "Applied invention, engineering, and tool-making for practical ends.", 9),
                 Create(CreativeMedium.Philosophy, "Philosophy", "Systems of thought, ethics, logic, and metaphysical inquiry.", 10)
-            );
+            };
+            return Task.FromResult(entries);
         }
 
         private static CreativeMediumReferenceData Create(CreativeMedium enumValue, string title, string description, int displayOrder)

@@ -1,6 +1,4 @@
-using App.Modules.Sys.Infrastructure.Domains.Persistence.Relational.EF.Schema.Implementations;
 using App.Modules.Demos.Shared.Domains.Profiles.Models;
-using Microsoft.EntityFrameworkCore;
 using App.Modules.Demos.Domain.Domains.Creations.Structures.AtRest.Models;
 using App.Modules.Demos.Domain.Domains.Creations.Structures.AtRest.Enums;
 using App.Modules.Demos.Domain.Domains.Contributions.Structures.AtRest.Entities;
@@ -27,7 +25,7 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
     /// Discoverer and Creator) share a single <c>PersonId</c>.
     /// </para>
     /// </summary>
-    public class DemoDataSeeder : EFDataSeederBase
+    internal static class DemoDataSeedData
     {
         // ------------------------------------------------------------------
         //  Person GUIDs — Discoverer-only persons
@@ -193,37 +191,6 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
         private static readonly Guid _personPtolemy = Guid.Parse("20000001-0001-0001-0001-000000000011");
         private static readonly Guid _discovererPtolemy = Guid.Parse("10000001-0001-0001-0001-000000000011");
 
-        /// <summary>
-        /// Seeds all historical demo data into the <see cref="ModelBuilder"/>
-        /// using EF Core HasData seed configuration.
-        /// <para>
-        /// This method is idempotent: deterministic GUIDs and a fixed
-        /// timestamp ensure the same rows are produced on every run.
-        /// </para>
-        /// </summary>
-        /// <param name="modelBuilder">
-        /// The <see cref="ModelBuilder"/> to receive seed data.
-        /// </param>
-        public override void Seed(ModelBuilder modelBuilder)
-        {
-            ArgumentNullException.ThrowIfNull(modelBuilder);
-
-            // Reference data seeders (ProfileType, InfluenceType, InfluenceStrength,
-            // CreativeMedium) are discovered and called independently by the
-            // RunTimeModelBuilderOrchestrator. Do not call them here as well
-            // or EF will detect duplicate HasData entries for the same key.
-
-            SeedDiscovererProfiles(modelBuilder);
-            SeedCreatorProfiles(modelBuilder);
-            SeedBelieverProfiles(modelBuilder);
-
-            SeedDiscoveries(modelBuilder);
-            SeedCreations(modelBuilder);
-            SeedContributions(modelBuilder);
-
-            SeedInfluences(modelBuilder);
-        }
-
         // ==================================================================
         //  Discoverer Profiles
         // ==================================================================
@@ -233,9 +200,10 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
         /// historical figures whose primary contribution was the
         /// expansion of knowledge through exploration and inquiry.
         /// </summary>
-        private static void SeedDiscovererProfiles(ModelBuilder modelBuilder)
+        internal static IEnumerable<DiscovererProfile> GetDiscovererProfiles()
         {
-            modelBuilder.Entity<DiscovererProfile>().HasData(
+            return new[]
+            {
                 new DiscovererProfile
                 {
                     Id = _discovererColumbus,
@@ -357,7 +325,7 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
                     FieldOfStudy = "Astronomy, Geography, and Mathematics",
                     Nationality = "Greco-Egyptian"
                 }
-            );
+            };
         }
 
         // ==================================================================
@@ -369,9 +337,10 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
         /// historical figures whose primary contribution was the
         /// production of enduring creative or intellectual works.
         /// </summary>
-        private static void SeedCreatorProfiles(ModelBuilder modelBuilder)
+        internal static IEnumerable<CreatorProfile> GetCreatorProfiles()
         {
-            modelBuilder.Entity<CreatorProfile>().HasData(
+            return new[]
+            {
                 new CreatorProfile
                 {
                     Id = _creatorShakespeare,
@@ -460,7 +429,7 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
                     CreativeMediumId = DeterministicGuid.FromEnum(CreativeMedium.Technology),
                     Nationality = "Scottish"
                 }
-            );
+            };
         }
 
         // ==================================================================
@@ -472,9 +441,10 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
         /// historical figures whose primary contribution was shaping
         /// civilisation through faith, philosophy, or ideological vision.
         /// </summary>
-        private static void SeedBelieverProfiles(ModelBuilder modelBuilder)
+        internal static IEnumerable<BelieverProfile> GetBelieverProfiles()
         {
-            modelBuilder.Entity<BelieverProfile>().HasData(
+            return new[]
+            {
                 new BelieverProfile
                 {
                     Id = _believerAquinas,
@@ -552,7 +522,7 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
                     TraditionName = "Platonism",
                     Nationality = "Greek"
                 }
-            );
+            };
         }
 
         // ==================================================================
@@ -563,9 +533,10 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
         /// Seeds <see cref="Discovery"/> entities representing landmark
         /// moments of empirical insight and exploration.
         /// </summary>
-        private static void SeedDiscoveries(ModelBuilder modelBuilder)
+        internal static IEnumerable<Discovery> GetDiscoveries()
         {
-            modelBuilder.Entity<Discovery>().HasData(
+            return new[]
+            {
                 new Discovery
                 {
                     Id = _discoveryNewWorld,
@@ -734,7 +705,7 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
                     Longitude = -4.25,
                     Significance = "Multiplied the efficiency of steam power and catalysed the Industrial Revolution."
                 }
-            );
+            };
         }
 
         // ==================================================================
@@ -745,9 +716,10 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
         /// Seeds <see cref="Creation"/> entities representing enduring
         /// works of art, literature, music, science, and technology.
         /// </summary>
-        private static void SeedCreations(ModelBuilder modelBuilder)
+        internal static IEnumerable<Creation> GetCreations()
         {
-            modelBuilder.Entity<Creation>().HasData(
+            return new[]
+            {
                 new Creation
                 {
                     Id = _creationHamlet,
@@ -913,7 +885,7 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
                     Genre = "Mechanical Engineering",
                     Significance = "Powered the factories, mines, and transport networks of the Industrial Revolution."
                 }
-            );
+            };
         }
 
         // ==================================================================
@@ -924,9 +896,10 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
         /// Seeds <see cref="Contribution"/> entities representing landmark
         /// works of faith, philosophy, and ideological vision.
         /// </summary>
-        private static void SeedContributions(ModelBuilder modelBuilder)
+        internal static IEnumerable<Contribution> GetContributions()
         {
-            modelBuilder.Entity<Contribution>().HasData(
+            return new[]
+            {
                 new Contribution
                 {
                     Id = _contributionSummaTheologica,
@@ -1017,7 +990,7 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
                     TraditionName = "Platonism",
                     Significance = "One of the most influential works of philosophy and political theory in Western history."
                 }
-            );
+            };
         }
 
         // ==================================================================
@@ -1036,9 +1009,10 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
         /// catalysis.
         /// </para>
         /// </summary>
-        private static void SeedInfluences(ModelBuilder modelBuilder)
+        internal static IEnumerable<Influence> GetInfluences()
         {
-            modelBuilder.Entity<Influence>().HasData(
+            return new[]
+            {
 
                 // ----------------------------------------------------------
                 //  The Great Chain of Scientific Method
@@ -1284,7 +1258,7 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSeeders.DbSeeders
                     InfluenceTypeId = DeterministicGuid.FromEnum(InfluenceType.Intellectual),
                     InfluenceStrengthId = DeterministicGuid.FromEnum(InfluenceStrength.Major)
                 }
-            );
+            };
         }
     }
 }
