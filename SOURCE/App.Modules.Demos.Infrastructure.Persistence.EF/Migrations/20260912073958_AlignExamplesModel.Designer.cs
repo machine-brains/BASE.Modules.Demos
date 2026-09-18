@@ -4,6 +4,7 @@ using App.Modules.Demos.Infrastructure.Persistence.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Modules.Demos.Infrastructure.Migrations
 {
     [DbContext(typeof(ModuleDbContext))]
-    partial class ModuleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260912073958_AlignExamplesModel")]
+    partial class AlignExamplesModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -998,17 +1001,12 @@ namespace App.Modules.Demos.Infrastructure.Migrations
                         .HasMaxLength(4000)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(4000)")
-                        .HasColumnOrder(14)
-                        .HasComment("The textual Description.");
-
-                    b.Property<DateTimeOffset?>("FromUtc")
-                        .HasColumnType("datetimeoffset")
                         .HasColumnOrder(11)
-                        .HasComment("Gets or sets the start datetime.");
+                        .HasComment("The textual Description.");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit")
-                        .HasColumnOrder(17)
+                        .HasColumnOrder(12)
                         .HasComment("Gets or sets whether this example is active.");
 
                     b.Property<string>("LastModifiedByPrincipalId")
@@ -1023,18 +1021,6 @@ namespace App.Modules.Demos.Infrastructure.Migrations
                         .HasColumnType("datetimeoffset")
                         .HasColumnOrder(6)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
-
-                    b.Property<double?>("Latitude")
-                        .HasPrecision(10, 7)
-                        .HasColumnType("float(10)")
-                        .HasColumnOrder(15)
-                        .HasComment("Optional WGS84 latitude in degrees.");
-
-                    b.Property<double?>("Longitude")
-                        .HasPrecision(10, 7)
-                        .HasColumnType("float(10)")
-                        .HasColumnOrder(16)
-                        .HasComment("Optional WGS84 longitude in degrees.");
 
                     b.Property<int>("RecordMutability")
                         .HasColumnType("int")
@@ -1083,23 +1069,10 @@ namespace App.Modules.Demos.Infrastructure.Migrations
                         .HasMaxLength(128)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(128)")
-                        .HasColumnOrder(13)
+                        .HasColumnOrder(10)
                         .HasComment("The (display) title.");
 
-                    b.Property<DateTimeOffset?>("ToUtc")
-                        .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(12)
-                        .HasComment("Gets or sets the end datetime.");
-
-                    b.Property<Guid>("WorkspaceFK")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(10)
-                        .HasComment("The FK of the related Workspace.");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("FromUtc")
-                        .HasDatabaseName("IX_ExampleA_FromUtc");
 
                     b.HasIndex("Id")
                         .IsUnique()
@@ -1107,12 +1080,6 @@ namespace App.Modules.Demos.Infrastructure.Migrations
 
                     b.HasIndex("RecordState")
                         .HasDatabaseName("IX_example_a_RecordState");
-
-                    b.HasIndex("ToUtc")
-                        .HasDatabaseName("IX_ExampleA_ToUtc");
-
-                    b.HasIndex("WorkspaceFK")
-                        .HasDatabaseName("IX_ExampleA_WorkspaceFK");
 
                     b.ToTable("example_a", "demos_examples", t =>
                         {
@@ -1155,18 +1122,13 @@ namespace App.Modules.Demos.Infrastructure.Migrations
                         .HasMaxLength(4000)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(4000)")
-                        .HasColumnOrder(15)
+                        .HasColumnOrder(12)
                         .HasComment("The textual Description.");
 
                     b.Property<Guid>("ExampleAId")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(13)
+                        .HasColumnOrder(10)
                         .HasComment("Opaque identifier for the related Example A aggregate.");
-
-                    b.Property<DateTimeOffset?>("FromUtc")
-                        .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(11)
-                        .HasComment("Gets or sets the start datetime.");
 
                     b.Property<string>("LastModifiedByPrincipalId")
                         .IsRequired()
@@ -1181,24 +1143,12 @@ namespace App.Modules.Demos.Infrastructure.Migrations
                         .HasColumnOrder(6)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
 
-                    b.Property<double?>("Latitude")
-                        .HasPrecision(10, 7)
-                        .HasColumnType("float(10)")
-                        .HasColumnOrder(16)
-                        .HasComment("Optional WGS84 latitude in degrees.");
-
-                    b.Property<double?>("Longitude")
-                        .HasPrecision(10, 7)
-                        .HasColumnType("float(10)")
-                        .HasColumnOrder(17)
-                        .HasComment("Optional WGS84 longitude in degrees.");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(128)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(128)")
-                        .HasColumnOrder(14)
+                        .HasColumnOrder(11)
                         .HasComment("The name of the model.");
 
                     b.Property<int>("RecordMutability")
@@ -1213,7 +1163,7 @@ namespace App.Modules.Demos.Infrastructure.Migrations
 
                     b.Property<int>("SortOrder")
                         .HasColumnType("int")
-                        .HasColumnOrder(18)
+                        .HasColumnOrder(13)
                         .HasComment("Gets or sets the deterministic display order within the parent.");
 
                     b.Property<string>("StateChangedByPrincipalId")
@@ -1248,23 +1198,10 @@ namespace App.Modules.Demos.Infrastructure.Migrations
                         .HasColumnOrder(1)
                         .HasComment("Gets or sets the datastore concurrency check timestamp.");
 
-                    b.Property<DateTimeOffset?>("ToUtc")
-                        .HasColumnType("datetimeoffset")
-                        .HasColumnOrder(12)
-                        .HasComment("Gets or sets the end datetime.");
-
-                    b.Property<Guid>("WorkspaceFK")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(10)
-                        .HasComment("The FK of the related Workspace.");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ExampleAId")
                         .HasDatabaseName("IX_example_b_example_a_id");
-
-                    b.HasIndex("FromUtc")
-                        .HasDatabaseName("IX_ExampleB_FromUtc");
 
                     b.HasIndex("Id")
                         .IsUnique()
@@ -1276,12 +1213,6 @@ namespace App.Modules.Demos.Infrastructure.Migrations
 
                     b.HasIndex("RecordState")
                         .HasDatabaseName("IX_example_b_RecordState");
-
-                    b.HasIndex("ToUtc")
-                        .HasDatabaseName("IX_ExampleB_ToUtc");
-
-                    b.HasIndex("WorkspaceFK")
-                        .HasDatabaseName("IX_ExampleB_WorkspaceFK");
 
                     b.ToTable("example_b", "demos_examples", t =>
                         {

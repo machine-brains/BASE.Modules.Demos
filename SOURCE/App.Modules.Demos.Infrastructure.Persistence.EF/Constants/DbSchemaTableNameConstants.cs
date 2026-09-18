@@ -60,5 +60,11 @@ namespace App.Modules.Demos.Infrastructure.Constants
         /// Table name for <see cref="Domain.Domains.Creations.Structures.AtRest.Models.CreativeMediumReferenceData"/> reference data.
         /// </summary>
         public const string CreativeMediumReferenceData = "creative_medium";
+
+        /// <summary>Table name for Demos ExampleA parent records.</summary>
+        public const string ExampleA = "example_a";
+
+        /// <summary>Table name for Demos ExampleB child records.</summary>
+        public const string ExampleB = "example_b";
     }
 }

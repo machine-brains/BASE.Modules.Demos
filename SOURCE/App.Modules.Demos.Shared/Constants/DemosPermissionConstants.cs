@@ -12,6 +12,7 @@ namespace App.Modules.Demos.Constants
         private const string CreationsPrefix = ModuleConstants.Name + "/Creations/";
         private const string ContributionsPrefix = ModuleConstants.Name + "/Contributions/";
         private const string InfluencesPrefix = ModuleConstants.Name + "/Influences/";
+        private const string ExamplesPrefix = ModuleConstants.Name + "/Examples/";
 
         /// <summary>Permission grouping for the Demos discoverer domain.</summary>
         public const string DiscoveriesGrouping = ModuleConstants.Key + ";Discoverers";
@@ -48,6 +49,12 @@ namespace App.Modules.Demos.Constants
 
         /// <summary>Permission grouping for influence records.</summary>
         public const string InfluencesPermissionGrouping = InfluencesGrouping + ";Influences";
+
+        /// <summary>Permission grouping for the Demos Examples capability.</summary>
+        public const string ExamplesGrouping = ModuleConstants.Key + ";Examples";
+
+        /// <summary>Permission grouping for ExampleA and ExampleB records.</summary>
+        public const string ExamplesPermissionGrouping = ExamplesGrouping + ";Examples";
 
         /// <summary>Read believer profile records.</summary>
         public const string BelieverProfilesRead = BelieverProfilesPrefix + "Read";
@@ -108,6 +115,21 @@ namespace App.Modules.Demos.Constants
 
         /// <summary>Delete influence relationship records.</summary>
         public const string InfluencesDelete = InfluencesPrefix + "Delete";
+
+        /// <summary>Read ExampleA and ExampleB records.</summary>
+        public const string ExamplesRead = ExamplesPrefix + "Read";
+
+        /// <summary>Create ExampleA and ExampleB records.</summary>
+        public const string ExamplesCreate = ExamplesPrefix + "Create";
+
+        /// <summary>Update ExampleA and ExampleB records.</summary>
+        public const string ExamplesUpdate = ExamplesPrefix + "Update";
+
+        /// <summary>Delete ExampleA and ExampleB records.</summary>
+        public const string ExamplesDelete = ExamplesPrefix + "Delete";
+        
+            /// <summary>Transition the ExampleA domain lifecycle between Active and Inactive.</summary>
+            public const string ExamplesTransition = ExamplesPrefix + "Transition";
 
         /// <summary>Read discoverer profile records.</summary>
         public const string DiscovererProfilesRead = DiscovererProfilesPrefix + "Read";

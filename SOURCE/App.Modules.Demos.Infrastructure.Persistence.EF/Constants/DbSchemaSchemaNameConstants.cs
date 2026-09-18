@@ -34,5 +34,8 @@ namespace App.Modules.Demos.Infrastructure.Constants
         /// Schema name for reference data tables.
         /// </summary>
         public const string ReferenceData = Root + "_ref";
+
+        /// <summary>Schema for the host-loaded Examples capability.</summary>
+        public const string Examples = Root + "_examples";
     }
 }

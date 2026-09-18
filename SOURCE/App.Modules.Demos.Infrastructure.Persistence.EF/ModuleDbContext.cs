@@ -3,6 +3,7 @@ using App.Modules.Demos.Domain.Domains.Creations.Structures.AtRest.Models;
 using App.Modules.Demos.Domain.Domains.Discoverers.Structures;
 using App.Modules.Demos.Domain.Domains.Discoveries.Structures.AtRest.Entities;
 using App.Modules.Demos.Domain.Domains.Influences.Structures.Entities;
+using App.Modules.Demos.Domain.Domains.Examples.Structures.AtRest.Entities;
 using App.Modules.Demos.Domain.Domains.Structures.ReferenceData;
 using App.Modules.Demos.Shared.Domains.Profiles.Models;
 using App.Modules.Sys.Infrastructure.Domains.Persistence.Relational.EF.DbContexts.Implementations.Base;
@@ -84,6 +85,12 @@ namespace App.Modules.Demos.Infrastructure.Persistence.EF
         /// Gets or sets the set of <see cref="CreativeMediumReferenceData"/> reference data.
         /// </summary>
         public DbSet<CreativeMediumReferenceData> CreativeMedia { get; set; } = null!;
+
+        /// <summary>Gets or sets the Demos ExampleA parent records.</summary>
+        public DbSet<ExampleA> ExampleAs { get; set; } = null!;
+
+        /// <summary>Gets or sets the Demos ExampleB child records.</summary>
+        public DbSet<ExampleB> ExampleBs { get; set; } = null!;
 
         /// <inheritdoc/>
         protected override void OnModelCreating(ModelBuilder modelBuilder)

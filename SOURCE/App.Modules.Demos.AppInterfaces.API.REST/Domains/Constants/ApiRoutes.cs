@@ -155,6 +155,20 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.Constants
                     /// </summary>
                     public const string ByInfluenced = "by-influenced/{profileId:guid}";
                 }
+
+                /// <summary>ExampleA parent endpoint routes.</summary>
+                public static class Examples
+                {
+                    /// <summary>Base path: <c>api/rest/demos/v1/examples</c>.</summary>
+                    public const string Base = VersionBase + "/examples";
+                }
+
+                /// <summary>ExampleB child endpoint routes.</summary>
+                public static class ExampleItems
+                {
+                    /// <summary>Base path: <c>api/rest/demos/v1/examples/items</c>.</summary>
+                    public const string Base = Examples.Base + "/items";
+                }
             }
         }
     }
