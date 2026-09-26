@@ -545,7 +545,7 @@ namespace App.Modules.Demos.Infrastructure.Migrations
 
                     b.Property<Guid>("CreativeMediumId")
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(13)
+                        .HasColumnOrder(16)
                         .HasComment("Opaque identifier for the related Creative Medium aggregate.");
 
                     b.Property<string>("Description")
@@ -557,12 +557,12 @@ namespace App.Modules.Demos.Infrastructure.Migrations
 
                     b.Property<int?>("EraFrom")
                         .HasColumnType("int")
-                        .HasColumnOrder(15)
+                        .HasColumnOrder(18)
                         .HasComment("Approximate start year of active era. Negative = BCE.");
 
                     b.Property<int?>("EraTo")
                         .HasColumnType("int")
-                        .HasColumnOrder(16)
+                        .HasColumnOrder(19)
                         .HasComment("Approximate end year of active era. Negative = BCE.");
 
                     b.Property<string>("LastModifiedByPrincipalId")
@@ -578,11 +578,30 @@ namespace App.Modules.Demos.Infrastructure.Migrations
                         .HasColumnOrder(6)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
 
+                    b.Property<Guid?>("MediaContentFK")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnOrder(15)
+                        .HasComment("FK to MediaContent when MediaReferenceKind is Media. Null otherwise.");
+
+                    b.Property<string>("MediaFontKey")
+                        .HasMaxLength(200)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(200)")
+                        .HasColumnOrder(14)
+                        .HasComment("Font/icon key media source. Should be set only when MediaReferenceKind is Font.");
+
+                    b.Property<int>("MediaReferenceKind")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0)
+                        .HasColumnOrder(13)
+                        .HasComment("Discriminator that declares which media source field is active (None, Font, Media).");
+
                     b.Property<string>("Nationality")
                         .HasMaxLength(256)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(14)
+                        .HasColumnOrder(17)
                         .HasComment("Nationality or cultural origin.");
 
                     b.Property<Guid>("PersonId")
@@ -649,6 +668,9 @@ namespace App.Modules.Demos.Infrastructure.Migrations
                         .IsUnique()
                         .HasDatabaseName("IX_creator_profile_Id");
 
+                    b.HasIndex("MediaContentFK")
+                        .HasDatabaseName("IX_CreatorProfile_MediaContentFK");
+
                     b.HasIndex("PersonId")
                         .HasDatabaseName("IX_CreatorProfile_PersonId");
 
@@ -701,19 +723,19 @@ namespace App.Modules.Demos.Infrastructure.Migrations
 
                     b.Property<int?>("EraFrom")
                         .HasColumnType("int")
-                        .HasColumnOrder(15)
+                        .HasColumnOrder(18)
                         .HasComment("Gets or sets the approximate start year of the era in which this person was active (negative for BCE).");
 
                     b.Property<int?>("EraTo")
                         .HasColumnType("int")
-                        .HasColumnOrder(16)
+                        .HasColumnOrder(19)
                         .HasComment("Gets or sets the approximate end year of the era in which this person was active (negative for BCE).");
 
                     b.Property<string>("FieldOfStudy")
                         .HasMaxLength(256)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(13)
+                        .HasColumnOrder(16)
                         .HasComment("Gets or sets the primary field of study or area of discovery.");
 
                     b.Property<string>("LastModifiedByPrincipalId")
@@ -729,11 +751,30 @@ namespace App.Modules.Demos.Infrastructure.Migrations
                         .HasColumnOrder(6)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
 
+                    b.Property<Guid?>("MediaContentFK")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnOrder(15)
+                        .HasComment("FK to MediaContent when MediaReferenceKind is Media. Null otherwise.");
+
+                    b.Property<string>("MediaFontKey")
+                        .HasMaxLength(200)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(200)")
+                        .HasColumnOrder(14)
+                        .HasComment("Font/icon key media source. Should be set only when MediaReferenceKind is Font.");
+
+                    b.Property<int>("MediaReferenceKind")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0)
+                        .HasColumnOrder(13)
+                        .HasComment("Discriminator that declares which media source field is active (None, Font, Media).");
+
                     b.Property<string>("Nationality")
                         .HasMaxLength(256)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(14)
+                        .HasColumnOrder(17)
                         .HasComment("Gets or sets the nationality or cultural origin.");
 
                     b.Property<Guid>("PersonId")
@@ -796,6 +837,9 @@ namespace App.Modules.Demos.Infrastructure.Migrations
                     b.HasIndex("Id")
                         .IsUnique()
                         .HasDatabaseName("IX_discoverer_profile_Id");
+
+                    b.HasIndex("MediaContentFK")
+                        .HasDatabaseName("IX_DiscovererProfile_MediaContentFK");
 
                     b.HasIndex("PersonId")
                         .HasDatabaseName("IX_DiscovererProfile_PersonId");
@@ -1872,6 +1916,164 @@ namespace App.Modules.Demos.Infrastructure.Migrations
                             }));
                 });
 
+            modelBuilder.Entity("App.Modules.Demos.Domain.Domains.Relationships.Structures.Entities.DemosOperationRelationship", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnOrder(0)
+                        .HasComment("Gets or sets the identifier.");
+
+                    b.Property<string>("CreatedByPrincipalId")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(36)")
+                        .HasColumnOrder(5)
+                        .HasComment("Gets or sets the principal id who created the record.");
+
+                    b.Property<DateTimeOffset>("CreatedOnUtc")
+                        .HasColumnType("datetimeoffset")
+                        .HasColumnOrder(4)
+                        .HasComment("Gets or sets the UTC DateTime created on.");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(4000)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(4000)")
+                        .HasColumnOrder(15)
+                        .HasComment("The textual Description.");
+
+                    b.Property<bool>("IsDirected")
+                        .HasColumnType("bit")
+                        .HasColumnOrder(16)
+                        .HasComment("Gets or sets whether the edge has a source-to-target direction.");
+
+                    b.Property<string>("Label")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(256)")
+                        .HasColumnOrder(14)
+                        .HasComment("Gets or sets the human-readable relationship label.");
+
+                    b.Property<string>("LastModifiedByPrincipalId")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(36)")
+                        .HasColumnOrder(7)
+                        .HasComment("Gets or sets the principal id who last modified the record.");
+
+                    b.Property<DateTimeOffset>("LastModifiedOnUtc")
+                        .HasColumnType("datetimeoffset")
+                        .HasColumnOrder(6)
+                        .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
+
+                    b.Property<int>("RecordMutability")
+                        .HasColumnType("int")
+                        .HasColumnOrder(2)
+                        .HasComment("Who/what can mutate/change the record.");
+
+                    b.Property<int>("RecordState")
+                        .HasColumnType("int")
+                        .HasColumnOrder(3)
+                        .HasComment("The state of the Record in terms of persistence.");
+
+                    b.Property<string>("RelationshipKind")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(128)")
+                        .HasColumnOrder(13)
+                        .HasComment("Gets or sets the domain-owned relationship kind.");
+
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("int")
+                        .HasColumnOrder(17)
+                        .HasComment("Gets or sets the stable display order among related edges.");
+
+                    b.Property<Guid>("SourceExampleAId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnOrder(11)
+                        .HasComment("Opaque identifier for the related Source Example A aggregate.");
+
+                    b.Property<string>("StateChangedByPrincipalId")
+                        .HasMaxLength(36)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(36)")
+                        .HasColumnOrder(9)
+                        .HasComment("Gets or sets the principal id who changed the state (nullable).");
+
+                    b.Property<DateTimeOffset?>("StateChangedOnDateTimeUtc")
+                        .HasColumnType("datetimeoffset")
+                        .HasColumnOrder(8)
+                        .HasComment("Gets or sets the date when record state changed (nullable for soft delete).");
+
+                    b.Property<DateTime>("SysEndTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("datetime2")
+                        .HasColumnName("SysEndTime")
+                        .HasComment("Stores the Sys End Time value for the Demos Operation Relationship record.");
+
+                    b.Property<DateTime>("SysStartTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("datetime2")
+                        .HasColumnName("SysStartTime")
+                        .HasComment("Stores the Sys Start Time value for the Demos Operation Relationship record.");
+
+                    b.Property<Guid>("TargetExampleAId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnOrder(12)
+                        .HasComment("Opaque identifier for the related Target Example A aggregate.");
+
+                    b.Property<byte[]>("Timestamp")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion")
+                        .HasColumnOrder(1)
+                        .HasComment("Gets or sets the datastore concurrency check timestamp.");
+
+                    b.Property<Guid>("WorkspaceFK")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnOrder(10)
+                        .HasComment("The FK of the related Workspace.");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique()
+                        .HasDatabaseName("IX_operation_relationship_Id");
+
+                    b.HasIndex("RecordState")
+                        .HasDatabaseName("IX_operation_relationship_RecordState");
+
+                    b.HasIndex("SourceExampleAId")
+                        .HasDatabaseName("IX_DemosOperationRelationship_SourceExampleAId");
+
+                    b.HasIndex("TargetExampleAId")
+                        .HasDatabaseName("IX_DemosOperationRelationship_TargetExampleAId");
+
+                    b.HasIndex("WorkspaceFK")
+                        .HasDatabaseName("IX_DemosOperationRelationship_WorkspaceFK");
+
+                    b.ToTable("operation_relationship", "demos_relationships", t =>
+                        {
+                            t.HasComment("Explicit peer relationship between two Demos ExampleA operation records.");
+                        });
+
+                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                            {
+                                ttb.UseHistoryTable("operation_relationshipHistory", "demos_relationships");
+                                ttb
+                                    .HasPeriodStart("SysStartTime")
+                                    .HasColumnName("SysStartTime");
+                                ttb
+                                    .HasPeriodEnd("SysEndTime")
+                                    .HasColumnName("SysEndTime");
+                            }));
+                });
+
             modelBuilder.Entity("App.Modules.Demos.Domain.Domains.Structures.ReferenceData.ProfileTypeReferenceData", b =>
                 {
                     b.Property<Guid>("Id")
@@ -2109,12 +2311,12 @@ namespace App.Modules.Demos.Infrastructure.Migrations
 
                     b.Property<int?>("EraFrom")
                         .HasColumnType("int")
-                        .HasColumnOrder(15)
+                        .HasColumnOrder(18)
                         .HasComment("Approximate start year of active era. Negative = BCE.");
 
                     b.Property<int?>("EraTo")
                         .HasColumnType("int")
-                        .HasColumnOrder(16)
+                        .HasColumnOrder(19)
                         .HasComment("Approximate end year of active era. Negative = BCE.");
 
                     b.Property<string>("LastModifiedByPrincipalId")
@@ -2130,11 +2332,30 @@ namespace App.Modules.Demos.Infrastructure.Migrations
                         .HasColumnOrder(6)
                         .HasComment("Gets or sets the UTC DateTime when the record was last modified.");
 
+                    b.Property<Guid?>("MediaContentFK")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnOrder(15)
+                        .HasComment("FK to MediaContent when MediaReferenceKind is Media. Null otherwise.");
+
+                    b.Property<string>("MediaFontKey")
+                        .HasMaxLength(200)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(200)")
+                        .HasColumnOrder(14)
+                        .HasComment("Font/icon key media source. Should be set only when MediaReferenceKind is Font.");
+
+                    b.Property<int>("MediaReferenceKind")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0)
+                        .HasColumnOrder(13)
+                        .HasComment("Discriminator that declares which media source field is active (None, Font, Media).");
+
                     b.Property<string>("Nationality")
                         .HasMaxLength(256)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(14)
+                        .HasColumnOrder(17)
                         .HasComment("Nationality or cultural origin.");
 
                     b.Property<Guid>("PersonId")
@@ -2196,7 +2417,7 @@ namespace App.Modules.Demos.Infrastructure.Migrations
                         .HasMaxLength(256)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(256)")
-                        .HasColumnOrder(13)
+                        .HasColumnOrder(16)
                         .HasComment("Name of the religious, philosophical, or ideological tradition.");
 
                     b.HasKey("Id");
@@ -2204,6 +2425,9 @@ namespace App.Modules.Demos.Infrastructure.Migrations
                     b.HasIndex("Id")
                         .IsUnique()
                         .HasDatabaseName("IX_believer_profile_Id");
+
+                    b.HasIndex("MediaContentFK")
+                        .HasDatabaseName("IX_BelieverProfile_MediaContentFK");
 
                     b.HasIndex("PersonId")
                         .HasDatabaseName("IX_BelieverProfile_PersonId");
@@ -2358,6 +2582,26 @@ namespace App.Modules.Demos.Infrastructure.Migrations
                     b.Navigation("MediaContent");
                 });
 
+            modelBuilder.Entity("App.Modules.Demos.Domain.Domains.Creations.Structures.AtRest.Models.CreatorProfile", b =>
+                {
+                    b.HasOne("App.Modules.Sys.Shared.Domains.Infrastructure.Models.Implementations.MediaContent", "MediaContent")
+                        .WithMany()
+                        .HasForeignKey("MediaContentFK")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("MediaContent");
+                });
+
+            modelBuilder.Entity("App.Modules.Demos.Domain.Domains.Discoverers.Structures.DiscovererProfile", b =>
+                {
+                    b.HasOne("App.Modules.Sys.Shared.Domains.Infrastructure.Models.Implementations.MediaContent", "MediaContent")
+                        .WithMany()
+                        .HasForeignKey("MediaContentFK")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("MediaContent");
+                });
+
             modelBuilder.Entity("App.Modules.Demos.Domain.Domains.Influences.Structures.Entities.InfluenceStrengthReferenceData", b =>
                 {
                     b.HasOne("App.Modules.Sys.Shared.Domains.Infrastructure.Models.Implementations.MediaContent", "MediaContent")
@@ -2379,6 +2623,16 @@ namespace App.Modules.Demos.Infrastructure.Migrations
                 });
 
             modelBuilder.Entity("App.Modules.Demos.Domain.Domains.Structures.ReferenceData.ProfileTypeReferenceData", b =>
+                {
+                    b.HasOne("App.Modules.Sys.Shared.Domains.Infrastructure.Models.Implementations.MediaContent", "MediaContent")
+                        .WithMany()
+                        .HasForeignKey("MediaContentFK")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("MediaContent");
+                });
+
+            modelBuilder.Entity("App.Modules.Demos.Shared.Domains.Profiles.Models.BelieverProfile", b =>
                 {
                     b.HasOne("App.Modules.Sys.Shared.Domains.Infrastructure.Models.Implementations.MediaContent", "MediaContent")
                         .WithMany()

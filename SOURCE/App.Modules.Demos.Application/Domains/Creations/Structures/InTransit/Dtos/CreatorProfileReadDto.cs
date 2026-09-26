@@ -9,5 +9,8 @@ namespace App.Modules.Demos.Application.Domains.Creations.Structures.InTransit.D
     {
         /// <inheritdoc/>
         public Guid Id { get; set; }
+
+        /// <summary>Authorised MediaContent identity for the seeded portrait.</summary>
+        public Guid? MediaContentId { get; set; }
     }
 }

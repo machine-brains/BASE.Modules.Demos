@@ -23,6 +23,7 @@ namespace App.Modules.Demos.Infrastructure.Domains.DbSchemas.Profiles
             builder.DefineRequiredAggregateId(x => x.PersonId, ref order);
             builder.DefineIHasTitle(ref order);
             builder.DefineIHasDescriptionNullable(ref order);
+            builder.DefineIHasMediaReference(ref order);
             builder.DefineString(x => x.FieldOfStudy, ref order, isRequired: false, maxLength: DefaultDbSchemaFieldSizeConstants.x256);
             builder.DefineString(x => x.Nationality, ref order, isRequired: false, maxLength: DefaultDbSchemaFieldSizeConstants.x256);
             builder.DefineInt(x => x.EraFrom, ref order, isRequired: false);

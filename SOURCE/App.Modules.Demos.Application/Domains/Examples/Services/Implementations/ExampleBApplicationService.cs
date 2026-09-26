@@ -59,6 +59,10 @@ namespace App.Modules.Demos.Application.Domains.Examples.Services.Implementation
 
             ExampleSpatialCapabilityValidation.Validate(dto.Latitude, dto.Longitude);
             ExampleB entity = this.ObjectMappingService.Map<ExampleBWriteDto, ExampleB>(dto);
+            if (entity.Id == Guid.Empty)
+            {
+                entity.Id = Guid.NewGuid();
+            }
             entity.WorkspaceFK = this._userContext.CurrentWorkspaceId;
             ExampleB created = await this._exampleBRepository.CreateAsync(entity, cancellationToken).ConfigureAwait(false);
             return this.ObjectMappingService.Map<ExampleB, ExampleBReadDto>(created);
@@ -101,19 +105,8 @@ namespace App.Modules.Demos.Application.Domains.Examples.Services.Implementation
                 return Array.Empty<ExampleBReadDto>();
             }
 
-            return await this._exampleBRepository.QueryByExampleAId(exampleAId)
-                .Select(example => new ExampleBReadDto
-                {
-                    Id = example.Id,
-                    ExampleAId = example.ExampleAId,
-                    Name = example.Name,
-                    Description = example.Description,
-                    SortOrder = example.SortOrder,
-                    FromUtc = example.FromUtc,
-                    ToUtc = example.ToUtc,
-                    Latitude = example.Latitude,
-                    Longitude = example.Longitude,
-                })
+            return await this.ObjectMappingService.ProjectTo<ExampleB, ExampleBReadDto>(
+                this._exampleBRepository.QueryByExampleAId(exampleAId))
                 .ToListAsync(cancellationToken);
         }
 
@@ -134,42 +127,24 @@ namespace App.Modules.Demos.Application.Domains.Examples.Services.Implementation
         /// <inheritdoc />
         public async Task<IReadOnlyList<ExampleBReadDto>> GetDeveloperDemoAsync(CancellationToken cancellationToken = default)
         {
-            return await this._dbContext.ExampleBs
-                .IgnoreQueryFilters()
-                .AsNoTracking()
-                .OrderBy(example => example.ExampleAId)
-                .ThenBy(example => example.SortOrder)
-                .Select(example => new ExampleBReadDto
-                {
-                    Id = example.Id,
-                    ExampleAId = example.ExampleAId,
-                    Name = example.Name,
-                    Description = example.Description,
-                    SortOrder = example.SortOrder,
-                    FromUtc = example.FromUtc,
-                    ToUtc = example.ToUtc,
-                    Latitude = example.Latitude,
-                    Longitude = example.Longitude,
-                })
+            return await this.ObjectMappingService.ProjectTo<ExampleB, ExampleBReadDto>(
+                this._dbContext.ExampleBs
+                    .IgnoreQueryFilters()
+                    .AsNoTracking()
+                    .OrderBy(example => example.ExampleAId)
+                    .ThenBy(example => example.SortOrder))
                 .ToListAsync(cancellationToken);
         }
 
         /// <inheritdoc />
         public async Task<IReadOnlyList<ExampleBReadDto>> GetDeveloperDemoByExampleAAsync(Guid exampleAId, CancellationToken cancellationToken = default)
         {
-            return await this._dbContext.ExampleBs
-                .IgnoreQueryFilters()
-                .Where(example => example.ExampleAId == exampleAId)
-                .AsNoTracking()
-                .OrderBy(example => example.SortOrder)
-                .Select(example => new ExampleBReadDto
-                {
-                    Id = example.Id,
-                    ExampleAId = example.ExampleAId,
-                    Name = example.Name,
-                    Description = example.Description,
-                    SortOrder = example.SortOrder,
-                })
+            return await this.ObjectMappingService.ProjectTo<ExampleB, ExampleBReadDto>(
+                this._dbContext.ExampleBs
+                    .IgnoreQueryFilters()
+                    .Where(example => example.ExampleAId == exampleAId)
+                    .AsNoTracking()
+                    .OrderBy(example => example.SortOrder))
                 .ToListAsync(cancellationToken);
         }
     }

@@ -156,11 +156,30 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.Constants
                     public const string ByInfluenced = "by-influenced/{profileId:guid}";
                 }
 
+                /// <summary>Explicit peer relationship endpoint routes for Demos operations.</summary>
+                public static class OperationRelationships
+                {
+                    /// <summary>Base path: <c>api/rest/demos/v1/operation-relationships</c>.</summary>
+                    public const string Base = VersionBase + "/operation-relationships";
+
+                    /// <summary>Gets relationships by source ExampleA operation.</summary>
+                    public const string BySource = "by-source/{exampleAId:guid}";
+
+                    /// <summary>Gets relationships by target ExampleA operation.</summary>
+                    public const string ByTarget = "by-target/{exampleAId:guid}";
+                }
+
                 /// <summary>ExampleA parent endpoint routes.</summary>
                 public static class Examples
                 {
                     /// <summary>Base path: <c>api/rest/demos/v1/examples</c>.</summary>
                     public const string Base = VersionBase + "/examples";
+
+                    /// <summary>Source-aware query capability descriptor route.</summary>
+                    public const string QueryCapability = "query-capability";
+
+                    /// <summary>Canonical Coordinator query-intent route.</summary>
+                    public const string Query = "query";
                 }
 
                 /// <summary>ExampleB child endpoint routes.</summary>

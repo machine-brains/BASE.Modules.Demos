@@ -4,6 +4,8 @@ using App.Modules.Demos.Interfaces.API.REST.Domains.Constants;
 using App.Modules.Sys.Interfaces.Controllers.Base;
 using App.Modules.Sys.Shared.Attributes;
 using App.Modules.Sys.Shared.Domains.Presentation.Constants;
+using App.Modules.Sys.Substrate.Domains.Browse.Models;
+using App.Modules.Sys.Shared.Domains.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +26,31 @@ namespace App.Modules.Demos.Interfaces.API.REST.Domains.V1.Examples
             : base(service)
         {
             this._environment = environment ?? throw new ArgumentNullException(nameof(environment));
+        }
+
+        /// <summary>Returns the Demos-owned query capability used by Coordinator Browse.</summary>
+        /// <remarks>
+        /// The existing CRUST base remains responsible for the authenticated collection
+        /// path. This resource-local action exposes only the Demos Application-owned field
+        /// vocabulary; it is not a generic reflection route and does not bypass the base
+        /// controller's authorization model.
+        /// </remarks>
+        [HttpGet(ApiRoutes.Rest.V1.Examples.QueryCapability)]
+        [ProducesResponseType(typeof(BrowseQueryCapability), StatusCodes.Status200OK)]
+        public ActionResult<BrowseQueryCapability> GetQueryCapability()
+        {
+            return this.Ok(((IExampleAApplicationService)this.Service).GetQueryCapability());
+        }
+
+        /// <summary>Applies canonical Coordinator query intent to visible ExampleA parents.</summary>
+        [HttpPost(ApiRoutes.Rest.V1.Examples.Query)]
+        [ProducesResponseType(typeof(QueryPageResult<ExampleAReadDto>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<QueryPageResult<ExampleAReadDto>>> Search(
+            [FromBody] QueryInstructionPackage query,
+            CancellationToken cancellationToken = default)
+        {
+            ArgumentNullException.ThrowIfNull(query);
+            return this.Ok(await ((IExampleAApplicationService)this.Service).SearchAsync(query, cancellationToken));
         }
 
         /// <summary>Creates a workspace-scoped ExampleA parent with explicit failure semantics.</summary>

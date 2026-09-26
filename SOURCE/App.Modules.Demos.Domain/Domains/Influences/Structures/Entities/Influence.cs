@@ -1,4 +1,5 @@
 using App.Modules.Sys.Shared.Domains.Persistence.Models.Implementations.Base;
+using App.Modules.Sys.Shared.Domains.Persistence.Models;
 using App.Modules.Sys.Substrate.Domains.Models;
 
 namespace App.Modules.Demos.Domain.Domains.Influences.Structures.Entities
@@ -8,7 +9,8 @@ namespace App.Modules.Demos.Domain.Domains.Influences.Structures.Entities
     /// Captures who influenced whom, the nature of that influence, and its strength.
     /// Both profile references are opaque boundary FKs — no navigation properties.
     /// </summary>
-    public class Influence : DefaultEntityBase, IHasDescriptionNullable
+    // Global historical demo edges have no workspace owner or per-principal grant.
+    public class Influence : DefaultEntityBase, IHasDescriptionNullable, IShareFilterExemptEntity
     {
         /// <summary>Boundary FK of the profile that exerted the influence.</summary>
         public Guid InfluencerProfileId { get; set; }

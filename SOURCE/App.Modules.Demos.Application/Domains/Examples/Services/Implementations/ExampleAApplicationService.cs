@@ -17,6 +17,10 @@ using App.Modules.Demos.Constants;
 using App.Modules.Demos.Domain.Domains.Examples.Validation;
 using System.Collections.Frozen;
 using Microsoft.EntityFrameworkCore;
+using App.Modules.Sys.Substrate.Domains.Browse.Models;
+using App.Modules.Demos.Application.Domains.Examples.Providers;
+using App.Modules.Sys.Shared.Domains.Queries;
+using System.Text.Json;
 
 namespace App.Modules.Demos.Application.Domains.Examples.Services.Implementations
 {
@@ -26,12 +30,15 @@ namespace App.Modules.Demos.Application.Domains.Examples.Services.Implementation
         : CrustStateAppServiceBase<ExampleA, ExampleAReadDto, ExampleAWriteDto, ExampleAWriteDto>,
           IExampleAApplicationService
     {
+        private static readonly Guid CurrentFixtureFirstId = Guid.Parse("70000001-0001-0001-0001-000000000101");
+        private static readonly Guid CurrentFixtureLastId = Guid.Parse("70000001-0001-0001-0001-000000000142");
         /// <summary>Initializes the ExampleA application service.</summary>
         private readonly ModuleDbContext _dbContext;
         private readonly IReadOnlyList<IPersonIdentityResolverService> _identityResolvers;
         private readonly IRequestContextService _requestContext;
         private readonly IUserContextService _userContext;
         private readonly IPermissionEvaluationService _permissionEvaluation;
+        private readonly DemosExampleQueryCapabilityProvider _queryCapabilityProvider = new();
 
         public ExampleAApplicationService(
             IExampleARepository repository,
@@ -62,6 +69,10 @@ namespace App.Modules.Demos.Application.Domains.Examples.Services.Implementation
 
             ExampleSpatialCapabilityValidation.Validate(dto.Latitude, dto.Longitude);
             ExampleA entity = this.ObjectMappingService.Map<ExampleAWriteDto, ExampleA>(dto);
+            if (entity.Id == Guid.Empty)
+            {
+                entity.Id = Guid.NewGuid();
+            }
             entity.WorkspaceFK = this._userContext.CurrentWorkspaceId;
             ExampleA created = await ((IExampleARepository)this.Repository).CreateAsync(entity, cancellationToken).ConfigureAwait(false);
             return this.ObjectMappingService.Map<ExampleA, ExampleAReadDto>(created);
@@ -80,7 +91,10 @@ namespace App.Modules.Demos.Application.Domains.Examples.Services.Implementation
         public override IQueryable<ExampleAReadDto> Query()
         {
             return this._requestContext.IsAuthenticated
-                ? base.Query().Where(example => example.IsActive)
+                ? base.Query()
+                    .Where(example => example.IsActive)
+                    .Where(example => example.Id >= CurrentFixtureFirstId && example.Id <= CurrentFixtureLastId)
+                    .Where(example => !example.Title.StartsWith("ExampleA.") && example.Title != "Foo")
                 : Enumerable.Empty<ExampleAReadDto>().AsQueryable();
         }
 
@@ -88,6 +102,172 @@ namespace App.Modules.Demos.Application.Domains.Examples.Services.Implementation
         public override IQueryable<ExampleAReadDto> QueryById(Guid id)
         {
             return this.Query().Where(example => example.Id == id);
+        }
+
+        /// <inheritdoc />
+        public BrowseQueryCapability GetQueryCapability()
+        {
+            return this._queryCapabilityProvider.Describe();
+        }
+
+        /// <inheritdoc />
+        public Task<QueryPageResult<ExampleAReadDto>> SearchAsync(QueryInstructionPackage query, CancellationToken cancellationToken = default)
+        {
+            ArgumentNullException.ThrowIfNull(query);
+
+            IQueryable<ExampleAReadDto> examples = this.Query();
+            string searchTerm = query.SearchTerm.Trim();
+            if (searchTerm.Length > 0)
+            {
+                examples = examples.Where(example => example.Title.Contains(searchTerm) || example.Description.Contains(searchTerm));
+            }
+
+            foreach (QueryInstructionFilter filter in query.Filters)
+            {
+                examples = ApplyFilter(examples, filter);
+            }
+
+            examples = ApplySorts(examples, query.Sorts);
+            int page = Math.Max(1, query.Paging?.Page ?? 1);
+            int pageSize = Math.Clamp(query.Paging?.PageSize ?? 12, 1, 100);
+            long totalCount = examples.LongCount();
+            IReadOnlyList<ExampleAReadDto> items = examples
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToArray();
+
+            QueryPageResult<ExampleAReadDto> result = new()
+            {
+                Items = items,
+                TotalCount = totalCount,
+                Page = page,
+                PageSize = pageSize,
+                TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize),
+            };
+            return Task.FromResult(result);
+        }
+
+        private static IQueryable<ExampleAReadDto> ApplyFilter(IQueryable<ExampleAReadDto> examples, QueryInstructionFilter filter)
+        {
+            string value = ReadString(filter.Value);
+            return filter.Field switch
+            {
+                "title" => ApplyStringFilter(examples, example => example.Title, filter.Operator, value),
+                "description" => ApplyStringFilter(examples, example => example.Description, filter.Operator, value),
+                "isActive" => ApplyBooleanFilter(examples, example => example.IsActive, filter.Operator, filter.Value),
+                "latitude" => ApplyNumberFilter(examples, example => example.Latitude, filter.Operator, filter.Value),
+                "longitude" => ApplyNumberFilter(examples, example => example.Longitude, filter.Operator, filter.Value),
+                _ => examples,
+            };
+        }
+
+        private static IQueryable<ExampleAReadDto> ApplyStringFilter(
+            IQueryable<ExampleAReadDto> examples,
+            System.Linq.Expressions.Expression<Func<ExampleAReadDto, string>> selector,
+            string operatorName,
+            string value)
+        {
+            return operatorName switch
+            {
+                "contains" => examples.Where(System.Linq.Expressions.Expression.Lambda<Func<ExampleAReadDto, bool>>(
+                    System.Linq.Expressions.Expression.Call(selector.Body, nameof(string.Contains), Type.EmptyTypes, System.Linq.Expressions.Expression.Constant(value)), selector.Parameters)),
+                "startsWith" => examples.Where(System.Linq.Expressions.Expression.Lambda<Func<ExampleAReadDto, bool>>(
+                    System.Linq.Expressions.Expression.Call(selector.Body, nameof(string.StartsWith), Type.EmptyTypes, System.Linq.Expressions.Expression.Constant(value)), selector.Parameters)),
+                "endsWith" => examples.Where(System.Linq.Expressions.Expression.Lambda<Func<ExampleAReadDto, bool>>(
+                    System.Linq.Expressions.Expression.Call(selector.Body, nameof(string.EndsWith), Type.EmptyTypes, System.Linq.Expressions.Expression.Constant(value)), selector.Parameters)),
+                "ne" => examples.Where(System.Linq.Expressions.Expression.Lambda<Func<ExampleAReadDto, bool>>(
+                    System.Linq.Expressions.Expression.NotEqual(selector.Body, System.Linq.Expressions.Expression.Constant(value)), selector.Parameters)),
+                _ => examples.Where(System.Linq.Expressions.Expression.Lambda<Func<ExampleAReadDto, bool>>(
+                    System.Linq.Expressions.Expression.Equal(selector.Body, System.Linq.Expressions.Expression.Constant(value)), selector.Parameters)),
+            };
+        }
+
+        private static IQueryable<ExampleAReadDto> ApplyBooleanFilter(
+            IQueryable<ExampleAReadDto> examples,
+            System.Linq.Expressions.Expression<Func<ExampleAReadDto, bool>> selector,
+            string operatorName,
+            JsonElement? value)
+        {
+            if (value is not JsonElement json || json.ValueKind != JsonValueKind.True && json.ValueKind != JsonValueKind.False)
+            {
+                return examples;
+            }
+
+            bool parsed = json.GetBoolean();
+
+            System.Linq.Expressions.Expression body = operatorName == "ne"
+                ? System.Linq.Expressions.Expression.NotEqual(selector.Body, System.Linq.Expressions.Expression.Constant(parsed))
+                : System.Linq.Expressions.Expression.Equal(selector.Body, System.Linq.Expressions.Expression.Constant(parsed));
+            return examples.Where(System.Linq.Expressions.Expression.Lambda<Func<ExampleAReadDto, bool>>(body, selector.Parameters));
+        }
+
+        private static IQueryable<ExampleAReadDto> ApplyNumberFilter(
+            IQueryable<ExampleAReadDto> examples,
+            System.Linq.Expressions.Expression<Func<ExampleAReadDto, double?>> selector,
+            string operatorName,
+            JsonElement? value)
+        {
+            if (value is not JsonElement json || !json.TryGetDouble(out double parsed))
+            {
+                return examples;
+            }
+
+            System.Linq.Expressions.Expression left = selector.Body;
+            System.Linq.Expressions.Expression right = System.Linq.Expressions.Expression.Convert(
+                System.Linq.Expressions.Expression.Constant(parsed),
+                typeof(double?));
+            System.Linq.Expressions.Expression body = operatorName switch
+            {
+                "ne" => System.Linq.Expressions.Expression.NotEqual(left, right),
+                "lt" => System.Linq.Expressions.Expression.LessThan(left, right),
+                "lte" => System.Linq.Expressions.Expression.LessThanOrEqual(left, right),
+                "gt" => System.Linq.Expressions.Expression.GreaterThan(left, right),
+                "gte" => System.Linq.Expressions.Expression.GreaterThanOrEqual(left, right),
+                _ => System.Linq.Expressions.Expression.Equal(left, right),
+            };
+            return examples.Where(System.Linq.Expressions.Expression.Lambda<Func<ExampleAReadDto, bool>>(body, selector.Parameters));
+        }
+
+        private static IQueryable<ExampleAReadDto> ApplySorts(IQueryable<ExampleAReadDto> examples, IReadOnlyList<QueryInstructionSort> sorts)
+        {
+            IOrderedQueryable<ExampleAReadDto>? ordered = null;
+            foreach (QueryInstructionSort sort in sorts)
+            {
+                bool descending = string.Equals(sort.Direction, "desc", StringComparison.OrdinalIgnoreCase);
+                ordered = sort.Field switch
+                {
+                    "description" => ApplySort(examples, ordered, example => example.Description, descending),
+                    "isActive" => ApplySort(examples, ordered, example => example.IsActive, descending),
+                    "fromUtc" => ApplySort(examples, ordered, example => example.FromUtc, descending),
+                    "toUtc" => ApplySort(examples, ordered, example => example.ToUtc, descending),
+                    "latitude" => ApplySort(examples, ordered, example => example.Latitude, descending),
+                    "longitude" => ApplySort(examples, ordered, example => example.Longitude, descending),
+                    _ => ApplySort(examples, ordered, example => example.Title, descending),
+                };
+            }
+
+            return ordered ?? examples.OrderBy(example => example.Title);
+        }
+
+        private static IOrderedQueryable<ExampleAReadDto> ApplySort<TKey>(
+            IQueryable<ExampleAReadDto> examples,
+            IOrderedQueryable<ExampleAReadDto>? ordered,
+            System.Linq.Expressions.Expression<Func<ExampleAReadDto, TKey>> selector,
+            bool descending)
+        {
+            if (ordered == null)
+            {
+                return descending ? examples.OrderByDescending(selector) : examples.OrderBy(selector);
+            }
+
+            return descending ? ordered.ThenByDescending(selector) : ordered.ThenBy(selector);
+        }
+
+        private static string ReadString(JsonElement? value)
+        {
+            return value is JsonElement json && json.ValueKind == JsonValueKind.String
+                ? json.GetString() ?? string.Empty
+                : value?.ToString() ?? string.Empty;
         }
         
         /// <summary>
@@ -147,21 +327,14 @@ namespace App.Modules.Demos.Application.Domains.Examples.Services.Implementation
             // controller's Development check. It reads only deterministic demo rows
             // so visual validation can proceed while the normal authorization seed
             // migration is repaired; it is never a production data path.
-            return await this._dbContext.ExampleAs
-                .IgnoreQueryFilters()
-                .AsNoTracking()
-                .OrderBy(example => example.Title)
-                .Select(example => new ExampleAReadDto
-                {
-                    Id = example.Id,
-                    Title = example.Title,
-                    Description = example.Description,
-                    IsActive = example.IsActive,
-                    FromUtc = example.FromUtc,
-                    ToUtc = example.ToUtc,
-                    Latitude = example.Latitude,
-                    Longitude = example.Longitude,
-                })
+            return await this.ObjectMappingService.ProjectTo<ExampleA, ExampleAReadDto>(
+                this._dbContext.ExampleAs
+                    .IgnoreQueryFilters()
+                    .AsNoTracking()
+                    .Where(example => example.IsActive)
+                    .Where(example => example.Id >= CurrentFixtureFirstId && example.Id <= CurrentFixtureLastId)
+                    .Where(example => !example.Title.StartsWith("ExampleA.") && example.Title != "Foo")
+                    .OrderBy(example => example.Title))
                 .ToListAsync(cancellationToken);
         }
 

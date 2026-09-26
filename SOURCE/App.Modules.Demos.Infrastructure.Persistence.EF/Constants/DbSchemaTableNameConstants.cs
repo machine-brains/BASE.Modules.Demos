@@ -66,5 +66,8 @@ namespace App.Modules.Demos.Infrastructure.Constants
 
         /// <summary>Table name for Demos ExampleB child records.</summary>
         public const string ExampleB = "example_b";
+
+        /// <summary>Table name for explicit peer relationships between Demos operations.</summary>
+        public const string DemosOperationRelationship = "operation_relationship";
     }
 }

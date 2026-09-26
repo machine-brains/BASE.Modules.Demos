@@ -1,5 +1,8 @@
 using App.Modules.Sys.Shared.Domains.Persistence.Models.Implementations.Base;
+using App.Modules.Sys.Shared.Domains.Infrastructure.Models.Implementations;
+using App.Modules.Sys.Shared.Domains.Persistence.Models;
 using App.Modules.Sys.Substrate.Domains.Models;
+using App.Modules.Sys.Substrate.Domains.Models.Enums;
 
 namespace App.Modules.Demos.Domain.Domains.Discoverers.Structures
 {
@@ -14,13 +17,19 @@ namespace App.Modules.Demos.Domain.Domains.Discoverers.Structures
     /// Identity/Social module but carries no navigation property,
     /// keeping this module's schema independent of those tables.
     /// </remarks>
-    public class DiscovererProfile : DefaultEntityBase, IHasTitle, IHasDescriptionNullable
+    // Global historical demo data has no workspace owner or per-principal grant.
+    public class DiscovererProfile : DefaultEntityBase, IHasTitle, IHasDescriptionNullable, IHasMediaReference, IShareFilterExemptEntity
     {
         /// <summary>
         /// Gets or sets the identifier of the associated Person record in the
         /// Identity module. Boundary reference — no navigation property.
         /// </summary>
         public Guid PersonId { get; set; }
+
+        public MediaReferenceKind MediaReferenceKind { get; set; } = MediaReferenceKind.None;
+        public string? MediaFontKey { get; set; }
+        public Guid? MediaContentFK { get; set; }
+        public MediaContent? MediaContent { get; set; }
 
         /// <summary>
         /// Gets or sets the display title, typically the person's

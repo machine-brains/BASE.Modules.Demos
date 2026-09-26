@@ -1,5 +1,7 @@
 using App.Modules.Demos.Application.Domains.Examples.Structures.InTransit.Dtos;
 using App.Modules.Sys.Shared.Domains.Application;
+using App.Modules.Sys.Substrate.Domains.Browse.Models;
+using App.Modules.Sys.Shared.Domains.Queries;
 
 namespace App.Modules.Demos.Application.Domains.Examples.Services
 {
@@ -15,5 +17,11 @@ namespace App.Modules.Demos.Application.Domains.Examples.Services
         /// authenticated path once the authorization seed/catalogue migration is complete.
         /// </remarks>
         Task<IReadOnlyList<ExampleAReadDto>> GetDeveloperDemoAsync(CancellationToken cancellationToken = default);
+
+        /// <summary>Gets the source-aware query capability owned by the ExampleA Browse resource.</summary>
+        BrowseQueryCapability GetQueryCapability();
+
+        /// <summary>Applies canonical Coordinator query intent to the governed ExampleA read model.</summary>
+        Task<QueryPageResult<ExampleAReadDto>> SearchAsync(QueryInstructionPackage query, CancellationToken cancellationToken = default);
     }
 }
